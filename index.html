@@ -32,72 +32,19 @@
     --ease-bounce:cubic-bezier(.34,1.56,.64,1);
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    font-size:14px;
-    overflow-x:hidden;
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden;}
+button,input,select,textarea{font:inherit;}
+button{cursor:pointer;position:relative;overflow:hidden;}
 
 /* ================= RIPPLE ================= */
-
-.ripple{
-    position:absolute;
-    border-radius:50%;
-    transform:scale(0);
-    animation:rippleAnim .6s var(--ease);
-    background:rgba(255,255,255,.45);
-    pointer-events:none;
-}
-
-@keyframes rippleAnim{
-    to{
-        transform:scale(4);
-        opacity:0;
-    }
-}
+.ripple{position:absolute;border-radius:50%;transform:scale(0);animation:rippleAnim .6s var(--ease);background:rgba(255,255,255,.45);pointer-events:none;}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
 
 /* ================= SCROLL REVEAL ================= */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(16px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.page.active > *{
-    animation:fadeUp .45s var(--ease) both;
-}
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.page.active > *{animation:fadeUp .45s var(--ease) both;}
 .page.active > *:nth-child(1){animation-delay:.02s}
 .page.active > *:nth-child(2){animation-delay:.06s}
 .page.active > *:nth-child(3){animation-delay:.1s}
@@ -107,1959 +54,453 @@ button{
 .page.active > *:nth-child(7){animation-delay:.26s}
 
 /* ================= APP ================= */
-
-.app{
-    min-height:100vh;
-    display:flex;
-}
+.app{min-height:100vh;display:flex;}
 
 /* ================= SIDEBAR ================= */
-
-.sidebar{
-    width:250px;
-    min-height:100vh;
-    background:var(--sidebar);
-    color:#fff;
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    z-index:100;
-    display:flex;
-    flex-direction:column;
-    transition:transform .3s var(--ease);
-}
-
-.brand{
-    height:76px;
-    padding:0 22px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    transition:background .3s var(--ease);
-}
-
-.brand:hover{
-    background:rgba(255,255,255,.02);
-}
-
-.brand-logo{
-    width:38px;
-    height:38px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#3daf93,#17694f);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:800;
-    font-size:17px;
-    box-shadow:0 6px 16px rgba(61,175,147,.18);
-    transition:transform .4s var(--ease-bounce), box-shadow .3s var(--ease);
-}
-
-.brand:hover .brand-logo{
-    transform:rotate(-8deg) scale(1.08);
-    box-shadow:0 8px 22px rgba(61,175,147,.4);
-}
-
-.brand-text strong{
-    display:block;
-    font-size:16px;
-    letter-spacing:.2px;
-}
-
-.brand-text span{
-    display:block;
-    color:#83918d;
-    font-size:10px;
-    margin-top:2px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.sidebar-section{
-    padding:24px 14px 8px;
-    color:#64736e;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.nav{
-    padding:0 10px;
-}
-
-.nav-item{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:#9ba9a5;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px 13px;
-    border-radius:9px;
-    margin-bottom:4px;
-    text-align:left;
-    transition:
-        background .25s var(--ease),
-        color .25s var(--ease),
-        transform .25s var(--ease),
-        padding-left .25s var(--ease);
-    position:relative;
-    overflow:hidden;
-}
-
-.nav-item::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:50%;
-    transform:translateY(-50%) scaleY(0);
-    width:3px;
-    height:60%;
-    background:#6ed1b2;
-    border-radius:0 3px 3px 0;
-    transition:transform .3s var(--ease);
-    transform-origin:center;
-}
-
-.nav-item svg{
-    width:18px;
-    height:18px;
-    flex:none;
-    transition:transform .3s var(--ease-bounce);
-}
-
-.nav-item:hover{
-    background:rgba(255,255,255,.06);
-    color:#fff;
-    transform:translateX(4px);
-}
-
-.nav-item:hover svg{
-    transform:scale(1.15) rotate(-4deg);
-}
-
-.nav-item:hover::before{
-    transform:translateY(-50%) scaleY(1);
-}
-
-.nav-item.active{
-    background:rgba(61,175,147,.14);
-    color:#6ed1b2;
-    padding-left:17px;
-}
-
-.nav-item.active::before{
-    transform:translateY(-50%) scaleY(1);
-}
-
-.nav-item.active svg{
-    transform:scale(1.1);
-}
-
-.sidebar-bottom{
-    margin-top:auto;
-    padding:14px;
-}
-
-.storage-box{
-    background:var(--sidebar-2);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:10px;
-    padding:13px;
-    transition:border-color .3s var(--ease), transform .3s var(--ease);
-}
-
-.storage-box:hover{
-    border-color:rgba(110,209,178,.3);
-    transform:translateY(-2px);
-}
-
-.storage-title{
-    font-size:11px;
-    color:#fff;
-    margin-bottom:5px;
-}
-
-.storage-status{
-    color:#71817c;
-    font-size:10px;
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.online-dot{
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#4ade80;
-    box-shadow:0 0 0 0 rgba(74,222,128,.6);
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%{
-        box-shadow:0 0 0 0 rgba(74,222,128,.6);
-    }
-    70%{
-        box-shadow:0 0 0 8px rgba(74,222,128,0);
-    }
-    100%{
-        box-shadow:0 0 0 0 rgba(74,222,128,0);
-    }
-}
+.sidebar{width:250px;min-height:100vh;background:var(--sidebar);color:#fff;position:fixed;left:0;top:0;bottom:0;z-index:100;display:flex;flex-direction:column;transition:transform .3s var(--ease);}
+.brand{height:76px;padding:0 22px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.07);transition:background .3s var(--ease);}
+.brand:hover{background:rgba(255,255,255,.02);}
+.brand-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#3daf93,#17694f);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;box-shadow:0 6px 16px rgba(61,175,147,.18);transition:transform .4s var(--ease-bounce), box-shadow .3s var(--ease);}
+.brand:hover .brand-logo{transform:rotate(-8deg) scale(1.08);box-shadow:0 8px 22px rgba(61,175,147,.4);}
+.brand-text strong{display:block;font-size:16px;letter-spacing:.2px;}
+.brand-text span{display:block;color:#83918d;font-size:10px;margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
+.sidebar-section{padding:24px 14px 8px;color:#64736e;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.nav{padding:0 10px;}
+.nav-item{width:100%;border:0;background:transparent;color:#9ba9a5;display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:9px;margin-bottom:4px;text-align:left;transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), padding-left .25s var(--ease);position:relative;overflow:hidden;}
+.nav-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:#6ed1b2;border-radius:0 3px 3px 0;transition:transform .3s var(--ease);transform-origin:center;}
+.nav-item svg{width:18px;height:18px;flex:none;transition:transform .3s var(--ease-bounce);}
+.nav-item:hover{background:rgba(255,255,255,.06);color:#fff;transform:translateX(4px);}
+.nav-item:hover svg{transform:scale(1.15) rotate(-4deg);}
+.nav-item:hover::before{transform:translateY(-50%) scaleY(1);}
+.nav-item.active{background:rgba(61,175,147,.14);color:#6ed1b2;padding-left:17px;}
+.nav-item.active::before{transform:translateY(-50%) scaleY(1);}
+.nav-item.active svg{transform:scale(1.1);}
+.sidebar-bottom{margin-top:auto;padding:14px;}
+.storage-box{background:var(--sidebar-2);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:13px;transition:border-color .3s var(--ease), transform .3s var(--ease);}
+.storage-box:hover{border-color:rgba(110,209,178,.3);transform:translateY(-2px);}
+.storage-title{font-size:11px;color:#fff;margin-bottom:5px;}
+.storage-status{color:#71817c;font-size:10px;display:flex;align-items:center;gap:6px;}
+.online-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}70%{box-shadow:0 0 0 8px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
 
 /* ================= MAIN ================= */
-
-.main{
-    margin-left:250px;
-    width:calc(100% - 250px);
-    min-height:100vh;
-    transition:margin-left .3s var(--ease), width .3s var(--ease);
-}
-
-.topbar{
-    height:76px;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter:blur(10px);
-    transition:box-shadow .3s var(--ease);
-}
-
-.topbar.scrolled{
-    box-shadow:0 4px 20px rgba(18,38,31,.06);
-}
-
-.page-heading{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.mobile-menu{
-    display:none;
-    border:0;
-    background:#f3f6f5;
-    width:38px;
-    height:38px;
-    border-radius:9px;
-    transition:background .25s var(--ease), transform .25s var(--ease-bounce);
-}
-
-.mobile-menu:hover{
-    background:#e5ebe8;
-    transform:scale(1.08);
-}
-
-.page-heading h1{
-    font-size:20px;
-    font-weight:700;
-    letter-spacing:-.3px;
-    transition:color .25s var(--ease);
-}
-
-.page-heading p{
-    color:var(--muted);
-    font-size:11px;
-    margin-top:3px;
-}
-
-.top-actions{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.company-badge{
-    border:1px solid var(--border);
-    background:#fafcfc;
-    padding:8px 12px;
-    border-radius:8px;
-    color:#586762;
-    font-size:11px;
-    transition:
-        background .3s var(--ease),
-        color .3s var(--ease),
-        border-color .3s var(--ease),
-        transform .3s var(--ease);
-}
-
-.company-badge:hover{
-    background:var(--primary-light);
-    color:var(--primary-dark);
-    border-color:#cce8de;
-    transform:translateY(-2px);
-}
-
-.save-btn{
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    padding:9px 15px;
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-weight:600;
-    box-shadow:0 3px 8px rgba(31,143,104,.16);
-    transition:
-        background .25s var(--ease),
-        transform .25s var(--ease-bounce),
-        box-shadow .25s var(--ease);
-}
-
-.save-btn:hover{
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-    box-shadow:0 8px 18px rgba(31,143,104,.3);
-}
-
-.save-btn:active{
-    transform:translateY(0) scale(.97);
-}
-
-.save-btn svg{
-    width:15px;
-    transition:transform .4s var(--ease-bounce);
-}
-
-.save-btn:hover svg{
-    transform:rotate(-12deg) scale(1.1);
-}
+.main{margin-left:250px;width:calc(100% - 250px);min-height:100vh;transition:margin-left .3s var(--ease), width .3s var(--ease);}
+.topbar{height:76px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);transition:box-shadow .3s var(--ease);}
+.topbar.scrolled{box-shadow:0 4px 20px rgba(18,38,31,.06);}
+.page-heading{display:flex;align-items:center;gap:12px;}
+.mobile-menu{display:none;border:0;background:#f3f6f5;width:38px;height:38px;border-radius:9px;transition:background .25s var(--ease), transform .25s var(--ease-bounce);}
+.mobile-menu:hover{background:#e5ebe8;transform:scale(1.08);}
+.page-heading h1{font-size:20px;font-weight:700;letter-spacing:-.3px;transition:color .25s var(--ease);}
+.page-heading p{color:var(--muted);font-size:11px;margin-top:3px;}
+.top-actions{display:flex;align-items:center;gap:12px;}
+.company-badge{border:1px solid var(--border);background:#fafcfc;padding:8px 12px;border-radius:8px;color:#586762;font-size:11px;transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);}
+.company-badge:hover{background:var(--primary-light);color:var(--primary-dark);border-color:#cce8de;transform:translateY(-2px);}
+.save-btn{border:0;background:var(--primary);color:#fff;padding:9px 15px;border-radius:8px;display:flex;align-items:center;gap:7px;font-weight:600;box-shadow:0 3px 8px rgba(31,143,104,.16);transition:background .25s var(--ease), transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.save-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 18px rgba(31,143,104,.3);}
+.save-btn:active{transform:translateY(0) scale(.97);}
+.save-btn svg{width:15px;transition:transform .4s var(--ease-bounce);}
+.save-btn:hover svg{transform:rotate(-12deg) scale(1.1);}
 
 /* ================= CONTENT ================= */
-
-.content{
-    padding:28px 30px 40px;
-    max-width:1700px;
-    margin:auto;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
+.content{padding:28px 30px 40px;max-width:1700px;margin:auto;}
+.page{display:none;}
+.page.active{display:block;}
 
 /* ================= NOTICE ================= */
-
-.notice{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    background:var(--warning-bg);
-    border:1px solid #f0dcb4;
-    color:#8a5c0a;
-    padding:13px 15px;
-    border-radius:var(--radius);
-    margin-bottom:18px;
-    font-size:11.5px;
-    line-height:1.6;
-    transition:
-        transform .3s var(--ease),
-        box-shadow .3s var(--ease),
-        border-color .3s var(--ease);
-}
-
-.notice:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(200,135,25,.12);
-    border-color:#e5c78a;
-}
-
-.notice strong{
-    color:#6d4807;
-}
-
-.notice svg{
-    width:18px;
-    height:18px;
-    flex:none;
-    margin-top:1px;
-    transition:transform .4s var(--ease-bounce);
-}
-
-.notice:hover svg{
-    transform:scale(1.15) rotate(-6deg);
-}
-
-.notice.info{
-    background:var(--info-bg);
-    border-color:#c7dbfe;
-    color:#1d4ed8;
-}
-
-.notice.info:hover{
-    box-shadow:0 8px 20px rgba(37,99,235,.12);
-    border-color:#a5c4fd;
-}
-
-.notice.info strong{
-    color:#1e3a8a;
-}
+.notice{display:flex;align-items:flex-start;gap:12px;background:var(--warning-bg);border:1px solid #f0dcb4;color:#8a5c0a;padding:13px 15px;border-radius:var(--radius);margin-bottom:18px;font-size:11.5px;line-height:1.6;transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);}
+.notice:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,135,25,.12);border-color:#e5c78a;}
+.notice strong{color:#6d4807;}
+.notice svg{width:18px;height:18px;flex:none;margin-top:1px;transition:transform .4s var(--ease-bounce);}
+.notice:hover svg{transform:scale(1.15) rotate(-6deg);}
+.notice.info{background:var(--info-bg);border-color:#c7dbfe;color:#1d4ed8;}
+.notice.info:hover{box-shadow:0 8px 20px rgba(37,99,235,.12);border-color:#a5c4fd;}
+.notice.info strong{color:#1e3a8a;}
+.notice.success{background:var(--success-bg);border-color:#c3e6d5;color:#147548;}
+.notice.success:hover{box-shadow:0 8px 20px rgba(25,135,84,.12);border-color:#a8dcc4;}
+.notice.success strong{color:#0d5232;}
 
 /* ================= KPI ================= */
-
-.kpi-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-    margin-bottom:22px;
-}
-
-.kpi{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:19px;
-    box-shadow:var(--shadow);
-    position:relative;
-    overflow:hidden;
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s var(--ease),
-        border-color .35s var(--ease);
-}
-
-.kpi::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg,transparent 0%,rgba(31,143,104,.05) 100%);
-    opacity:0;
-    transition:opacity .35s var(--ease);
-    pointer-events:none;
-}
-
-.kpi::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:3px;
-    background:linear-gradient(90deg,var(--primary),#4bb997);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform .4s var(--ease);
-}
-
-.kpi:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-hover);
-    border-color:#cce8de;
-}
-
-.kpi:hover::before{
-    opacity:1;
-}
-
-.kpi:hover::after{
-    transform:scaleX(1);
-}
-
-.kpi-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.kpi-label{
-    color:var(--muted);
-    font-size:11px;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-    transition:color .3s var(--ease);
-}
-
-.kpi:hover .kpi-label{
-    color:var(--primary-dark);
-}
-
-.kpi-icon{
-    width:34px;
-    height:34px;
-    border-radius:8px;
-    background:var(--primary-light);
-    color:var(--primary);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:transform .4s var(--ease-bounce), background .3s var(--ease);
-}
-
-.kpi:hover .kpi-icon{
-    transform:rotate(-8deg) scale(1.15);
-    background:#d6efe5;
-}
-
-.kpi-icon svg{
-    width:17px;
-}
-
-.kpi-value{
-    margin-top:14px;
-    font-size:24px;
-    font-weight:750;
-    letter-spacing:-.7px;
-    transition:color .3s var(--ease);
-}
-
-.kpi:hover .kpi-value{
-    color:var(--primary-dark);
-}
-
-.kpi-note{
-    margin-top:5px;
-    color:#8a9793;
-    font-size:10px;
-}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px;}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);}
+.kpi::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(31,143,104,.05) 100%);opacity:0;transition:opacity .35s var(--ease);pointer-events:none;}
+.kpi::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#4bb997);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.kpi:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:#cce8de;}
+.kpi:hover::before{opacity:1;}
+.kpi:hover::after{transform:scaleX(1);}
+.kpi-top{display:flex;justify-content:space-between;align-items:center;}
+.kpi-label{color:var(--muted);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;transition:color .3s var(--ease);}
+.kpi:hover .kpi-label{color:var(--primary-dark);}
+.kpi-icon{width:32px;height:32px;border-radius:8px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:transform .4s var(--ease-bounce), background .3s var(--ease);}
+.kpi:hover .kpi-icon{transform:rotate(-8deg) scale(1.15);background:#d6efe5;}
+.kpi-icon svg{width:16px;}
+.kpi-value{margin-top:12px;font-size:20px;font-weight:750;letter-spacing:-.5px;transition:color .3s var(--ease);}
+.kpi:hover .kpi-value{color:var(--primary-dark);}
+.kpi-note{margin-top:4px;color:#8a9793;font-size:10px;}
 
 /* ================= PANELS ================= */
-
-.grid-2{
-    display:grid;
-    grid-template-columns:1.25fr .75fr;
-    gap:18px;
-    margin-bottom:20px;
-}
-
-.panel{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    transition:
-        box-shadow .35s var(--ease),
-        border-color .35s var(--ease),
-        transform .35s var(--ease);
-}
-
-.panel:hover{
-    box-shadow:var(--shadow-hover);
-    border-color:#d8e5df;
-}
-
-.panel-header{
-    padding:17px 19px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    transition:background .3s var(--ease);
-}
-
-.panel:hover .panel-header{
-    background:#fafdfc;
-}
-
-.panel-title{
-    font-size:14px;
-    font-weight:700;
-}
-
-.panel-subtitle{
-    color:var(--muted);
-    font-size:10px;
-    margin-top:3px;
-}
-
-.panel-body{
-    padding:18px;
-}
+.grid-2{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-bottom:20px;}
+.panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);}
+.panel:hover{box-shadow:var(--shadow-hover);border-color:#d8e5df;}
+.panel-header{padding:17px 19px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;transition:background .3s var(--ease);}
+.panel:hover .panel-header{background:#fafdfc;}
+.panel-title{font-size:14px;font-weight:700;}
+.panel-subtitle{color:var(--muted);font-size:10px;margin-top:3px;}
+.panel-body{padding:18px;}
 
 /* ================= CATEGORY CHART ================= */
-
-.category-row{
-    margin-bottom:17px;
-    transition:transform .25s var(--ease);
-}
-
-.category-row:last-child{
-    margin-bottom:0;
-}
-
-.category-row:hover{
-    transform:translateX(4px);
-}
-
-.category-head{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:7px;
-}
-
-.category-name{
-    font-size:11px;
-    font-weight:600;
-    transition:color .25s var(--ease);
-}
-
-.category-row:hover .category-name{
-    color:var(--primary-dark);
-}
-
-.category-amount{
-    color:var(--muted);
-    font-size:11px;
-}
-
-.bar{
-    height:7px;
-    border-radius:20px;
-    background:#edf1ef;
-    overflow:hidden;
-    position:relative;
-}
-
-.bar-fill{
-    height:100%;
-    border-radius:20px;
-    background:linear-gradient(90deg,var(--primary),#4bb997);
-    width:0;
-    transition:width 1s var(--ease);
-    position:relative;
-    overflow:hidden;
-}
-
-.bar-fill::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,.4) 50%,
-        transparent 100%
-    );
-    transform:translateX(-100%);
-    animation:shimmer 2.5s infinite;
-}
-
-@keyframes shimmer{
-    100%{
-        transform:translateX(100%);
-    }
-}
-
-.bar-fill.info{
-    background:linear-gradient(90deg,#3b82f6,#60a5fa);
-}
+.category-row{margin-bottom:17px;transition:transform .25s var(--ease);}
+.category-row:last-child{margin-bottom:0;}
+.category-row:hover{transform:translateX(4px);}
+.category-head{display:flex;justify-content:space-between;margin-bottom:7px;}
+.category-name{font-size:11px;font-weight:600;transition:color .25s var(--ease);}
+.category-row:hover .category-name{color:var(--primary-dark);}
+.category-amount{color:var(--muted);font-size:11px;}
+.bar{height:7px;border-radius:20px;background:#edf1ef;overflow:hidden;position:relative;}
+.bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--primary),#4bb997);width:0;transition:width 1s var(--ease);position:relative;overflow:hidden;}
+.bar-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.4) 50%,transparent 100%);transform:translateX(-100%);animation:shimmer 2.5s infinite;}
+@keyframes shimmer{100%{transform:translateX(100%);}}
+.bar-fill.info{background:linear-gradient(90deg,#3b82f6,#60a5fa);}
+.bar-fill.warning{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
 
 /* ================= TABLE ================= */
-
-.table-wrap{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    text-align:left;
-    color:#84918d;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-    font-weight:700;
-    padding:11px 17px;
-    background:#fafbfb;
-    border-bottom:1px solid var(--border);
-    white-space:nowrap;
-    transition:background .25s var(--ease), color .25s var(--ease);
-}
-
-th:hover{
-    background:#f3f7f5;
-    color:var(--primary-dark);
-}
-
-td{
-    padding:13px 17px;
-    border-bottom:1px solid #edf1ef;
-    font-size:12px;
-    white-space:nowrap;
-    transition:background .2s var(--ease);
-}
-
-tbody tr{
-    transition:
-        background .25s var(--ease),
-        transform .25s var(--ease),
-        box-shadow .25s var(--ease);
-    position:relative;
-}
-
-tbody tr:hover{
-    background:#fafdfc;
-    transform:scale(1.003);
-    box-shadow:inset 3px 0 0 var(--primary);
-}
-
-tbody tr:last-child td{
-    border-bottom:0;
-}
-
-.amount{
-    font-weight:700;
-}
-
-.muted{
-    color:var(--muted);
-}
-
-.positive{
-    color:var(--success);
-}
-
-.negative{
-    color:var(--danger);
-}
-
-.neutral{
-    color:#697570;
-}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;color:#84918d;font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;padding:11px 17px;background:#fafbfb;border-bottom:1px solid var(--border);white-space:nowrap;transition:background .25s var(--ease), color .25s var(--ease);}
+th:hover{background:#f3f7f5;color:var(--primary-dark);}
+td{padding:13px 17px;border-bottom:1px solid #edf1ef;font-size:12px;white-space:nowrap;transition:background .2s var(--ease);}
+tbody tr{transition:background .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);position:relative;}
+tbody tr:hover{background:#fafdfc;transform:scale(1.003);box-shadow:inset 3px 0 0 var(--primary);}
+tbody tr:last-child td{border-bottom:0;}
+.amount{font-weight:700;}
+.muted{color:var(--muted);}
+.positive{color:var(--success);}
+.negative{color:var(--danger);}
+.neutral{color:#697570;}
 
 /* ================= STATUS ================= */
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    padding:5px 8px;
-    border-radius:6px;
-    font-size:10px;
-    font-weight:700;
-    transition:transform .25s var(--ease-bounce), box-shadow .25s var(--ease);
-}
-
-.badge:hover{
-    transform:scale(1.06);
-}
-
-.badge.paid,
-.badge.credit{
-    color:#147548;
-    background:var(--success-bg);
-}
-
-.badge.paid:hover,
-.badge.credit:hover{
-    box-shadow:0 0 0 3px rgba(25,135,84,.12);
-}
-
-.badge.pending,
-.badge.due{
-    color:#a36a0d;
-    background:var(--warning-bg);
-}
-
-.badge.pending:hover,
-.badge.due:hover{
-    box-shadow:0 0 0 3px rgba(200,135,25,.12);
-}
-
-.badge.settled{
-    color:#63716d;
-    background:#f0f3f2;
-}
-
-.badge.expense{
-    color:#5c6965;
-    background:#f0f3f2;
-}
-
-.badge.resigned{
-    color:#a33b3b;
-    background:var(--danger-bg);
-}
-
-.badge.resigned:hover{
-    box-shadow:0 0 0 3px rgba(220,76,76,.12);
-}
-
-.badge.advance{
-    color:#1d4ed8;
-    background:var(--info-bg);
-}
-
-.badge.advance:hover{
-    box-shadow:0 0 0 3px rgba(37,99,235,.12);
-}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:6px;font-size:10px;font-weight:700;transition:transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.badge:hover{transform:scale(1.06);}
+.badge.paid,.badge.credit,.badge.deposit{color:#147548;background:var(--success-bg);}
+.badge.paid:hover,.badge.credit:hover,.badge.deposit:hover{box-shadow:0 0 0 3px rgba(25,135,84,.12);}
+.badge.pending,.badge.due{color:#a36a0d;background:var(--warning-bg);}
+.badge.pending:hover,.badge.due:hover{box-shadow:0 0 0 3px rgba(200,135,25,.12);}
+.badge.settled{color:#63716d;background:#f0f3f2;}
+.badge.expense,.badge.withdrawal{color:#5c6965;background:#f0f3f2;}
+.badge.resigned{color:#a33b3b;background:var(--danger-bg);}
+.badge.resigned:hover{box-shadow:0 0 0 3px rgba(220,76,76,.12);}
+.badge.advance{color:#1d4ed8;background:var(--info-bg);}
+.badge.advance:hover{box-shadow:0 0 0 3px rgba(37,99,235,.12);}
 
 /* ================= PROGRESS ================= */
-
-.progress{
-    width:100%;
-    max-width:120px;
-    height:6px;
-    background:#edf1ef;
-    border-radius:20px;
-    overflow:hidden;
-    position:relative;
-}
-
-.progress-fill{
-    height:100%;
-    background:linear-gradient(90deg,var(--primary),#4bb997);
-    border-radius:20px;
-    width:0;
-    transition:width 1.2s var(--ease);
-    position:relative;
-}
-
-.progress-fill::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,.5) 50%,
-        transparent 100%
-    );
-    transform:translateX(-100%);
-    animation:shimmer 2.5s infinite;
-}
+.progress{width:100%;max-width:120px;height:6px;background:#edf1ef;border-radius:20px;overflow:hidden;position:relative;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),#4bb997);border-radius:20px;width:0;transition:width 1.2s var(--ease);position:relative;}
+.progress-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.5) 50%,transparent 100%);transform:translateX(-100%);animation:shimmer 2.5s infinite;}
 
 /* ================= TOOLBAR ================= */
-
-.toolbar{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:13px;
-    display:flex;
-    align-items:center;
-    gap:9px;
-    margin-bottom:16px;
-    box-shadow:var(--shadow);
-    transition:box-shadow .3s var(--ease), border-color .3s var(--ease);
-}
-
-.toolbar:focus-within{
-    box-shadow:var(--shadow-hover);
-    border-color:#cce8de;
-}
-
-.search-box{
-    position:relative;
-    flex:1;
-    max-width:330px;
-}
-
-.search-box svg{
-    position:absolute;
-    left:11px;
-    top:50%;
-    transform:translateY(-50%);
-    width:15px;
-    color:#899691;
-    transition:
-        color .3s var(--ease),
-        transform .4s var(--ease-bounce);
-    pointer-events:none;
-}
-
-.search-box:focus-within svg{
-    color:var(--primary);
-    transform:translateY(-50%) scale(1.15);
-}
-
-.input,
-.select{
-    width:100%;
-    height:38px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:0 11px;
-    outline:none;
-    background:#fff;
-    color:var(--text);
-    transition:
-        border-color .3s var(--ease),
-        box-shadow .3s var(--ease),
-        background .3s var(--ease);
-}
-
-.search-box .input{
-    padding-left:34px;
-}
-
-.input:hover,
-.select:hover{
-    border-color:#d0dbd6;
-}
-
-.input:focus,
-.select:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 4px rgba(31,143,104,.1);
-    background:#fdfefe;
-}
-
-.toolbar .select{
-    width:160px;
-    cursor:pointer;
-}
-
-.primary-btn{
-    margin-left:auto;
-    height:38px;
-    border:0;
-    border-radius:8px;
-    background:var(--primary);
-    color:#fff;
-    padding:0 14px;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-weight:650;
-    box-shadow:0 3px 8px rgba(31,143,104,.16);
-    transition:
-        background .25s var(--ease),
-        transform .25s var(--ease-bounce),
-        box-shadow .25s var(--ease);
-}
-
-.primary-btn:hover{
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(31,143,104,.3);
-}
-
-.primary-btn:active{
-    transform:translateY(0) scale(.97);
-}
-
-.primary-btn svg{
-    width:15px;
-    transition:transform .4s var(--ease-bounce);
-}
-
-.primary-btn:hover svg{
-    transform:rotate(90deg) scale(1.1);
-}
+.toolbar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px;display:flex;align-items:center;gap:9px;margin-bottom:16px;box-shadow:var(--shadow);transition:box-shadow .3s var(--ease), border-color .3s var(--ease);}
+.toolbar:focus-within{box-shadow:var(--shadow-hover);border-color:#cce8de;}
+.search-box{position:relative;flex:1;max-width:330px;}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;color:#899691;transition:color .3s var(--ease), transform .4s var(--ease-bounce);pointer-events:none;}
+.search-box:focus-within svg{color:var(--primary);transform:translateY(-50%) scale(1.15);}
+.input,.select{width:100%;height:38px;border:1px solid var(--border);border-radius:8px;padding:0 11px;outline:none;background:#fff;color:var(--text);transition:border-color .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);}
+.search-box .input{padding-left:34px;}
+.input:hover,.select:hover{border-color:#d0dbd6;}
+.input:focus,.select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(31,143,104,.1);background:#fdfefe;}
+.toolbar .select{width:160px;cursor:pointer;}
+.primary-btn{margin-left:auto;height:38px;border:0;border-radius:8px;background:var(--primary);color:#fff;padding:0 14px;display:flex;align-items:center;gap:7px;font-weight:650;box-shadow:0 3px 8px rgba(31,143,104,.16);transition:background .25s var(--ease), transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.primary-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 10px 20px rgba(31,143,104,.3);}
+.primary-btn:active{transform:translateY(0) scale(.97);}
+.primary-btn svg{width:15px;transition:transform .4s var(--ease-bounce);}
+.primary-btn:hover svg{transform:rotate(90deg) scale(1.1);}
 
 /* ================= ACTION BUTTONS ================= */
-
-.action-group{
-    display:flex;
-    gap:5px;
-}
-
-.icon-btn{
-    width:30px;
-    height:30px;
-    border:1px solid var(--border);
-    border-radius:7px;
-    background:#fff;
-    color:#65736f;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:
-        background .25s var(--ease),
-        color .25s var(--ease),
-        border-color .25s var(--ease),
-        transform .25s var(--ease-bounce),
-        box-shadow .25s var(--ease);
-}
-
-.icon-btn:hover{
-    background:#f3f7f5;
-    color:var(--primary);
-    border-color:#cce8de;
-    transform:translateY(-2px) scale(1.08);
-    box-shadow:0 6px 12px rgba(31,143,104,.15);
-}
-
-.icon-btn.delete:hover{
-    color:var(--danger);
-    background:var(--danger-bg);
-    border-color:#f5d5d5;
-    box-shadow:0 6px 12px rgba(220,76,76,.18);
-}
-
-.icon-btn:active{
-    transform:translateY(0) scale(.95);
-}
-
-.icon-btn svg{
-    width:14px;
-    transition:transform .3s var(--ease-bounce);
-}
-
-.icon-btn:hover svg{
-    transform:scale(1.15);
-}
+.action-group{display:flex;gap:5px;}
+.icon-btn{width:30px;height:30px;border:1px solid var(--border);border-radius:7px;background:#fff;color:#65736f;display:flex;align-items:center;justify-content:center;transition:background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.icon-btn:hover{background:#f3f7f5;color:var(--primary);border-color:#cce8de;transform:translateY(-2px) scale(1.08);box-shadow:0 6px 12px rgba(31,143,104,.15);}
+.icon-btn.delete:hover{color:var(--danger);background:var(--danger-bg);border-color:#f5d5d5;box-shadow:0 6px 12px rgba(220,76,76,.18);}
+.icon-btn:active{transform:translateY(0) scale(.95);}
+.icon-btn svg{width:14px;transition:transform .3s var(--ease-bounce);}
+.icon-btn:hover svg{transform:scale(1.15);}
 
 /* ================= EXPENSE DETAIL ================= */
-
-.expense-description{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.expense-icon{
-    width:33px;
-    height:33px;
-    background:var(--primary-light);
-    color:var(--primary);
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex:none;
-    transition:transform .35s var(--ease-bounce), background .3s var(--ease);
-}
-
-tbody tr:hover .expense-icon{
-    transform:rotate(-8deg) scale(1.1);
-    background:#d6efe5;
-}
-
-.expense-icon svg{
-    width:16px;
-}
-
-.expense-name{
-    font-weight:650;
-    color:#25312d;
-    transition:color .25s var(--ease);
-}
-
-tbody tr:hover .expense-name{
-    color:var(--primary-dark);
-}
-
-.expense-category{
-    color:#89948f;
-    font-size:10px;
-    margin-top:2px;
-}
-
-.partner-chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:4px;
-}
-
-.chip{
-    background:#f2f5f4;
-    border:1px solid #e8edeb;
-    border-radius:5px;
-    padding:4px 6px;
-    color:#687671;
-    font-size:9px;
-    transition:
-        background .25s var(--ease),
-        color .25s var(--ease),
-        transform .25s var(--ease-bounce);
-}
-
-.chip:hover{
-    background:var(--primary-light);
-    color:var(--primary-dark);
-    transform:translateY(-2px);
-}
-
-.chip.resigned-chip{
-    background:var(--danger-bg);
-    border-color:#f5d5d5;
-    color:#a33b3b;
-}
-
-.chip.resigned-chip:hover{
-    background:#ffe0e0;
-    color:#8a2f2f;
-}
+.expense-description{display:flex;align-items:center;gap:10px;}
+.expense-icon{width:33px;height:33px;background:var(--primary-light);color:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;transition:transform .35s var(--ease-bounce), background .3s var(--ease);}
+tbody tr:hover .expense-icon{transform:rotate(-8deg) scale(1.1);background:#d6efe5;}
+.expense-icon svg{width:16px;}
+.expense-name{font-weight:650;color:#25312d;transition:color .25s var(--ease);}
+tbody tr:hover .expense-name{color:var(--primary-dark);}
+.expense-category{color:#89948f;font-size:10px;margin-top:2px;}
+.partner-chips{display:flex;flex-wrap:wrap;gap:4px;}
+.chip{background:#f2f5f4;border:1px solid #e8edeb;border-radius:5px;padding:4px 6px;color:#687671;font-size:9px;transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease-bounce);}
+.chip:hover{background:var(--primary-light);color:var(--primary-dark);transform:translateY(-2px);}
+.chip.resigned-chip{background:var(--danger-bg);border-color:#f5d5d5;color:#a33b3b;}
+.chip.resigned-chip:hover{background:#ffe0e0;color:#8a2f2f;}
 
 /* ================= PARTNERS ================= */
+.partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:18px;}
+.partner-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+.partner-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);}
+.partner-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#4bb997);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.partner-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:#cce8de;}
+.partner-card:hover::before{transform:scaleX(1);}
+.avatar{width:38px;height:38px;border-radius:10px;background:var(--primary-light);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:13px;transition:transform .4s var(--ease-bounce), background .3s var(--ease);}
+.partner-card:hover .avatar{transform:rotate(-8deg) scale(1.1);background:#d6efe5;}
+.avatar.resigned{background:var(--danger-bg);color:var(--danger);}
+.avatar.project{background:var(--info-bg);color:var(--info);}
+.avatar.company{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;}
+.partner-name{font-size:14px;font-weight:700;transition:color .25s var(--ease);}
+.partner-card:hover .partner-name{color:var(--primary-dark);}
+.partner-label{color:var(--muted);font-size:10px;margin-top:3px;}
+.partner-value{font-size:20px;font-weight:750;margin-top:14px;transition:color .3s var(--ease);}
+.partner-card:hover .partner-value{color:var(--primary-dark);}
+.partner-stat{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--muted);font-size:10px;gap:10px;}
+.partner-stat strong{color:var(--text);transition:color .25s var(--ease);}
+.partner-stat:hover strong{color:var(--primary-dark);}
 
-.partner-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:14px;
-    margin-bottom:18px;
-}
+/* ================= PROJECT CARDS ================= */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px;}
+.project-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);}
+.project-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.project-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:#c7dbfe;}
+.project-card:hover::before{transform:scaleX(1);}
+.project-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.project-title{font-size:14px;font-weight:700;transition:color .25s var(--ease);}
+.project-card:hover .project-title{color:var(--info);}
+.project-client{color:var(--muted);font-size:10px;margin-top:3px;}
+.project-amount{font-size:22px;font-weight:750;margin-top:10px;transition:color .3s var(--ease);}
+.project-card:hover .project-amount{color:var(--info);}
+.project-meta{display:flex;justify-content:space-between;margin-top:10px;font-size:10px;color:var(--muted);}
+.project-meta strong{color:var(--text);}
 
-.partner-grid.cols-4{
-    grid-template-columns:repeat(4,1fr);
-}
+/* ================= REPORT ================= */
+.report-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px;}
+.report-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);}
+.report-card::after{content:"";position:absolute;right:-30px;bottom:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(31,143,104,.08),transparent 70%);transition:transform .5s var(--ease);pointer-events:none;}
+.report-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:#cce8de;}
+.report-card:hover::after{transform:scale(1.6);}
+.report-card h3{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;transition:color .3s var(--ease);}
+.report-card:hover h3{color:var(--primary-dark);}
+.report-card strong{display:block;font-size:22px;margin-top:10px;transition:color .3s var(--ease);}
+.report-card:hover strong{color:var(--primary-dark);}
 
-.partner-card{
-    background:#fff;
-    border:1px solid var(--border);
+/* ================= COMPANY BALANCE HIGHLIGHT ================= */
+.company-balance-card{
+    background:linear-gradient(135deg,#1f8f68 0%,#146448 100%);
+    color:#fff;
+    border:none;
     border-radius:var(--radius);
-    padding:17px;
-    box-shadow:var(--shadow);
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 10px 30px rgba(31,143,104,.25);
     position:relative;
     overflow:hidden;
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s var(--ease),
-        border-color .35s var(--ease);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
-
-.partner-card::before{
+.company-balance-card::before{
     content:"";
     position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:3px;
-    background:linear-gradient(90deg,var(--primary),#4bb997);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform .4s var(--ease);
+    top:-50%;right:-20%;
+    width:280px;height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);
+    pointer-events:none;
 }
-
-.partner-card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-hover);
-    border-color:#cce8de;
+.company-balance-card::after{
+    content:"";
+    position:absolute;
+    bottom:-60%;left:-10%;
+    width:220px;height:220px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);
+    pointer-events:none;
 }
-
-.partner-card:hover::before{
-    transform:scaleX(1);
+.company-balance-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 40px rgba(31,143,104,.35);
 }
-
-.avatar{
-    width:38px;
-    height:38px;
-    border-radius:10px;
-    background:var(--primary-light);
-    color:var(--primary-dark);
+.company-balance-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    position:relative;
+    z-index:1;
+    flex-wrap:wrap;
+}
+.company-balance-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+.company-balance-icon{
+    width:52px;height:52px;
+    border-radius:14px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:13px;
-    font-weight:800;
-    margin-bottom:13px;
-    transition:transform .4s var(--ease-bounce), background .3s var(--ease);
+    transition:transform .4s var(--ease-bounce);
 }
-
-.partner-card:hover .avatar{
+.company-balance-card:hover .company-balance-icon{
     transform:rotate(-8deg) scale(1.1);
-    background:#d6efe5;
 }
-
-.avatar.resigned{
-    background:var(--danger-bg);
-    color:var(--danger);
-}
-
-.avatar.project{
-    background:var(--info-bg);
-    color:var(--info);
-}
-
-.partner-name{
-    font-size:14px;
-    font-weight:700;
-    transition:color .25s var(--ease);
-}
-
-.partner-card:hover .partner-name{
-    color:var(--primary-dark);
-}
-
-.partner-label{
-    color:var(--muted);
-    font-size:10px;
-    margin-top:3px;
-}
-
-.partner-value{
-    font-size:20px;
-    font-weight:750;
-    margin-top:14px;
-    transition:color .3s var(--ease);
-}
-
-.partner-card:hover .partner-value{
-    color:var(--primary-dark);
-}
-
-.partner-stat{
-    margin-top:12px;
-    padding-top:10px;
-    border-top:1px solid var(--border);
-    display:flex;
-    justify-content:space-between;
-    color:var(--muted);
-    font-size:10px;
-    gap:10px;
-}
-
-.partner-stat strong{
-    color:var(--text);
-    transition:color .25s var(--ease);
-}
-
-.partner-stat:hover strong{
-    color:var(--primary-dark);
-}
-
-/* ================= PROJECT CARDS ================= */
-
-.project-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin-bottom:18px;
-}
-
-.project-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:18px;
-    box-shadow:var(--shadow);
-    position:relative;
-    overflow:hidden;
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s var(--ease),
-        border-color .35s var(--ease);
-}
-
-.project-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:3px;
-    background:linear-gradient(90deg,#3b82f6,#60a5fa);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform .4s var(--ease);
-}
-
-.project-card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-hover);
-    border-color:#c7dbfe;
-}
-
-.project-card:hover::before{
-    transform:scaleX(1);
-}
-
-.project-head{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:14px;
-}
-
-.project-title{
-    font-size:14px;
-    font-weight:700;
-    transition:color .25s var(--ease);
-}
-
-.project-card:hover .project-title{
-    color:var(--info);
-}
-
-.project-client{
-    color:var(--muted);
-    font-size:10px;
-    margin-top:3px;
-}
-
-.project-amount{
-    font-size:22px;
-    font-weight:750;
-    margin-top:10px;
-    transition:color .3s var(--ease);
-}
-
-.project-card:hover .project-amount{
-    color:var(--info);
-}
-
-.project-meta{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
-    font-size:10px;
-    color:var(--muted);
-}
-
-.project-meta strong{
-    color:var(--text);
-}
-
-/* ================= REPORT ================= */
-
-.report-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin-bottom:18px;
-}
-
-.report-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:18px;
-    position:relative;
-    overflow:hidden;
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s var(--ease),
-        border-color .35s var(--ease);
-}
-
-.report-card::after{
-    content:"";
-    position:absolute;
-    right:-30px;
-    bottom:-30px;
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(31,143,104,.08),transparent 70%);
-    transition:transform .5s var(--ease);
-    pointer-events:none;
-}
-
-.report-card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-hover);
-    border-color:#cce8de;
-}
-
-.report-card:hover::after{
-    transform:scale(1.6);
-}
-
-.report-card h3{
+.company-balance-icon svg{width:24px;height:24px;}
+.company-balance-label{
     font-size:11px;
-    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.85;
+    font-weight:600;
+}
+.company-balance-value{
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:-1px;
+    margin-top:4px;
+}
+.company-balance-sub{
+    font-size:11px;
+    opacity:.8;
+    margin-top:4px;
+}
+.company-balance-stats{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+}
+.company-balance-stat{
+    text-align:right;
+}
+.company-balance-stat-label{
+    font-size:10px;
+    opacity:.75;
     text-transform:uppercase;
     letter-spacing:.5px;
-    transition:color .3s var(--ease);
 }
-
-.report-card:hover h3{
-    color:var(--primary-dark);
-}
-
-.report-card strong{
-    display:block;
-    font-size:25px;
-    margin-top:10px;
-    transition:color .3s var(--ease);
-}
-
-.report-card:hover strong{
-    color:var(--primary-dark);
+.company-balance-stat-value{
+    font-size:16px;
+    font-weight:700;
+    margin-top:4px;
 }
 
 /* ================= MODAL ================= */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(12,20,18,.48);
-    z-index:500;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    backdrop-filter:blur(4px);
-    animation:fadeIn .3s var(--ease);
-}
-
-.overlay.show{
-    display:flex;
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-@keyframes slideUp{
-    from{
-        opacity:0;
-        transform:translateY(20px) scale(.96);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-.modal{
-    background:#fff;
-    width:100%;
-    max-width:720px;
-    max-height:92vh;
-    border-radius:14px;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    animation:slideUp .4s var(--ease-bounce);
-}
-
-.modal-header{
-    padding:18px 20px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.modal-title{
-    font-size:16px;
-    font-weight:750;
-}
-
-.modal-subtitle{
-    font-size:10px;
-    color:var(--muted);
-    margin-top:3px;
-}
-
-.close-btn{
-    border:0;
-    background:#f2f5f4;
-    width:32px;
-    height:32px;
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:
-        background .25s var(--ease),
-        transform .4s var(--ease-bounce),
-        color .25s var(--ease);
-}
-
-.close-btn:hover{
-    background:var(--danger-bg);
-    color:var(--danger);
-    transform:rotate(90deg) scale(1.1);
-}
-
-.close-btn svg{
-    width:15px;
-}
-
-.modal-body{
-    padding:20px;
-    overflow-y:auto;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.field.full{
-    grid-column:1/-1;
-}
-
-.field label{
-    font-size:10px;
-    color:#64716d;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-    transition:color .25s var(--ease);
-}
-
-.field:focus-within label{
-    color:var(--primary-dark);
-}
-
-.field input,
-.field select,
-.field textarea{
-    height:40px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:0 11px;
-    outline:none;
-    background:#fff;
-    color:var(--text);
-    transition:
-        border-color .3s var(--ease),
-        box-shadow .3s var(--ease),
-        background .3s var(--ease);
-}
-
-.field input:hover,
-.field select:hover,
-.field textarea:hover{
-    border-color:#d0dbd6;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 4px rgba(31,143,104,.1);
-    background:#fdfefe;
-}
-
-.field textarea{
-    height:auto;
-    padding:10px 11px;
-    resize:vertical;
-    min-height:70px;
-}
-
-.split-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin:21px 0 10px;
-}
-
-.split-title{
-    font-size:12px;
-    font-weight:700;
-}
-
-.equal-btn{
-    border:1px solid #cce8de;
-    background:var(--primary-light);
-    color:var(--primary-dark);
-    padding:6px 9px;
-    border-radius:6px;
-    font-size:10px;
-    font-weight:700;
-    transition:
-        background .25s var(--ease),
-        transform .25s var(--ease-bounce),
-        box-shadow .25s var(--ease);
-}
-
-.equal-btn:hover{
-    background:#d6efe5;
-    transform:translateY(-2px) scale(1.04);
-    box-shadow:0 6px 12px rgba(31,143,104,.18);
-}
-
-.equal-btn:active{
-    transform:translateY(0) scale(.97);
-}
-
-.split-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
-}
-
-.split-item{
-    border:1px solid var(--border);
-    border-radius:9px;
-    padding:11px;
-    background:#fbfcfc;
-    transition:
-        border-color .3s var(--ease),
-        background .3s var(--ease),
-        transform .3s var(--ease),
-        box-shadow .3s var(--ease);
-}
-
-.split-item:hover{
-    border-color:#cce8de;
-    background:#f5fbf8;
-    transform:translateY(-2px);
-    box-shadow:0 6px 14px rgba(31,143,104,.08);
-}
-
-.split-person{
-    font-size:11px;
-    font-weight:700;
-    margin-bottom:8px;
-    transition:color .25s var(--ease);
-}
-
-.split-item:hover .split-person{
-    color:var(--primary-dark);
-}
-
-.split-controls{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
-}
-
-.split-controls input,
-.split-controls select{
-    height:35px;
-    font-size:11px;
-}
-
-.split-summary{
-    margin-top:12px;
-    padding:10px 12px;
-    background:#f5f8f7;
-    border-radius:8px;
-    display:flex;
-    justify-content:space-between;
-    font-size:11px;
-    transition:background .3s var(--ease);
-}
-
-.split-summary:hover{
-    background:#eef5f2;
-}
-
-.split-summary strong{
-    font-size:12px;
-    transition:color .3s var(--ease);
-}
-
-.modal-footer{
-    padding:14px 20px;
-    border-top:1px solid var(--border);
-    display:flex;
-    justify-content:flex-end;
-    gap:8px;
-}
-
-.secondary-btn{
-    border:1px solid var(--border);
-    background:#fff;
-    height:38px;
-    border-radius:8px;
-    padding:0 14px;
-    color:#65726e;
-    font-weight:600;
-    transition:
-        background .25s var(--ease),
-        border-color .25s var(--ease),
-        color .25s var(--ease),
-        transform .25s var(--ease-bounce);
-}
-
-.secondary-btn:hover{
-    background:#f3f7f5;
-    border-color:#cce8de;
-    color:var(--primary-dark);
-    transform:translateY(-2px);
-}
-
-.secondary-btn:active{
-    transform:translateY(0) scale(.97);
-}
-
-.danger-btn{
-    border:0;
-    background:var(--danger);
-    color:#fff;
-    height:38px;
-    border-radius:8px;
-    padding:0 14px;
-    font-weight:600;
-    transition:
-        background .25s var(--ease),
-        transform .25s var(--ease-bounce),
-        box-shadow .25s var(--ease);
-}
-
-.danger-btn:hover{
-    background:#b83a3a;
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(220,76,76,.3);
-}
-
-.danger-btn:active{
-    transform:translateY(0) scale(.97);
-}
+.overlay{position:fixed;inset:0;background:rgba(12,20,18,.48);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);animation:fadeIn .3s var(--ease);}
+.overlay.show{display:flex;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.modal{background:#fff;width:100%;max-width:720px;max-height:92vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column;animation:slideUp .4s var(--ease-bounce);}
+.modal-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.modal-title{font-size:16px;font-weight:750;}
+.modal-subtitle{font-size:10px;color:var(--muted);margin-top:3px;}
+.close-btn{border:0;background:#f2f5f4;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background .25s var(--ease), transform .4s var(--ease-bounce), color .25s var(--ease);}
+.close-btn:hover{background:var(--danger-bg);color:var(--danger);transform:rotate(90deg) scale(1.1);}
+.close-btn svg{width:15px;}
+.modal-body{padding:20px;overflow-y:auto;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:10px;color:#64716d;font-weight:700;text-transform:uppercase;letter-spacing:.4px;transition:color .25s var(--ease);}
+.field:focus-within label{color:var(--primary-dark);}
+.field input,.field select,.field textarea{height:40px;border:1px solid var(--border);border-radius:8px;padding:0 11px;outline:none;background:#fff;color:var(--text);transition:border-color .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#d0dbd6;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(31,143,104,.1);background:#fdfefe;}
+.field textarea{height:auto;padding:10px 11px;resize:vertical;min-height:70px;}
+.split-header{display:flex;align-items:center;justify-content:space-between;margin:21px 0 10px;}
+.split-title{font-size:12px;font-weight:700;}
+.equal-btn{border:1px solid #cce8de;background:var(--primary-light);color:var(--primary-dark);padding:6px 9px;border-radius:6px;font-size:10px;font-weight:700;transition:background .25s var(--ease), transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.equal-btn:hover{background:#d6efe5;transform:translateY(-2px) scale(1.04);box-shadow:0 6px 12px rgba(31,143,104,.18);}
+.equal-btn:active{transform:translateY(0) scale(.97);}
+.split-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+.split-item{border:1px solid var(--border);border-radius:9px;padding:11px;background:#fbfcfc;transition:border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);}
+.split-item:hover{border-color:#cce8de;background:#f5fbf8;transform:translateY(-2px);box-shadow:0 6px 14px rgba(31,143,104,.08);}
+.split-person{font-size:11px;font-weight:700;margin-bottom:8px;transition:color .25s var(--ease);}
+.split-item:hover .split-person{color:var(--primary-dark);}
+.split-controls{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.split-controls input,.split-controls select{height:35px;font-size:11px;}
+.split-summary{margin-top:12px;padding:10px 12px;background:#f5f8f7;border-radius:8px;display:flex;justify-content:space-between;font-size:11px;transition:background .3s var(--ease);}
+.split-summary:hover{background:#eef5f2;}
+.split-summary strong{font-size:12px;transition:color .3s var(--ease);}
+.modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+.secondary-btn{border:1px solid var(--border);background:#fff;height:38px;border-radius:8px;padding:0 14px;color:#65726e;font-weight:600;transition:background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease-bounce);}
+.secondary-btn:hover{background:#f3f7f5;border-color:#cce8de;color:var(--primary-dark);transform:translateY(-2px);}
+.secondary-btn:active{transform:translateY(0) scale(.97);}
+.danger-btn{border:0;background:var(--danger);color:#fff;height:38px;border-radius:8px;padding:0 14px;font-weight:600;transition:background .25s var(--ease), transform .25s var(--ease-bounce), box-shadow .25s var(--ease);}
+.danger-btn:hover{background:#b83a3a;transform:translateY(-2px);box-shadow:0 10px 20px rgba(220,76,76,.3);}
+.danger-btn:active{transform:translateY(0) scale(.97);}
 
 /* ================= DELETE MODAL ================= */
-
-.confirm-modal{
-    max-width:390px;
-}
-
-.confirm-body{
-    padding:25px;
-    text-align:center;
-}
-
-.confirm-icon{
-    width:45px;
-    height:45px;
-    margin:0 auto 13px;
-    border-radius:50%;
-    background:var(--danger-bg);
-    color:var(--danger);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    animation:shake .5s var(--ease);
-}
-
-@keyframes shake{
-    0%,100%{transform:translateX(0);}
-    25%{transform:translateX(-4px) rotate(-3deg);}
-    75%{transform:translateX(4px) rotate(3deg);}
-}
-
-.confirm-icon svg{
-    width:20px;
-}
-
-.confirm-body h3{
-    font-size:15px;
-    margin-bottom:7px;
-}
-
-.confirm-body p{
-    color:var(--muted);
-    font-size:11px;
-    line-height:1.6;
-}
+.confirm-modal{max-width:390px;}
+.confirm-body{padding:25px;text-align:center;}
+.confirm-icon{width:45px;height:45px;margin:0 auto 13px;border-radius:50%;background:var(--danger-bg);color:var(--danger);display:flex;align-items:center;justify-content:center;animation:shake .5s var(--ease);}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px) rotate(-3deg);}75%{transform:translateX(4px) rotate(3deg);}}
+.confirm-icon svg{width:20px;}
+.confirm-body h3{font-size:15px;margin-bottom:7px;}
+.confirm-body p{color:var(--muted);font-size:11px;line-height:1.6;}
 
 /* ================= TOAST ================= */
-
-.toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    background:#18231f;
-    color:#fff;
-    padding:11px 15px;
-    border-radius:8px;
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
-    font-size:11px;
-    z-index:1000;
-    opacity:0;
-    transform:translateY(20px) scale(.9);
-    pointer-events:none;
-    transition:
-        opacity .35s var(--ease-bounce),
-        transform .35s var(--ease-bounce);
-}
-
-.toast.show{
-    opacity:1;
-    transform:translateY(0) scale(1);
-}
+.toast{position:fixed;right:25px;bottom:25px;background:#18231f;color:#fff;padding:11px 15px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);font-size:11px;z-index:1000;opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .35s var(--ease-bounce), transform .35s var(--ease-bounce);}
+.toast.show{opacity:1;transform:translateY(0) scale(1);}
 
 /* ================= EMPTY ================= */
-
-.empty{
-    padding:50px 20px;
-    text-align:center;
-    color:var(--muted);
-    animation:fadeIn .5s var(--ease);
-}
-
-.empty svg{
-    width:38px;
-    margin-bottom:12px;
-    color:#a5b0ac;
-    animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-6px);}
-}
-
-.empty h3{
-    color:#586660;
-    font-size:13px;
-    margin-bottom:5px;
-}
-
-.empty p{
-    font-size:10px;
-}
+.empty{padding:50px 20px;text-align:center;color:var(--muted);animation:fadeIn .5s var(--ease);}
+.empty svg{width:38px;margin-bottom:12px;color:#a5b0ac;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.empty h3{color:#586660;font-size:13px;margin-bottom:5px;}
+.empty p{font-size:10px;}
 
 /* ================= MOBILE ================= */
+.mobile-overlay{display:none;}
 
-.mobile-overlay{
-    display:none;
+@media(max-width:1200px){
+    .kpi-grid{grid-template-columns:repeat(3,1fr);}
 }
 
 @media(max-width:1100px){
-    .kpi-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .partner-grid,
-    .partner-grid.cols-4{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .project-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .grid-2{
-        grid-template-columns:1fr;
-    }
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .partner-grid,.partner-grid.cols-4{grid-template-columns:repeat(3,1fr);}
+    .project-grid{grid-template-columns:repeat(2,1fr);}
+    .grid-2{grid-template-columns:1fr;}
+    .report-grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:800px){
-    .sidebar{
-        transform:translateX(-100%);
-    }
-
-    .sidebar.open{
-        transform:translateX(0);
-    }
-
-    .mobile-overlay.show{
-        display:block;
-        position:fixed;
-        inset:0;
-        background:rgba(0,0,0,.35);
-        z-index:90;
-        animation:fadeIn .3s var(--ease);
-    }
-
-    .main{
-        margin-left:0;
-        width:100%;
-    }
-
-    .mobile-menu{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .topbar{
-        padding:0 15px;
-    }
-
-    .company-badge{
-        display:none;
-    }
-
-    .content{
-        padding:18px 15px 30px;
-    }
-
-    .toolbar{
-        flex-wrap:wrap;
-    }
-
-    .search-box{
-        max-width:none;
-        width:100%;
-        flex:none;
-    }
-
-    .toolbar .select{
-        flex:1;
-        min-width:130px;
-    }
-
-    .primary-btn{
-        margin-left:0;
-    }
-
-    .partner-grid,
-    .partner-grid.cols-4{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    .report-grid{
-        grid-template-columns:1fr;
-    }
-
-    .desktop-table{
-        min-width:850px;
-    }
+    .sidebar{transform:translateX(-100%);}
+    .sidebar.open{transform:translateX(0);}
+    .mobile-overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;animation:fadeIn .3s var(--ease);}
+    .main{margin-left:0;width:100%;}
+    .mobile-menu{display:flex;align-items:center;justify-content:center;}
+    .topbar{padding:0 15px;}
+    .company-badge{display:none;}
+    .content{padding:18px 15px 30px;}
+    .toolbar{flex-wrap:wrap;}
+    .search-box{max-width:none;width:100%;flex:none;}
+    .toolbar .select{flex:1;min-width:130px;}
+    .primary-btn{margin-left:0;}
+    .partner-grid,.partner-grid.cols-4{grid-template-columns:repeat(2,1fr);}
+    .project-grid{grid-template-columns:1fr;}
+    .report-grid{grid-template-columns:1fr;}
+    .desktop-table{min-width:850px;}
+    .company-balance-inner{flex-direction:column;align-items:flex-start;}
+    .company-balance-stats{width:100%;justify-content:space-between;}
+    .company-balance-stat{text-align:left;}
 }
 
 @media(max-width:520px){
-    .kpi-grid{
-        grid-template-columns:1fr;
-    }
-
-    .partner-grid,
-    .partner-grid.cols-4{
-        grid-template-columns:1fr;
-    }
-
-    .topbar{
-        height:68px;
-    }
-
-    .page-heading h1{
-        font-size:17px;
-    }
-
-    .top-actions .save-btn span{
-        display:none;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .field.full{
-        grid-column:auto;
-    }
-
-    .split-grid{
-        grid-template-columns:1fr;
-    }
-
-    .modal{
-        max-height:95vh;
-    }
+    .kpi-grid{grid-template-columns:1fr;}
+    .partner-grid,.partner-grid.cols-4{grid-template-columns:1fr;}
+    .topbar{height:68px;}
+    .page-heading h1{font-size:17px;}
+    .top-actions .save-btn span{display:none;}
+    .form-grid{grid-template-columns:1fr;}
+    .field.full{grid-column:auto;}
+    .split-grid{grid-template-columns:1fr;}
+    .modal{max-height:95vh;}
+    .company-balance-value{font-size:24px;}
 }
 
-/* ================= REDUCED MOTION ================= */
-
 @media(prefers-reduced-motion:reduce){
-    *,
-    *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
-    }
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
 }
 </style>
 </head>
@@ -2092,6 +533,13 @@ tbody tr:hover .expense-name{
                     <rect x="14" y="14" width="7" height="7" rx="1"/>
                 </svg>
                 Dashboard
+            </button>
+
+            <button class="nav-item" data-page="company">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+                </svg>
+                Company Account
             </button>
 
             <button class="nav-item" data-page="projects">
@@ -2209,6 +657,38 @@ tbody tr:hover .expense-name{
 
             <section class="page active" id="page-dashboard">
 
+                <!-- Company Balance Highlight Card -->
+                <div class="company-balance-card">
+                    <div class="company-balance-inner">
+                        <div class="company-balance-left">
+                            <div class="company-balance-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="company-balance-label">Company Account Balance</div>
+                                <div class="company-balance-value" id="companyBalanceValue">PKR 0</div>
+                                <div class="company-balance-sub">Advance money currently held in company account</div>
+                            </div>
+                        </div>
+                        <div class="company-balance-stats">
+                            <div class="company-balance-stat">
+                                <div class="company-balance-stat-label">Total Advance In</div>
+                                <div class="company-balance-stat-value" id="companyTotalIn">PKR 0</div>
+                            </div>
+                            <div class="company-balance-stat">
+                                <div class="company-balance-stat-label">Total Spent Out</div>
+                                <div class="company-balance-stat-value" id="companyTotalOut">PKR 0</div>
+                            </div>
+                            <div class="company-balance-stat">
+                                <div class="company-balance-stat-label">Transactions</div>
+                                <div class="company-balance-stat-value" id="companyTxCount">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="notice info">
                     <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <rect x="3" y="4" width="18" height="16" rx="2"/>
@@ -2269,6 +749,19 @@ tbody tr:hover .expense-name{
                         </div>
                         <div class="kpi-value positive" id="kpiProjectAdvance">PKR 0</div>
                         <div class="kpi-note">Advance received from clients</div>
+                    </div>
+
+                    <div class="kpi">
+                        <div class="kpi-top">
+                            <div class="kpi-label">Company Balance</div>
+                            <div class="kpi-icon" style="background:var(--warning-bg);color:var(--warning)">
+                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="kpi-value" id="kpiCompanyBalance">PKR 0</div>
+                        <div class="kpi-note">Advance held in company account</div>
                     </div>
 
                     <div class="kpi">
@@ -2432,6 +925,86 @@ tbody tr:hover .expense-name{
                             </thead>
                             <tbody id="recentTransactions"></tbody>
                         </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= COMPANY ACCOUNT ================= -->
+
+            <section class="page" id="page-company">
+
+                <div class="notice success">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/>
+                    </svg>
+                    <div>
+                        <strong>Company Account Ledger.</strong>
+                        Track all advance money received from clients and expenses paid from the company account.
+                        <span style="display:block;margin-top:3px">
+                            Current Balance: <strong id="companyPageBalance">PKR 0</strong> •
+                            Total In: <strong id="companyPageIn">PKR 0</strong> •
+                            Total Out: <strong id="companyPageOut">PKR 0</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"/>
+                            <path d="m20 20-4-4"/>
+                        </svg>
+                        <input class="input" id="companySearch" placeholder="Search transactions...">
+                    </div>
+
+                    <select class="select" id="companyTypeFilter">
+                        <option value="">All Types</option>
+                        <option value="deposit">Deposits (Advance In)</option>
+                        <option value="withdrawal">Withdrawals (Spent Out)</option>
+                    </select>
+
+                    <button class="primary-btn" onclick="openCompanyTxnForm()">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        New Transaction
+                    </button>
+
+                </div>
+
+                <div class="partner-grid cols-4" id="companyStatsCards"></div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <div class="panel-title">Company Account Register</div>
+                            <div class="panel-subtitle" id="companyTxnCount">0 transactions</div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table class="desktop-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Balance After</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="companyTxnTable"></tbody>
+
+                        </table>
+
                     </div>
 
                 </div>
@@ -2754,6 +1327,11 @@ tbody tr:hover .expense-name{
                         <strong id="reportLargest">PKR 0</strong>
                     </div>
 
+                    <div class="report-card">
+                        <h3>Company Balance</h3>
+                        <strong id="reportCompanyBalance">PKR 0</strong>
+                    </div>
+
                 </div>
 
                 <div class="grid-2">
@@ -2822,6 +1400,14 @@ tbody tr:hover .expense-name{
                             <div style="padding:14px;background:var(--info-bg);border:1px solid #c7dbfe;border-radius:9px">
                                 <div style="font-size:11px;color:#1d4ed8">Active Projects</div>
                                 <strong style="display:block;margin-top:5px;color:#1d4ed8" id="settingsProjectList">—</strong>
+                            </div>
+
+                            <div style="padding:14px;background:var(--warning-bg);border:1px solid #f0dcb4;border-radius:9px">
+                                <div style="font-size:11px;color:#8a5c0a">Company Account Balance</div>
+                                <strong style="display:block;margin-top:5px;color:#8a5c0a" id="settingsCompanyBalance">PKR 0</strong>
+                                <span style="display:block;margin-top:4px;color:#8a5c0a;font-size:10px">
+                                    Advance money currently held in company account
+                                </span>
                             </div>
 
                             <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px">
@@ -2937,6 +1523,89 @@ tbody tr:hover .expense-name{
 
             <button class="primary-btn" style="margin-left:0" onclick="saveExpense()">
                 Save Expense
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= COMPANY TRANSACTION MODAL ================= -->
+
+<div class="overlay" id="companyTxnOverlay">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <div class="modal-title" id="companyTxnFormTitle">New Company Transaction</div>
+                <div class="modal-subtitle">Record advance deposit or company expense payment</div>
+            </div>
+
+            <button class="close-btn" onclick="closeCompanyTxnForm()">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m6 6 12 12M18 6 6 18"/>
+                </svg>
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="companyTxnId">
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>Date</label>
+                    <input class="input" type="date" id="companyTxnDate">
+                </div>
+
+                <div class="field">
+                    <label>Type</label>
+                    <select class="select" id="companyTxnType">
+                        <option value="deposit">Deposit — Advance received from client</option>
+                        <option value="withdrawal">Withdrawal — Expense paid from company account</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <label>Description</label>
+                    <input class="input" id="companyTxnDescription" placeholder="e.g. Alians Logistics advance, hosting payment...">
+                </div>
+
+                <div class="field">
+                    <label>Amount (PKR)</label>
+                    <input class="input" type="number" min="0" step="0.01" id="companyTxnAmount" placeholder="0">
+                </div>
+
+                <div class="field">
+                    <label>Related Project (optional)</label>
+                    <select class="select" id="companyTxnProject">
+                        <option value="">— None —</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="split-summary" style="margin-top:16px">
+                <span>Balance impact</span>
+                <strong id="companyTxnImpactPreview">PKR 0</strong>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="secondary-btn" onclick="closeCompanyTxnForm()">
+                Cancel
+            </button>
+
+            <button class="primary-btn" style="margin-left:0" onclick="saveCompanyTxn()">
+                Save Transaction
             </button>
 
         </div>
@@ -3084,32 +1753,20 @@ tbody tr:hover .expense-name{
 <script>
 
 /* =========================================================
-   DEVPROKIT BUSINESS ERP — ANIMATED EDITION
+   DEVPROKIT BUSINESS ERP — WITH COMPANY ACCOUNT
 ========================================================= */
 
-const FRIENDS = [
-    "Arslan",
-    "Daniyal",
-    "Touseef",
-    "Hashim",
-    "Qasim"
-];
-
+const FRIENDS = ["Arslan","Daniyal","Touseef","Hashim","Qasim"];
 const RESIGNED = ["Touseef"];
+const ACTIVE_FRIENDS = FRIENDS.filter(f => !RESIGNED.includes(f));
 
-const ACTIVE_FRIENDS = FRIENDS.filter(
-    friend => !RESIGNED.includes(friend)
-);
-
-const STORAGE_KEY = "devprokit-ledger-v3";
-const LEGACY_KEYS = [
-    "devprokit-ledger-v2",
-    "devprokit-ledger-v1"
-];
+const STORAGE_KEY = "devprokit-ledger-v4";
+const LEGACY_KEYS = ["devprokit-ledger-v3","devprokit-ledger-v2","devprokit-ledger-v1"];
 
 let state = {
     expenses: [],
-    projects: []
+    projects: [],
+    companyTxns: []
 };
 
 let deleteId = null;
@@ -3119,152 +1776,65 @@ let deleteType = null;
 /* ================= DEFAULT DATA ================= */
 
 function defaultData(){
-
     return {
         expenses:[
-            {
-                id:"e1",
-                date:"2026-08-01",
-                category:"Other",
-                details:"Instagram Followers + Hosting + Domain + OCI",
-                total:2500,
-                splits:{
-                    Arslan:{amount:500,to:"Arslan"},
-                    Daniyal:{amount:500,to:"Daniyal"},
-                    Touseef:{amount:500,to:"Touseef"},
-                    Hashim:{amount:500,to:"Hashim"},
-                    Qasim:{amount:500,to:"Qasim"}
-                }
-            },
-            {
-                id:"e2",
-                date:"2026-08-25",
-                category:"Printing",
-                details:"Cards Print",
-                total:2100,
-                splits:{
-                    Arslan:{amount:420,to:"Arslan"},
-                    Daniyal:{amount:420,to:"Daniyal"},
-                    Touseef:{amount:420,to:"Touseef"},
-                    Hashim:{amount:420,to:"Hashim"},
-                    Qasim:{amount:420,to:"Qasim"}
-                }
-            },
-            {
-                id:"e3",
-                date:"2026-08-31",
-                category:"Other",
-                details:"Office Rent Security",
-                total:15000,
-                splits:{
-                    Arslan:{amount:3000,to:"Arslan"},
-                    Daniyal:{amount:3000,to:"Daniyal"},
-                    Touseef:{amount:3000,to:"Touseef"},
-                    Hashim:{amount:3000,to:"Hashim"},
-                    Qasim:{amount:3000,to:"Qasim"}
-                }
-            },
-            {
-                id:"e4",
-                date:"2026-09-14",
-                category:"Other",
-                details:"Rent",
-                total:12000,
-                splits:{
-                    Arslan:{amount:2400,to:"Arslan"},
-                    Daniyal:{amount:2400,to:"Daniyal"},
-                    Touseef:{amount:2400,to:"Touseef"},
-                    Hashim:{amount:2400,to:"Hashim"},
-                    Qasim:{amount:2400,to:"Qasim"}
-                }
-            }
+            {id:"e1",date:"2026-08-01",category:"Other",details:"Instagram Followers + Hosting + Domain + OCI",total:2500,splits:{Arslan:{amount:500,to:"Arslan"},Daniyal:{amount:500,to:"Daniyal"},Touseef:{amount:500,to:"Touseef"},Hashim:{amount:500,to:"Hashim"},Qasim:{amount:500,to:"Qasim"}}},
+            {id:"e2",date:"2026-08-25",category:"Printing",details:"Cards Print",total:2100,splits:{Arslan:{amount:420,to:"Arslan"},Daniyal:{amount:420,to:"Daniyal"},Touseef:{amount:420,to:"Touseef"},Hashim:{amount:420,to:"Hashim"},Qasim:{amount:420,to:"Qasim"}}},
+            {id:"e3",date:"2026-08-31",category:"Other",details:"Office Rent Security",total:15000,splits:{Arslan:{amount:3000,to:"Arslan"},Daniyal:{amount:3000,to:"Daniyal"},Touseef:{amount:3000,to:"Touseef"},Hashim:{amount:3000,to:"Hashim"},Qasim:{amount:3000,to:"Qasim"}}},
+            {id:"e4",date:"2026-09-14",category:"Other",details:"Rent",total:12000,splits:{Arslan:{amount:2400,to:"Arslan"},Daniyal:{amount:2400,to:"Daniyal"},Touseef:{amount:2400,to:"Touseef"},Hashim:{amount:2400,to:"Hashim"},Qasim:{amount:2400,to:"Qasim"}}}
         ],
         projects:[
-            {
-                id:"p1",
-                name:"Alians Logistics Portal",
-                client:"Alians Logistics",
-                status:"In Progress",
-                date:"2026-09-20",
-                total:0,
-                advance:15000,
-                notes:"Logistics Portal development. Advance received PKR 15,000."
-            }
+            {id:"p1",name:"Alians Logistics Portal",client:"Alians Logistics",status:"In Progress",date:"2026-09-20",total:0,advance:15000,notes:"Logistics Portal development. Advance received PKR 15,000."}
+        ],
+        companyTxns:[
+            {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alians Logistics Portal — Advance received",amount:15000,projectId:"p1"}
         ]
     };
-
 }
 
 
 /* ================= STORAGE ================= */
 
 function loadState(){
-
     try{
-
         let saved = localStorage.getItem(STORAGE_KEY);
-
         if(!saved){
             for(const key of LEGACY_KEYS){
                 const legacy = localStorage.getItem(key);
-                if(legacy){
-                    saved = legacy;
-                    break;
-                }
+                if(legacy){saved = legacy;break;}
             }
         }
-
         if(saved){
-
             const parsed = JSON.parse(saved);
-
             if(parsed && Array.isArray(parsed.expenses)){
-
                 state = {
                     expenses: parsed.expenses.map(normalizeExpense),
-                    projects: Array.isArray(parsed.projects)
-                        ? parsed.projects.map(normalizeProject)
-                        : defaultData().projects
+                    projects: Array.isArray(parsed.projects) ? parsed.projects.map(normalizeProject) : defaultData().projects,
+                    companyTxns: Array.isArray(parsed.companyTxns) ? parsed.companyTxns.map(normalizeCompanyTxn) : defaultData().companyTxns
                 };
-
                 saveState();
                 LEGACY_KEYS.forEach(k => localStorage.removeItem(k));
-
                 return;
             }
-
         }
-
-    }catch(error){
-
-        console.error("Storage load error:", error);
-
-    }
-
+    }catch(error){console.error("Storage load error:", error);}
     state = defaultData();
     saveState();
-
 }
 
 
 function normalizeExpense(expense){
-
     return {
         id: expense.id || ("e" + Date.now() + Math.random()),
         date: expense.date || new Date().toISOString().split("T")[0],
         category: expense.category || "Other",
         details: expense.details || "Untitled Expense",
         total: Number(expense.total || 0),
-        splits: expense.splits && typeof expense.splits === "object"
-            ? expense.splits
-            : {}
+        splits: expense.splits && typeof expense.splits === "object" ? expense.splits : {}
     };
-
 }
 
-
 function normalizeProject(project){
-
     return {
         id: project.id || ("p" + Date.now() + Math.random()),
         name: project.name || "Untitled Project",
@@ -3275,162 +1845,100 @@ function normalizeProject(project){
         advance: Number(project.advance || 0),
         notes: project.notes || ""
     };
+}
 
+function normalizeCompanyTxn(txn){
+    return {
+        id: txn.id || ("ct" + Date.now() + Math.random()),
+        date: txn.date || new Date().toISOString().split("T")[0],
+        type: txn.type === "withdrawal" ? "withdrawal" : "deposit",
+        description: txn.description || "Untitled",
+        amount: Number(txn.amount || 0),
+        projectId: txn.projectId || ""
+    };
 }
 
 
 function saveState(showMessage = false){
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(state)
-    );
-
-    if(showMessage){
-        showToast("Ledger saved successfully");
-    }
-
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if(showMessage) showToast("Ledger saved successfully");
 }
 
 
 /* ================= HELPERS ================= */
 
 function money(value){
-
-    return "PKR " + Number(value || 0).toLocaleString(
-        "en-PK",
-        {
-            maximumFractionDigits:2
-        }
-    );
-
+    return "PKR " + Number(value || 0).toLocaleString("en-PK",{maximumFractionDigits:2});
 }
-
 
 function dateFormat(date){
-
     if(!date) return "—";
-
     const d = new Date(date + "T00:00:00");
-
     if(isNaN(d.getTime())) return "—";
-
-    return d.toLocaleDateString(
-        "en-PK",
-        {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-        }
-    );
-
+    return d.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});
 }
 
-
 function escapeHtml(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
+    return String(value ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
 
 
 /* ================= CALCULATIONS ================= */
 
-function compute(){
+function computeCompanyBalance(){
+    let totalIn = 0;
+    let totalOut = 0;
 
-    const totalExpenses =
-        state.expenses.reduce(
-            (sum,e)=>sum + Number(e.total || 0),
-            0
-        );
+    const txns = [...(state.companyTxns || [])].sort((a,b)=> (a.date||"").localeCompare(b.date||""));
+
+    txns.forEach(t=>{
+        if(t.type === "deposit"){
+            totalIn += Number(t.amount || 0);
+        }else{
+            totalOut += Number(t.amount || 0);
+        }
+    });
+
+    return {
+        totalIn,
+        totalOut,
+        balance: totalIn - totalOut,
+        txnCount: txns.length
+    };
+}
+
+
+function compute(){
+    const totalExpenses = state.expenses.reduce((sum,e)=>sum + Number(e.total || 0),0);
 
     const contributions = {};
-
-    FRIENDS.forEach(friend=>{
-        contributions[friend] = 0;
-    });
+    FRIENDS.forEach(f => { contributions[f] = 0; });
 
     state.expenses.forEach(expense=>{
-
         FRIENDS.forEach(friend=>{
-
-            contributions[friend] +=
-                Number(
-                    expense.splits?.[friend]?.amount || 0
-                );
-
+            contributions[friend] += Number(expense.splits?.[friend]?.amount || 0);
         });
-
     });
 
-    const totalContributed =
-        Object.values(contributions)
-            .reduce((a,b)=>a+b,0);
+    const totalContributed = Object.values(contributions).reduce((a,b)=>a+b,0);
+    const resignedPaid = RESIGNED.reduce((sum,f)=> sum + contributions[f],0);
+    const activeContributed = ACTIVE_FRIENDS.reduce((sum,f)=> sum + contributions[f],0);
 
-    const resignedPaid =
-        RESIGNED.reduce(
-            (sum,friend)=> sum + contributions[friend],
-            0
-        );
-
-    const activeContributed =
-        ACTIVE_FRIENDS.reduce(
-            (sum,friend)=> sum + contributions[friend],
-            0
-        );
-
-    const equalShare =
-        ACTIVE_FRIENDS.length
-            ? totalExpenses / ACTIVE_FRIENDS.length
-            : 0;
+    const equalShare = ACTIVE_FRIENDS.length ? totalExpenses / ACTIVE_FRIENDS.length : 0;
 
     const dues = {};
+    ACTIVE_FRIENDS.forEach(f => { dues[f] = equalShare - contributions[f]; });
 
-    ACTIVE_FRIENDS.forEach(friend=>{
-        dues[friend] = equalShare - contributions[friend];
-    });
+    const totalDue = ACTIVE_FRIENDS.reduce((sum,f)=> sum + dues[f],0);
+    const balance = activeContributed - totalExpenses;
 
-    const totalDue =
-        ACTIVE_FRIENDS.reduce(
-            (sum,friend)=> sum + dues[friend],
-            0
-        );
+    const projects = state.projects || [];
+    const projectCount = projects.length;
+    const projectAdvance = projects.reduce((sum,p)=> sum + Number(p.advance || 0),0);
+    const projectTotalValue = projects.reduce((sum,p)=> sum + Number(p.total || 0),0);
+    const projectPending = projects.reduce((sum,p)=> sum + Math.max(0, Number(p.total || 0) - Number(p.advance || 0)),0);
 
-    const balance =
-        activeContributed - totalExpenses;
-
-    const projects =
-        state.projects || [];
-
-    const projectCount =
-        projects.length;
-
-    const projectAdvance =
-        projects.reduce(
-            (sum,p)=> sum + Number(p.advance || 0),
-            0
-        );
-
-    const projectTotalValue =
-        projects.reduce(
-            (sum,p)=> sum + Number(p.total || 0),
-            0
-        );
-
-    const projectPending =
-        projects.reduce(
-            (sum,p)=>
-                sum + Math.max(
-                    0,
-                    Number(p.total || 0) - Number(p.advance || 0)
-                ),
-            0
-        );
+    const company = computeCompanyBalance();
 
     return {
         totalExpenses,
@@ -3445,123 +1953,61 @@ function compute(){
         projectCount,
         projectAdvance,
         projectTotalValue,
-        projectPending
+        projectPending,
+        company
     };
-
 }
 
 
 function expensePaid(expense){
-
-    const allocated = FRIENDS.reduce(
-        (sum,friend)=>
-            sum + Number(
-                expense.splits?.[friend]?.amount || 0
-            ),
-        0
-    );
-
+    const allocated = FRIENDS.reduce((sum,f)=> sum + Number(expense.splits?.[f]?.amount || 0),0);
     return allocated >= Number(expense.total || 0) - 0.01;
-
 }
 
 
-/* ================= COUNT-UP ANIMATION ================= */
+/* ================= COUNT-UP ================= */
 
 function animateValue(el, target, isMoney = true){
-
     if(!el) return;
-
     const start = 0;
     const duration = 900;
     const startTime = performance.now();
 
     function update(now){
-
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
-        /* Ease out cubic */
         const eased = 1 - Math.pow(1 - progress, 3);
-
         const current = start + (target - start) * eased;
-
         el.textContent = isMoney ? money(current) : Math.round(current);
-
-        if(progress < 1){
-            requestAnimationFrame(update);
-        }
-
+        if(progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
-
 }
 
 
 /* ================= PAGE NAVIGATION ================= */
 
 const pageInfo = {
-
-    dashboard:{
-        title:"Dashboard",
-        subtitle:"Business financial overview"
-    },
-
-    projects:{
-        title:"Projects",
-        subtitle:"Client projects, advances and pending balances"
-    },
-
-    expenses:{
-        title:"Expenses",
-        subtitle:"Manage and review business transactions"
-    },
-
-    partners:{
-        title:"Partner Accounts",
-        subtitle:"Contribution and settlement overview"
-    },
-
-    resigned:{
-        title:"Resigned Employees",
-        subtitle:"Exit settlement, refund and pending payments"
-    },
-
-    reports:{
-        title:"Reports",
-        subtitle:"Financial reporting and analysis"
-    },
-
-    settings:{
-        title:"Settings",
-        subtitle:"Ledger configuration"
-    }
-
+    dashboard:{title:"Dashboard",subtitle:"Business financial overview"},
+    company:{title:"Company Account",subtitle:"Advance money held and spent from company account"},
+    projects:{title:"Projects",subtitle:"Client projects, advances and pending balances"},
+    expenses:{title:"Expenses",subtitle:"Manage and review business transactions"},
+    partners:{title:"Partner Accounts",subtitle:"Contribution and settlement overview"},
+    resigned:{title:"Resigned Employees",subtitle:"Exit settlement, refund and pending payments"},
+    reports:{title:"Reports",subtitle:"Financial reporting and analysis"},
+    settings:{title:"Settings",subtitle:"Ledger configuration"}
 };
 
 
 function switchPage(page){
+    document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
+    const target = document.getElementById("page-" + page);
+    if(target) target.classList.add("active");
 
-    document
-        .querySelectorAll(".page")
-        .forEach(el=>el.classList.remove("active"));
-
-    const target =
-        document.getElementById("page-" + page);
-
-    if(target){
-        target.classList.add("active");
-    }
-
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(btn=>{
-            btn.classList.toggle(
-                "active",
-                btn.dataset.page === page
-            );
-        });
+    document.querySelectorAll(".nav-item").forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.page === page);
+    });
 
     const titleEl = document.getElementById("pageTitle");
     const subtitleEl = document.getElementById("pageSubtitle");
@@ -3577,27 +2023,209 @@ function switchPage(page){
         }, 100);
     }
 
-    if(subtitleEl){
-        subtitleEl.textContent = pageInfo[page]?.subtitle || "";
-    }
+    if(subtitleEl) subtitleEl.textContent = pageInfo[page]?.subtitle || "";
 
-    document
-        .getElementById("sidebar")
-        .classList.remove("open");
-
-    document
-        .getElementById("mobileOverlay")
-        .classList.remove("show");
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("mobileOverlay").classList.remove("show");
 
     render();
+}
 
+
+/* ================= COMPANY ACCOUNT RENDERING ================= */
+
+function renderCompanyAccount(){
+    const company = computeCompanyBalance();
+
+    /* Dashboard highlight card */
+    const balEl = document.getElementById("companyBalanceValue");
+    if(balEl) animateValue(balEl, company.balance);
+
+    const inEl = document.getElementById("companyTotalIn");
+    if(inEl) inEl.textContent = money(company.totalIn);
+
+    const outEl = document.getElementById("companyTotalOut");
+    if(outEl) outEl.textContent = money(company.totalOut);
+
+    const txCountEl = document.getElementById("companyTxCount");
+    if(txCountEl) txCountEl.textContent = company.txnCount;
+
+    /* KPI card */
+    const kpiBal = document.getElementById("kpiCompanyBalance");
+    if(kpiBal) animateValue(kpiBal, company.balance);
+
+    /* Company page header */
+    const pageBal = document.getElementById("companyPageBalance");
+    if(pageBal) pageBal.textContent = money(company.balance);
+
+    const pageIn = document.getElementById("companyPageIn");
+    if(pageIn) pageIn.textContent = money(company.totalIn);
+
+    const pageOut = document.getElementById("companyPageOut");
+    if(pageOut) pageOut.textContent = money(company.totalOut);
+
+    /* Company page stat cards */
+    const statsCards = document.getElementById("companyStatsCards");
+    if(statsCards){
+        statsCards.innerHTML = `
+            <div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.02s both">
+                <div class="avatar company">BAL</div>
+                <div class="partner-name">Current Balance</div>
+                <div class="partner-label">In company account</div>
+                <div class="partner-value">${money(company.balance)}</div>
+                <div class="partner-stat">
+                    <span>Status</span>
+                    <strong class="${company.balance >= 0 ? "positive" : "negative"}">
+                        ${company.balance >= 0 ? "Available" : "Overdrawn"}
+                    </strong>
+                </div>
+            </div>
+            <div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.08s both">
+                <div class="avatar">IN</div>
+                <div class="partner-name">Total Deposits</div>
+                <div class="partner-label">Advance received from clients</div>
+                <div class="partner-value positive">${money(company.totalIn)}</div>
+                <div class="partner-stat">
+                    <span>Transactions</span>
+                    <strong>${(state.companyTxns||[]).filter(t=>t.type==="deposit").length}</strong>
+                </div>
+            </div>
+            <div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.14s both">
+                <div class="avatar" style="background:var(--danger-bg);color:var(--danger)">OUT</div>
+                <div class="partner-name">Total Withdrawals</div>
+                <div class="partner-label">Paid from company account</div>
+                <div class="partner-value negative">${money(company.totalOut)}</div>
+                <div class="partner-stat">
+                    <span>Transactions</span>
+                    <strong>${(state.companyTxns||[]).filter(t=>t.type==="withdrawal").length}</strong>
+                </div>
+            </div>
+            <div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.20s both">
+                <div class="avatar" style="background:var(--info-bg);color:var(--info)">TX</div>
+                <div class="partner-name">Total Transactions</div>
+                <div class="partner-label">Recorded movements</div>
+                <div class="partner-value">${company.txnCount}</div>
+                <div class="partner-stat">
+                    <span>Net Flow</span>
+                    <strong class="${company.balance >= 0 ? "positive" : "negative"}">${money(company.balance)}</strong>
+                </div>
+            </div>
+        `;
+    }
+
+    /* Company transaction table */
+    const tbody = document.getElementById("companyTxnTable");
+    const countLabel = document.getElementById("companyTxnCount");
+
+    if(!tbody) return;
+
+    const searchEl = document.getElementById("companySearch");
+    const search = searchEl ? searchEl.value.trim().toLowerCase() : "";
+
+    const typeEl = document.getElementById("companyTypeFilter");
+    const typeFilter = typeEl ? typeEl.value : "";
+
+    let txns = [...(state.companyTxns || [])].sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+
+    if(search){
+        txns = txns.filter(t=>
+            (t.description||"").toLowerCase().includes(search) ||
+            (t.type||"").toLowerCase().includes(search)
+        );
+    }
+
+    if(typeFilter){
+        txns = txns.filter(t=> t.type === typeFilter);
+    }
+
+    if(countLabel){
+        countLabel.textContent = `${txns.length} transaction${txns.length===1?"":"s"}`;
+    }
+
+    if(!txns.length){
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/>
+                        </svg>
+                        <h3>No company transactions</h3>
+                        <p>Add a deposit or withdrawal to track company balance.</p>
+                    </div>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    /* Compute running balance chronologically */
+    const allSorted = [...(state.companyTxns || [])].sort((a,b)=> (a.date||"").localeCompare(b.date||""));
+    const runningMap = {};
+    let running = 0;
+    allSorted.forEach(t=>{
+        if(t.type === "deposit") running += Number(t.amount || 0);
+        else running -= Number(t.amount || 0);
+        runningMap[t.id] = running;
+    });
+
+    tbody.innerHTML = txns.map((t, index)=>{
+        const isDeposit = t.type === "deposit";
+        const runningBal = runningMap[t.id] ?? 0;
+
+        const linkedProject = (state.projects||[]).find(p=>p.id === t.projectId);
+
+        return `
+            <tr style="animation:fadeUp .4s var(--ease) ${index * 0.04}s both">
+                <td class="muted">${dateFormat(t.date)}</td>
+                <td>
+                    <div class="expense-description">
+                        <div class="expense-icon" style="${isDeposit ? "" : "background:var(--danger-bg);color:var(--danger)"}">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+                                ${isDeposit
+                                    ? '<path d="M12 19V5M5 12l7-7 7 7"/>'
+                                    : '<path d="M12 5v14M19 12l-7 7-7-7"/>'}
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="expense-name">${escapeHtml(t.description)}</div>
+                            ${linkedProject ? `<div class="expense-category">${escapeHtml(linkedProject.name)}</div>` : ""}
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="badge ${isDeposit ? "deposit" : "withdrawal"}">
+                        ${isDeposit ? "Deposit" : "Withdrawal"}
+                    </span>
+                </td>
+                <td class="amount ${isDeposit ? "positive" : "negative"}">
+                    ${isDeposit ? "+" : "−"} ${money(t.amount)}
+                </td>
+                <td class="amount">${money(runningBal)}</td>
+                <td>
+                    <div class="action-group">
+                        <button class="icon-btn" title="Edit" onclick="editCompanyTxn('${t.id}')">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+                            </svg>
+                        </button>
+                        <button class="icon-btn delete" title="Delete" onclick="askDeleteCompanyTxn('${t.id}')">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join("");
 }
 
 
 /* ================= DASHBOARD ================= */
 
 function renderDashboard(){
-
     const data = compute();
 
     animateValue(document.getElementById("kpiExpenses"), data.totalExpenses);
@@ -3607,15 +2235,7 @@ function renderDashboard(){
 
     const kpiBalance = document.getElementById("kpiBalance");
     if(kpiBalance){
-        kpiBalance.className =
-            "kpi-value " +
-            (
-                data.totalDue > 0.01
-                    ? "negative"
-                    : data.totalDue < -0.01
-                        ? "positive"
-                        : ""
-            );
+        kpiBalance.className = "kpi-value " + (data.totalDue > 0.01 ? "negative" : data.totalDue < -0.01 ? "positive" : "");
     }
 
     const summaryExpenses = document.getElementById("summaryExpenses");
@@ -3651,264 +2271,128 @@ function renderDashboard(){
     renderCategoryOverview();
     renderDashboardPartners();
     renderRecentTransactions();
-
 }
 
 
 function getCategories(){
-
     const categories = {};
-
     state.expenses.forEach(expense=>{
-
-        const category =
-            expense.category || "Other";
-
-        categories[category] =
-            (categories[category] || 0) +
-            Number(expense.total || 0);
-
+        const category = expense.category || "Other";
+        categories[category] = (categories[category] || 0) + Number(expense.total || 0);
     });
-
-    return Object.entries(categories)
-        .sort((a,b)=>b[1]-a[1]);
-
+    return Object.entries(categories).sort((a,b)=>b[1]-a[1]);
 }
 
 
 function renderCategoryOverview(){
-
-    const box =
-        document.getElementById("categoryOverview");
-
+    const box = document.getElementById("categoryOverview");
     if(!box) return;
 
     const categories = getCategories();
     const total = compute().totalExpenses;
 
     if(!categories.length){
-
-        box.innerHTML = `
-            <div class="empty">
-                No expense data available.
-            </div>
-        `;
-
+        box.innerHTML = `<div class="empty">No expense data available.</div>`;
         return;
     }
 
-    box.innerHTML =
-        categories.map(([name,amount], index)=>{
-
-            const percentage =
-                total
-                    ? (amount / total) * 100
-                    : 0;
-
-            return `
-                <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
-
-                    <div class="category-head">
-
-                        <span class="category-name">
-                            ${escapeHtml(name)}
-                        </span>
-
-                        <span class="category-amount">
-                            ${money(amount)}
-                        </span>
-
-                    </div>
-
-                    <div class="bar">
-                        <div
-                            class="bar-fill"
-                            data-width="${percentage}"
-                            style="width:0"
-                        ></div>
-                    </div>
-
+    box.innerHTML = categories.map(([name,amount], index)=>{
+        const percentage = total ? (amount / total) * 100 : 0;
+        return `
+            <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
+                <div class="category-head">
+                    <span class="category-name">${escapeHtml(name)}</span>
+                    <span class="category-amount">${money(amount)}</span>
                 </div>
-            `;
+                <div class="bar">
+                    <div class="bar-fill" data-width="${percentage}" style="width:0"></div>
+                </div>
+            </div>
+        `;
+    }).join("");
 
-        }).join("");
-
-    /* Animate bars in */
     setTimeout(()=>{
         box.querySelectorAll(".bar-fill").forEach(bar=>{
             bar.style.width = bar.dataset.width + "%";
         });
     }, 100);
-
 }
 
 
 function renderDashboardPartners(){
-
     const tbody = document.getElementById("dashboardPartners");
     if(!tbody) return;
 
     const data = compute();
 
-    tbody.innerHTML =
-        ACTIVE_FRIENDS.map((friend, index)=>{
+    tbody.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+        const contributed = data.contributions[friend];
+        const balance = contributed - data.equalShare;
+        const progress = data.equalShare ? Math.min(100, Math.max(0, (contributed / data.equalShare) * 100)) : 0;
 
-            const contributed =
-                data.contributions[friend];
+        let status = "Settled";
+        let cls = "settled";
 
-            const balance =
-                contributed - data.equalShare;
+        if(balance > 0.01){ status = "Credit"; cls = "credit"; }
+        else if(balance < -0.01){ status = "Due"; cls = "due"; }
 
-            const progress =
-                data.equalShare
-                    ? Math.min(
-                        100,
-                        Math.max(
-                            0,
-                            (contributed / data.equalShare) * 100
-                        )
-                    )
-                    : 0;
-
-            let status = "Settled";
-            let cls = "settled";
-
-            if(balance > 0.01){
-                status = "Credit";
-                cls = "credit";
-            }else if(balance < -0.01){
-                status = "Due";
-                cls = "due";
-            }
-
-            return `
-                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
-
-                    <td>
-                        <strong>${escapeHtml(friend)}</strong>
-                    </td>
-
-                    <td class="amount">
-                        ${money(contributed)}
-                    </td>
-
-                    <td class="muted">
-                        ${money(data.equalShare)}
-                    </td>
-
-                    <td class="amount ${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">
-                        ${money(balance)}
-                    </td>
-
-                    <td>
-                        <div class="progress">
-                            <div
-                                class="progress-fill"
-                                data-width="${progress}"
-                                style="width:0"
-                            ></div>
-                        </div>
-                    </td>
-
-                    <td>
-                        <span class="badge ${cls}">
-                            ${status}
-                        </span>
-                    </td>
-
-                </tr>
-            `;
-
-        }).join("");
+        return `
+            <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
+                <td><strong>${escapeHtml(friend)}</strong></td>
+                <td class="amount">${money(contributed)}</td>
+                <td class="muted">${money(data.equalShare)}</td>
+                <td class="amount ${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">${money(balance)}</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-fill" data-width="${progress}" style="width:0"></div>
+                    </div>
+                </td>
+                <td><span class="badge ${cls}">${status}</span></td>
+            </tr>
+        `;
+    }).join("");
 
     setTimeout(()=>{
         tbody.querySelectorAll(".progress-fill").forEach(bar=>{
             bar.style.width = bar.dataset.width + "%";
         });
     }, 150);
-
 }
 
 
 function renderRecentTransactions(){
-
-    const tbody =
-        document.getElementById("recentTransactions");
-
+    const tbody = document.getElementById("recentTransactions");
     if(!tbody) return;
 
-    const expenses =
-        [...state.expenses]
-            .sort((a,b)=> (b.date||"").localeCompare(a.date||""))
-            .slice(0,5);
+    const expenses = [...state.expenses].sort((a,b)=> (b.date||"").localeCompare(a.date||"")).slice(0,5);
 
     if(!expenses.length){
-
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    <div class="empty">
-                        No transactions found.
-                    </div>
-                </td>
-            </tr>
-        `;
-
+        tbody.innerHTML = `<tr><td colspan="5"><div class="empty">No transactions found.</div></td></tr>`;
         return;
     }
 
-    tbody.innerHTML =
-        expenses.map((expense, index)=>{
-
-            const paid = expensePaid(expense);
-
-            return `
-                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
-
-                    <td class="muted">
-                        ${dateFormat(expense.date)}
-                    </td>
-
-                    <td>
-                        <strong>
-                            ${escapeHtml(expense.details)}
-                        </strong>
-                    </td>
-
-                    <td>
-                        <span class="badge expense">
-                            ${escapeHtml(expense.category)}
-                        </span>
-                    </td>
-
-                    <td class="amount">
-                        ${money(expense.total)}
-                    </td>
-
-                    <td>
-                        <span class="badge ${paid ? "paid" : "pending"}">
-                            ${paid ? "Paid" : "Pending"}
-                        </span>
-                    </td>
-
-                </tr>
-            `;
-
-        }).join("");
-
+    tbody.innerHTML = expenses.map((expense, index)=>{
+        const paid = expensePaid(expense);
+        return `
+            <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
+                <td class="muted">${dateFormat(expense.date)}</td>
+                <td><strong>${escapeHtml(expense.details)}</strong></td>
+                <td><span class="badge expense">${escapeHtml(expense.category)}</span></td>
+                <td class="amount">${money(expense.total)}</td>
+                <td><span class="badge ${paid ? "paid" : "pending"}">${paid ? "Paid" : "Pending"}</span></td>
+            </tr>
+        `;
+    }).join("");
 }
 
 
 /* ================= PROJECTS ================= */
 
 function getFilteredProjects(){
-
     const searchEl = document.getElementById("projectSearch");
     const search = searchEl ? searchEl.value.trim().toLowerCase() : "";
 
-    let projects =
-        [...(state.projects || [])]
-            .sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+    let projects = [...(state.projects || [])].sort((a,b)=> (b.date||"").localeCompare(a.date||""));
 
     if(search){
         projects = projects.filter(p=>
@@ -3919,12 +2403,10 @@ function getFilteredProjects(){
     }
 
     return projects;
-
 }
 
 
 function renderProjects(){
-
     const data = compute();
 
     const countEl = document.getElementById("projectCount");
@@ -3943,12 +2425,10 @@ function renderProjects(){
     const tableCount = document.getElementById("projectTableCount");
 
     if(tableCount){
-        tableCount.textContent =
-            `${projects.length} project${projects.length===1?"":"s"}`;
+        tableCount.textContent = `${projects.length} project${projects.length===1?"":"s"}`;
     }
 
     if(!projects.length){
-
         if(cards){
             cards.innerHTML = `
                 <div class="panel" style="grid-column:1/-1">
@@ -3963,205 +2443,95 @@ function renderProjects(){
                 </div>
             `;
         }
-
         if(tableBody){
             tableBody.innerHTML = `
-                <tr>
-                    <td colspan="7">
-                        <div class="empty">
-                            <h3>No projects yet</h3>
-                            <p>Click "New Project" to add one.</p>
-                        </div>
-                    </td>
-                </tr>
+                <tr><td colspan="7"><div class="empty"><h3>No projects yet</h3><p>Click "New Project" to add one.</p></div></td></tr>
             `;
         }
-
         return;
     }
 
     if(cards){
-        cards.innerHTML =
-            projects.map((p, index)=>{
-
-                const pending =
-                    Math.max(
-                        0,
-                        Number(p.total||0) - Number(p.advance||0)
-                    );
-
-                return `
-                    <div class="project-card" style="animation:fadeUp .4s var(--ease) ${index * 0.08}s both">
-
-                        <div class="project-head">
-
-                            <div class="avatar project">
-                                ${escapeHtml((p.client||p.name||"PR").substring(0,2).toUpperCase())}
-                            </div>
-
-                            <div>
-                                <div class="project-title">
-                                    ${escapeHtml(p.name || "Untitled Project")}
-                                </div>
-                                <div class="project-client">
-                                    ${escapeHtml(p.client || "—")}
-                                </div>
-                            </div>
-
+        cards.innerHTML = projects.map((p, index)=>{
+            const pending = Math.max(0, Number(p.total||0) - Number(p.advance||0));
+            return `
+                <div class="project-card" style="animation:fadeUp .4s var(--ease) ${index * 0.08}s both">
+                    <div class="project-head">
+                        <div class="avatar project">${escapeHtml((p.client||p.name||"PR").substring(0,2).toUpperCase())}</div>
+                        <div>
+                            <div class="project-title">${escapeHtml(p.name || "Untitled Project")}</div>
+                            <div class="project-client">${escapeHtml(p.client || "—")}</div>
                         </div>
-
-                        <span class="badge advance">
-                            ${escapeHtml(p.status || "In Progress")}
-                        </span>
-
-                        <div class="project-amount">
-                            ${money(p.advance || 0)}
-                        </div>
-
-                        <div class="project-meta">
-                            <span>Advance received</span>
-                            <strong>${dateFormat(p.date)}</strong>
-                        </div>
-
-                        <div class="project-meta">
-                            <span>Total value</span>
-                            <strong>${money(p.total || 0)}</strong>
-                        </div>
-
-                        <div class="project-meta">
-                            <span>Pending</span>
-                            <strong class="${pending>0?"negative":"positive"}">
-                                ${money(pending)}
-                            </strong>
-                        </div>
-
                     </div>
-                `;
-
-            }).join("");
+                    <span class="badge advance">${escapeHtml(p.status || "In Progress")}</span>
+                    <div class="project-amount">${money(p.advance || 0)}</div>
+                    <div class="project-meta"><span>Advance received</span><strong>${dateFormat(p.date)}</strong></div>
+                    <div class="project-meta"><span>Total value</span><strong>${money(p.total || 0)}</strong></div>
+                    <div class="project-meta"><span>Pending</span><strong class="${pending>0?"negative":"positive"}">${money(pending)}</strong></div>
+                </div>
+            `;
+        }).join("");
     }
 
     if(tableBody){
-        tableBody.innerHTML =
-            projects.map((p, index)=>{
-
-                const pending =
-                    Math.max(
-                        0,
-                        Number(p.total||0) - Number(p.advance||0)
-                    );
-
-                return `
-                    <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
-
-                        <td>
-                            <strong>${escapeHtml(p.name || "Untitled")}</strong>
-                        </td>
-
-                        <td class="muted">
-                            ${escapeHtml(p.client || "—")}
-                        </td>
-
-                        <td>
-                            <span class="badge advance">
-                                ${escapeHtml(p.status || "In Progress")}
-                            </span>
-                        </td>
-
-                        <td class="amount">
-                            ${money(p.total || 0)}
-                        </td>
-
-                        <td class="amount positive">
-                            ${money(p.advance || 0)}
-                        </td>
-
-                        <td class="amount ${pending>0?"negative":"positive"}">
-                            ${money(pending)}
-                        </td>
-
-                        <td>
-                            <div class="action-group">
-
-                                <button
-                                    class="icon-btn"
-                                    title="Edit"
-                                    onclick="editProject('${p.id}')"
-                                >
-                                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                                        <path d="M12 20h9"/>
-                                        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
-                                    </svg>
-                                </button>
-
-                                <button
-                                    class="icon-btn delete"
-                                    title="Delete"
-                                    onclick="askDeleteProject('${p.id}')"
-                                >
-                                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                                        <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
-                                    </svg>
-                                </button>
-
-                            </div>
-                        </td>
-
-                    </tr>
-                `;
-
-            }).join("");
+        tableBody.innerHTML = projects.map((p, index)=>{
+            const pending = Math.max(0, Number(p.total||0) - Number(p.advance||0));
+            return `
+                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
+                    <td><strong>${escapeHtml(p.name || "Untitled")}</strong></td>
+                    <td class="muted">${escapeHtml(p.client || "—")}</td>
+                    <td><span class="badge advance">${escapeHtml(p.status || "In Progress")}</span></td>
+                    <td class="amount">${money(p.total || 0)}</td>
+                    <td class="amount positive">${money(p.advance || 0)}</td>
+                    <td class="amount ${pending>0?"negative":"positive"}">${money(pending)}</td>
+                    <td>
+                        <div class="action-group">
+                            <button class="icon-btn" title="Edit" onclick="editProject('${p.id}')">
+                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path d="M12 20h9"/>
+                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+                                </svg>
+                            </button>
+                            <button class="icon-btn delete" title="Delete" onclick="askDeleteProject('${p.id}')">
+                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join("");
     }
-
 }
 
 
 /* ================= EXPENSES ================= */
 
 function renderExpenses(){
-
     const searchEl = document.getElementById("expenseSearch");
     const search = searchEl ? searchEl.value.trim().toLowerCase() : "";
 
     const categoryEl = document.getElementById("expenseCategoryFilter");
     const category = categoryEl ? categoryEl.value : "";
 
-    let expenses =
-        [...state.expenses]
-            .sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+    let expenses = [...state.expenses].sort((a,b)=> (b.date||"").localeCompare(a.date||""));
 
-    expenses =
-        expenses.filter(expense=>{
-
-            const details = (expense.details || "").toLowerCase();
-            const cat = (expense.category || "").toLowerCase();
-
-            const matchesSearch =
-                !search ||
-                details.includes(search) ||
-                cat.includes(search);
-
-            const matchesCategory =
-                !category ||
-                expense.category === category;
-
-            return matchesSearch && matchesCategory;
-
-        });
+    expenses = expenses.filter(expense=>{
+        const details = (expense.details || "").toLowerCase();
+        const cat = (expense.category || "").toLowerCase();
+        const matchesSearch = !search || details.includes(search) || cat.includes(search);
+        const matchesCategory = !category || expense.category === category;
+        return matchesSearch && matchesCategory;
+    });
 
     const countEl = document.getElementById("expenseCount");
-    if(countEl){
-        countEl.textContent =
-            `${expenses.length} transaction${expenses.length === 1 ? "" : "s"}`;
-    }
+    if(countEl) countEl.textContent = `${expenses.length} transaction${expenses.length === 1 ? "" : "s"}`;
 
-    const tbody =
-        document.getElementById("expenseTable");
-
+    const tbody = document.getElementById("expenseTable");
     if(!tbody) return;
 
     if(!expenses.length){
-
         tbody.innerHTML = `
             <tr>
                 <td colspan="7">
@@ -4176,289 +2546,123 @@ function renderExpenses(){
                 </td>
             </tr>
         `;
-
         return;
     }
 
-    tbody.innerHTML =
-        expenses.map((expense, index)=>{
+    tbody.innerHTML = expenses.map((expense, index)=>{
+        const paid = expensePaid(expense);
+        const allocated = FRIENDS.reduce((sum,f)=> sum + Number(expense.splits?.[f]?.amount || 0),0);
 
-            const paid = expensePaid(expense);
-
-            const allocated =
-                FRIENDS.reduce(
-                    (sum,friend)=>
-                        sum +
-                        Number(
-                            expense.splits?.[friend]?.amount || 0
-                        ),
-                    0
-                );
-
-            return `
-                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.04}s both">
-
-                    <td class="muted">
-                        ${dateFormat(expense.date)}
-                    </td>
-
-                    <td>
-
-                        <div class="expense-description">
-
-                            <div class="expense-icon">
-                                <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
-                                    <path d="M4 5h16v14H4z"/>
-                                    <path d="M8 9h8M8 13h5"/>
-                                </svg>
-                            </div>
-
-                            <div>
-                                <div class="expense-name">
-                                    ${escapeHtml(expense.details)}
-                                </div>
-                                <div class="expense-category">
-                                    ${escapeHtml(expense.category)}
-                                </div>
-                            </div>
-
+        return `
+            <tr style="animation:fadeUp .4s var(--ease) ${index * 0.04}s both">
+                <td class="muted">${dateFormat(expense.date)}</td>
+                <td>
+                    <div class="expense-description">
+                        <div class="expense-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+                                <path d="M4 5h16v14H4z"/>
+                                <path d="M8 9h8M8 13h5"/>
+                            </svg>
                         </div>
-
-                    </td>
-
-                    <td>
-                        <span class="badge expense">
-                            ${escapeHtml(expense.category)}
-                        </span>
-                    </td>
-
-                    <td class="amount">
-                        ${money(expense.total)}
-                    </td>
-
-                    <td>
-
-                        <div class="partner-chips">
-
-                            ${ACTIVE_FRIENDS.map(friend=>`
-                                <span class="chip">
-                                    ${escapeHtml(friend)}:
-                                    ${money(expense.splits?.[friend]?.amount || 0).replace("PKR ","")}
-                                </span>
-                            `).join("")}
-
-                            ${RESIGNED.map(friend=>{
-
-                                const amt =
-                                    Number(
-                                        expense.splits?.[friend]?.amount || 0
-                                    );
-
-                                if(amt <= 0) return "";
-
-                                return `
-                                    <span class="chip resigned-chip">
-                                        ${escapeHtml(friend)} (resigned):
-                                        ${money(amt).replace("PKR ","")}
-                                    </span>
-                                `;
-
-                            }).join("")}
-
+                        <div>
+                            <div class="expense-name">${escapeHtml(expense.details)}</div>
+                            <div class="expense-category">${escapeHtml(expense.category)}</div>
                         </div>
-
-                        <div style="font-size:9px;color:var(--muted);margin-top:5px">
-                            Allocated: ${money(allocated)}
-                        </div>
-
-                    </td>
-
-                    <td>
-                        <span class="badge ${paid ? "paid" : "pending"}">
-                            ${paid ? "Paid" : "Pending"}
-                        </span>
-                    </td>
-
-                    <td>
-
-                        <div class="action-group">
-
-                            <button
-                                class="icon-btn"
-                                title="Edit"
-                                onclick="editExpense('${expense.id}')"
-                            >
-                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                                    <path d="M12 20h9"/>
-                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
-                                </svg>
-                            </button>
-
-                            <button
-                                class="icon-btn delete"
-                                title="Delete"
-                                onclick="askDelete('${expense.id}')"
-                            >
-                                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                                    <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
-                                </svg>
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-            `;
-
-        }).join("");
-
+                    </div>
+                </td>
+                <td><span class="badge expense">${escapeHtml(expense.category)}</span></td>
+                <td class="amount">${money(expense.total)}</td>
+                <td>
+                    <div class="partner-chips">
+                        ${ACTIVE_FRIENDS.map(friend=>`
+                            <span class="chip">${escapeHtml(friend)}: ${money(expense.splits?.[friend]?.amount || 0).replace("PKR ","")}</span>
+                        `).join("")}
+                        ${RESIGNED.map(friend=>{
+                            const amt = Number(expense.splits?.[friend]?.amount || 0);
+                            if(amt <= 0) return "";
+                            return `<span class="chip resigned-chip">${escapeHtml(friend)} (resigned): ${money(amt).replace("PKR ","")}</span>`;
+                        }).join("")}
+                    </div>
+                    <div style="font-size:9px;color:var(--muted);margin-top:5px">Allocated: ${money(allocated)}</div>
+                </td>
+                <td><span class="badge ${paid ? "paid" : "pending"}">${paid ? "Paid" : "Pending"}</span></td>
+                <td>
+                    <div class="action-group">
+                        <button class="icon-btn" title="Edit" onclick="editExpense('${expense.id}')">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+                            </svg>
+                        </button>
+                        <button class="icon-btn delete" title="Delete" onclick="askDelete('${expense.id}')">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join("");
 }
 
 
 /* ================= PARTNERS ================= */
 
 function renderPartners(){
-
     const data = compute();
 
     const cardsEl = document.getElementById("partnerCards");
     const tableEl = document.getElementById("partnerTable");
 
     if(cardsEl){
-        cardsEl.innerHTML =
-            ACTIVE_FRIENDS.map((friend, index)=>{
+        cardsEl.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+            const contributed = data.contributions[friend];
+            const balance = contributed - data.equalShare;
 
-                const contributed =
-                    data.contributions[friend];
-
-                const balance =
-                    contributed - data.equalShare;
-
-                return `
-                    <div class="partner-card" style="animation:fadeUp .4s var(--ease) ${index * 0.08}s both">
-
-                        <div class="avatar">
-                            ${escapeHtml(friend.substring(0,2).toUpperCase())}
-                        </div>
-
-                        <div class="partner-name">
-                            ${escapeHtml(friend)}
-                        </div>
-
-                        <div class="partner-label">
-                            Active Partner
-                        </div>
-
-                        <div class="partner-value">
-                            ${money(contributed)}
-                        </div>
-
-                        <div class="partner-stat">
-                            <span>Equal share (÷4)</span>
-                            <strong>${money(data.equalShare)}</strong>
-                        </div>
-
-                        <div class="partner-stat">
-                            <span>Balance</span>
-                            <strong class="${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">
-                                ${money(balance)}
-                            </strong>
-                        </div>
-
-                        <div class="partner-stat">
-                            <span>Extra to pay</span>
-                            <strong class="${data.dues[friend] > 0 ? "negative" : "positive"}">
-                                ${money(data.dues[friend])}
-                            </strong>
-                        </div>
-
-                    </div>
-                `;
-
-            }).join("");
+            return `
+                <div class="partner-card" style="animation:fadeUp .4s var(--ease) ${index * 0.08}s both">
+                    <div class="avatar">${escapeHtml(friend.substring(0,2).toUpperCase())}</div>
+                    <div class="partner-name">${escapeHtml(friend)}</div>
+                    <div class="partner-label">Active Partner</div>
+                    <div class="partner-value">${money(contributed)}</div>
+                    <div class="partner-stat"><span>Equal share (÷4)</span><strong>${money(data.equalShare)}</strong></div>
+                    <div class="partner-stat"><span>Balance</span><strong class="${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">${money(balance)}</strong></div>
+                    <div class="partner-stat"><span>Extra to pay</span><strong class="${data.dues[friend] > 0 ? "negative" : "positive"}">${money(data.dues[friend])}</strong></div>
+                </div>
+            `;
+        }).join("");
     }
 
     if(tableEl){
-        tableEl.innerHTML =
-            ACTIVE_FRIENDS.map((friend, index)=>{
+        tableEl.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+            const contributed = data.contributions[friend];
+            const balance = contributed - data.equalShare;
+            const progress = data.equalShare ? Math.min(100, Math.max(0, contributed / data.equalShare * 100)) : 0;
+            const count = state.expenses.filter(expense=> Number(expense.splits?.[friend]?.amount || 0) > 0).length;
 
-                const contributed =
-                    data.contributions[friend];
+            let status = "Settled";
+            let cls = "settled";
 
-                const balance =
-                    contributed - data.equalShare;
+            if(balance > 0.01){ status = "Credit"; cls = "credit"; }
+            else if(balance < -0.01){ status = "Due"; cls = "due"; }
 
-                const progress =
-                    data.equalShare
-                        ? Math.min(
-                            100,
-                            Math.max(
-                                0,
-                                contributed / data.equalShare * 100
-                            )
-                        )
-                        : 0;
-
-                const count =
-                    state.expenses.filter(expense=>
-                        Number(
-                            expense.splits?.[friend]?.amount || 0
-                        ) > 0
-                    ).length;
-
-                let status = "Settled";
-                let cls = "settled";
-
-                if(balance > 0.01){
-                    status = "Credit";
-                    cls = "credit";
-                }else if(balance < -0.01){
-                    status = "Due";
-                    cls = "due";
-                }
-
-                return `
-                    <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
-
-                        <td>
-                            <strong>${escapeHtml(friend)}</strong>
-                        </td>
-
-                        <td>${count}</td>
-
-                        <td class="amount">
-                            ${money(contributed)}
-                        </td>
-
-                        <td class="muted">
-                            ${money(data.equalShare)}
-                        </td>
-
-                        <td class="amount ${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">
-                            ${money(balance)}
-                        </td>
-
-                        <td>
-                            <div class="progress">
-                                <div
-                                    class="progress-fill"
-                                    data-width="${progress}"
-                                    style="width:0"
-                                ></div>
-                            </div>
-                        </td>
-
-                        <td>
-                            <span class="badge ${cls}">
-                                ${status}
-                            </span>
-                        </td>
-
-                    </tr>
-                `;
-
-            }).join("");
+            return `
+                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
+                    <td><strong>${escapeHtml(friend)}</strong></td>
+                    <td>${count}</td>
+                    <td class="amount">${money(contributed)}</td>
+                    <td class="muted">${money(data.equalShare)}</td>
+                    <td class="amount ${balance > 0 ? "positive" : balance < 0 ? "negative" : ""}">${money(balance)}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-fill" data-width="${progress}" style="width:0"></div>
+                        </div>
+                    </td>
+                    <td><span class="badge ${cls}">${status}</span></td>
+                </tr>
+            `;
+        }).join("");
 
         setTimeout(()=>{
             tableEl.querySelectorAll(".progress-fill").forEach(bar=>{
@@ -4466,14 +2670,12 @@ function renderPartners(){
             });
         }, 150);
     }
-
 }
 
 
 /* ================= RESIGNED ================= */
 
 function renderResigned(){
-
     const data = compute();
 
     const resTotalEl = document.getElementById("resTotalExpenses");
@@ -4487,321 +2689,180 @@ function renderResigned(){
 
     const profileEl = document.getElementById("resignedProfile");
     if(profileEl){
-        profileEl.innerHTML =
-            RESIGNED.map(friend=>{
+        profileEl.innerHTML = RESIGNED.map(friend=>{
+            const paid = data.contributions[friend];
+            const oldShare = FRIENDS.length ? data.totalExpenses / FRIENDS.length : 0;
 
-                const paid =
-                    data.contributions[friend];
-
-                const oldShare =
-                    FRIENDS.length
-                        ? data.totalExpenses / FRIENDS.length
-                        : 0;
-
-                return `
-                    <div class="expense-description" style="margin-bottom:16px">
-
-                        <div class="avatar resigned" style="margin-bottom:0">
-                            ${escapeHtml(friend.substring(0,2).toUpperCase())}
-                        </div>
-
-                        <div>
-                            <div class="partner-name">
-                                ${escapeHtml(friend)}
-                            </div>
-                            <div class="partner-label">
-                                Resigned Partner
-                            </div>
-                        </div>
-
+            return `
+                <div class="expense-description" style="margin-bottom:16px">
+                    <div class="avatar resigned" style="margin-bottom:0">${escapeHtml(friend.substring(0,2).toUpperCase())}</div>
+                    <div>
+                        <div class="partner-name">${escapeHtml(friend)}</div>
+                        <div class="partner-label">Resigned Partner</div>
                     </div>
-
-                    <div class="partner-stat">
-                        <span>Total Amount Paid</span>
-                        <strong>${money(paid)}</strong>
-                    </div>
-
-                    <div class="partner-stat">
-                        <span>Old Share (÷5)</span>
-                        <strong>${money(oldShare)}</strong>
-                    </div>
-
-                    <div class="partner-stat">
-                        <span>Refund To Return</span>
-                        <strong class="negative">${money(paid)}</strong>
-                    </div>
-
-                    <div class="partner-stat">
-                        <span>Status</span>
-                        <strong>
-                            <span class="badge resigned">Resigned</span>
-                        </strong>
-                    </div>
-                `;
-
-            }).join("");
+                </div>
+                <div class="partner-stat"><span>Total Amount Paid</span><strong>${money(paid)}</strong></div>
+                <div class="partner-stat"><span>Old Share (÷5)</span><strong>${money(oldShare)}</strong></div>
+                <div class="partner-stat"><span>Refund To Return</span><strong class="negative">${money(paid)}</strong></div>
+                <div class="partner-stat"><span>Status</span><strong><span class="badge resigned">Resigned</span></strong></div>
+            `;
+        }).join("");
     }
 
     const mathEl = document.getElementById("resignedMath");
     if(mathEl){
         mathEl.innerHTML = `
             <div style="display:grid;gap:15px">
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">Total Expenses</span>
                     <strong>${money(data.totalExpenses)}</strong>
                 </div>
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">Old Division</span>
                     <strong>${FRIENDS.length} Partners</strong>
                 </div>
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">New Division</span>
                     <strong>${ACTIVE_FRIENDS.length} Partners</strong>
                 </div>
-
                 <div style="height:1px;background:var(--border)"></div>
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">New Equal Share / Partner</span>
                     <strong>${money(data.equalShare)}</strong>
                 </div>
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">Refund To Resigned Member</span>
                     <strong class="negative">${money(data.resignedPaid)}</strong>
                 </div>
-
                 <div style="display:flex;justify-content:space-between">
                     <span class="muted" style="font-size:11px">To Collect From 4 Partners</span>
                     <strong class="positive">${money(data.totalDue)}</strong>
                 </div>
-
             </div>
         `;
     }
 
     const tableEl = document.getElementById("resignedTable");
     if(tableEl){
-        tableEl.innerHTML =
-            ACTIVE_FRIENDS.map((friend, index)=>{
+        tableEl.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+            const paid = data.contributions[friend];
+            const share = data.equalShare;
+            const extra = data.dues[friend];
+            const totalAfter = paid + extra;
 
-                const paid =
-                    data.contributions[friend];
+            let status = "Settled";
+            let cls = "settled";
 
-                const share =
-                    data.equalShare;
+            if(extra > 0.01){ status = "Due"; cls = "due"; }
+            else if(extra < -0.01){ status = "Credit"; cls = "credit"; }
 
-                const extra =
-                    data.dues[friend];
-
-                const totalAfter =
-                    paid + extra;
-
-                let status = "Settled";
-                let cls = "settled";
-
-                if(extra > 0.01){
-                    status = "Due";
-                    cls = "due";
-                }else if(extra < -0.01){
-                    status = "Credit";
-                    cls = "credit";
-                }
-
-                return `
-                    <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
-
-                        <td>
-                            <strong>${escapeHtml(friend)}</strong>
-                        </td>
-
-                        <td class="amount">
-                            ${money(paid)}
-                        </td>
-
-                        <td class="muted">
-                            ${money(share)}
-                        </td>
-
-                        <td class="amount ${extra > 0 ? "negative" : extra < 0 ? "positive" : ""}">
-                            ${money(extra)}
-                        </td>
-
-                        <td class="amount">
-                            ${money(totalAfter)}
-                        </td>
-
-                        <td>
-                            <span class="badge ${cls}">
-                                ${status}
-                            </span>
-                        </td>
-
-                    </tr>
-                `;
-
-            }).join("");
+            return `
+                <tr style="animation:fadeUp .4s var(--ease) ${index * 0.05}s both">
+                    <td><strong>${escapeHtml(friend)}</strong></td>
+                    <td class="amount">${money(paid)}</td>
+                    <td class="muted">${money(share)}</td>
+                    <td class="amount ${extra > 0 ? "negative" : extra < 0 ? "positive" : ""}">${money(extra)}</td>
+                    <td class="amount">${money(totalAfter)}</td>
+                    <td><span class="badge ${cls}">${status}</span></td>
+                </tr>
+            `;
+        }).join("");
     }
-
 }
 
 
 /* ================= REPORTS ================= */
 
 function renderReports(){
-
     const data = compute();
 
     const reportTotal = document.getElementById("reportTotal");
     if(reportTotal) reportTotal.textContent = money(data.totalExpenses);
 
-    const average =
-        state.expenses.length
-            ? data.totalExpenses / state.expenses.length
-            : 0;
+    const average = state.expenses.length ? data.totalExpenses / state.expenses.length : 0;
 
     const reportAverage = document.getElementById("reportAverage");
     if(reportAverage) reportAverage.textContent = money(average);
 
-    const largest =
-        state.expenses.length
-            ? Math.max(
-                ...state.expenses.map(e=>Number(e.total || 0))
-            )
-            : 0;
+    const largest = state.expenses.length ? Math.max(...state.expenses.map(e=>Number(e.total || 0))) : 0;
 
     const reportLargest = document.getElementById("reportLargest");
     if(reportLargest) reportLargest.textContent = money(largest);
 
+    const reportCompanyBalance = document.getElementById("reportCompanyBalance");
+    if(reportCompanyBalance) reportCompanyBalance.textContent = money(data.company.balance);
+
     renderReportCategories();
     renderReportPartners();
-
 }
 
 
 function renderReportCategories(){
-
     const categories = getCategories();
     const total = compute().totalExpenses;
-
     const box = document.getElementById("reportCategories");
-
     if(!box) return;
 
     if(!categories.length){
-
-        box.innerHTML =
-            `<div class="empty">No report data available.</div>`;
-
+        box.innerHTML = `<div class="empty">No report data available.</div>`;
         return;
     }
 
-    box.innerHTML =
-        categories.map(([name,amount], index)=>{
-
-            const percentage =
-                total
-                    ? amount / total * 100
-                    : 0;
-
-            return `
-                <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
-
-                    <div class="category-head">
-                        <span class="category-name">
-                            ${escapeHtml(name)}
-                        </span>
-
-                        <span class="category-amount">
-                            ${money(amount)}
-                            (${percentage.toFixed(1)}%)
-                        </span>
-                    </div>
-
-                    <div class="bar">
-                        <div
-                            class="bar-fill"
-                            data-width="${percentage}"
-                            style="width:0"
-                        ></div>
-                    </div>
-
+    box.innerHTML = categories.map(([name,amount], index)=>{
+        const percentage = total ? amount / total * 100 : 0;
+        return `
+            <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
+                <div class="category-head">
+                    <span class="category-name">${escapeHtml(name)}</span>
+                    <span class="category-amount">${money(amount)} (${percentage.toFixed(1)}%)</span>
                 </div>
-            `;
-
-        }).join("");
+                <div class="bar">
+                    <div class="bar-fill" data-width="${percentage}" style="width:0"></div>
+                </div>
+            </div>
+        `;
+    }).join("");
 
     setTimeout(()=>{
         box.querySelectorAll(".bar-fill").forEach(bar=>{
             bar.style.width = bar.dataset.width + "%";
         });
     }, 100);
-
 }
 
 
 function renderReportPartners(){
-
     const data = compute();
-
     const box = document.getElementById("reportPartners");
     if(!box) return;
 
-    box.innerHTML =
-        ACTIVE_FRIENDS.map((friend, index)=>{
+    box.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+        const amount = data.contributions[friend];
+        const percentage = data.activeContributed ? amount / data.activeContributed * 100 : 0;
 
-            const amount =
-                data.contributions[friend];
-
-            const percentage =
-                data.activeContributed
-                    ? amount / data.activeContributed * 100
-                    : 0;
-
-            return `
-                <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
-
-                    <div class="category-head">
-
-                        <span class="category-name">
-                            ${escapeHtml(friend)}
-                        </span>
-
-                        <span class="category-amount">
-                            ${money(amount)}
-                        </span>
-
-                    </div>
-
-                    <div class="bar">
-                        <div
-                            class="bar-fill"
-                            data-width="${percentage}"
-                            style="width:0"
-                        ></div>
-                    </div>
-
+        return `
+            <div class="category-row" style="animation:fadeUp .4s var(--ease) ${index * 0.06}s both">
+                <div class="category-head">
+                    <span class="category-name">${escapeHtml(friend)}</span>
+                    <span class="category-amount">${money(amount)}</span>
                 </div>
-            `;
-
-        }).join("");
+                <div class="bar">
+                    <div class="bar-fill" data-width="${percentage}" style="width:0"></div>
+                </div>
+            </div>
+        `;
+    }).join("");
 
     setTimeout(()=>{
         box.querySelectorAll(".bar-fill").forEach(bar=>{
             bar.style.width = bar.dataset.width + "%";
         });
     }, 100);
-
 }
 
 
 function renderSettingsProjects(){
-
     const el = document.getElementById("settingsProjectList");
-
     if(!el) return;
 
     const projects = state.projects || [];
@@ -4811,130 +2872,71 @@ function renderSettingsProjects(){
         return;
     }
 
-    el.textContent =
-        projects.map(p=>
-            `${p.name} (${p.client}) — Advance ${money(p.advance||0)}`
-        ).join(" • ");
+    el.textContent = projects.map(p=>`${p.name} (${p.client}) — Advance ${money(p.advance||0)}`).join(" • ");
+}
 
+
+function renderSettingsCompanyBalance(){
+    const el = document.getElementById("settingsCompanyBalance");
+    if(!el) return;
+    const company = computeCompanyBalance();
+    el.textContent = money(company.balance);
 }
 
 
 /* ================= RENDER ================= */
 
 function render(){
-
-    try{
-        renderDashboard();
-    }catch(e){ console.error("Dashboard render error:", e); }
-
-    try{
-        renderProjects();
-    }catch(e){ console.error("Projects render error:", e); }
-
-    try{
-        renderExpenses();
-    }catch(e){ console.error("Expenses render error:", e); }
-
-    try{
-        renderPartners();
-    }catch(e){ console.error("Partners render error:", e); }
-
-    try{
-        renderResigned();
-    }catch(e){ console.error("Resigned render error:", e); }
-
-    try{
-        renderReports();
-    }catch(e){ console.error("Reports render error:", e); }
-
-    try{
-        renderSettingsProjects();
-    }catch(e){ console.error("Settings render error:", e); }
-
+    try{ renderDashboard(); }catch(e){ console.error("Dashboard render error:", e); }
+    try{ renderCompanyAccount(); }catch(e){ console.error("Company render error:", e); }
+    try{ renderProjects(); }catch(e){ console.error("Projects render error:", e); }
+    try{ renderExpenses(); }catch(e){ console.error("Expenses render error:", e); }
+    try{ renderPartners(); }catch(e){ console.error("Partners render error:", e); }
+    try{ renderResigned(); }catch(e){ console.error("Resigned render error:", e); }
+    try{ renderReports(); }catch(e){ console.error("Reports render error:", e); }
+    try{ renderSettingsProjects(); }catch(e){ console.error("Settings render error:", e); }
+    try{ renderSettingsCompanyBalance(); }catch(e){ console.error("Settings company render error:", e); }
 }
 
 
 /* ================= EXPENSE FORM ================= */
 
 function buildSplitGrid(values = {}){
-
     const grid = document.getElementById("splitGrid");
     if(!grid) return;
 
-    grid.innerHTML =
-        ACTIVE_FRIENDS.map((friend, index)=>{
+    grid.innerHTML = ACTIVE_FRIENDS.map((friend, index)=>{
+        const amount = values[friend]?.amount ?? 0;
+        const to = values[friend]?.to ?? friend;
 
-            const amount =
-                values[friend]?.amount ?? 0;
-
-            const to =
-                values[friend]?.to ?? friend;
-
-            return `
-                <div class="split-item" style="animation:fadeUp .35s var(--ease) ${index * 0.05}s both">
-
-                    <div class="split-person">
-                        ${escapeHtml(friend)}
-                    </div>
-
-                    <div class="split-controls">
-
-                        <input
-                            class="input split-amount"
-                            data-person="${escapeHtml(friend)}"
-                            type="number"
-                            min="0"
-                            step="0.01"
-                            value="${amount}"
-                            placeholder="Amount"
-                        >
-
-                        <select
-                            class="select split-to"
-                            data-person="${escapeHtml(friend)}"
-                        >
-
-                            ${FRIENDS.map(person=>`
-                                <option
-                                    value="${escapeHtml(person)}"
-                                    ${person === to ? "selected" : ""}
-                                >
-                                    Paid to ${escapeHtml(person)}
-                                </option>
-                            `).join("")}
-
-                        </select>
-
-                    </div>
-
+        return `
+            <div class="split-item" style="animation:fadeUp .35s var(--ease) ${index * 0.05}s both">
+                <div class="split-person">${escapeHtml(friend)}</div>
+                <div class="split-controls">
+                    <input class="input split-amount" data-person="${escapeHtml(friend)}" type="number" min="0" step="0.01" value="${amount}" placeholder="Amount">
+                    <select class="select split-to" data-person="${escapeHtml(friend)}">
+                        ${FRIENDS.map(person=>`
+                            <option value="${escapeHtml(person)}" ${person === to ? "selected" : ""}>Paid to ${escapeHtml(person)}</option>
+                        `).join("")}
+                    </select>
                 </div>
-            `;
+            </div>
+        `;
+    }).join("");
 
-        }).join("");
-
-    document
-        .querySelectorAll(".split-amount")
-        .forEach(input=>{
-            input.addEventListener(
-                "input",
-                updateSplitTotal
-            );
-        });
+    document.querySelectorAll(".split-amount").forEach(input=>{
+        input.addEventListener("input", updateSplitTotal);
+    });
 
     updateSplitTotal();
-
 }
 
 
 function updateSplitTotal(){
-
     let total = 0;
-
-    document
-        .querySelectorAll(".split-amount")
-        .forEach(input=>{
-            total += Number(input.value || 0);
-        });
+    document.querySelectorAll(".split-amount").forEach(input=>{
+        total += Number(input.value || 0);
+    });
 
     const totalEl = document.getElementById("expenseTotal");
     const target = totalEl ? Number(totalEl.value || 0) : 0;
@@ -4943,512 +2945,363 @@ function updateSplitTotal(){
     if(!el) return;
 
     el.textContent = money(total);
-
-    el.style.color =
-        Math.abs(total - target) < 0.01
-            ? "var(--success)"
-            : "var(--danger)";
-
+    el.style.color = Math.abs(total - target) < 0.01 ? "var(--success)" : "var(--danger)";
 }
 
 
 function splitEqually(){
-
     const totalEl = document.getElementById("expenseTotal");
     const total = totalEl ? Number(totalEl.value || 0) : 0;
+    const amount = ACTIVE_FRIENDS.length ? total / ACTIVE_FRIENDS.length : 0;
 
-    const amount =
-        ACTIVE_FRIENDS.length
-            ? total / ACTIVE_FRIENDS.length
-            : 0;
-
-    document
-        .querySelectorAll(".split-amount")
-        .forEach((input, index)=>{
-            input.value = amount.toFixed(2);
-            input.style.transform = "scale(1.08)";
-            input.style.borderColor = "var(--primary)";
-            setTimeout(()=>{
-                input.style.transform = "";
-                input.style.borderColor = "";
-            }, 300);
-        });
+    document.querySelectorAll(".split-amount").forEach(input=>{
+        input.value = amount.toFixed(2);
+        input.style.transform = "scale(1.08)";
+        input.style.borderColor = "var(--primary)";
+        setTimeout(()=>{
+            input.style.transform = "";
+            input.style.borderColor = "";
+        }, 300);
+    });
 
     updateSplitTotal();
-
 }
 
 
 function openExpenseForm(id = null){
-
-    document.getElementById("expenseOverlay")
-        .classList.add("show");
+    document.getElementById("expenseOverlay").classList.add("show");
 
     if(id){
-
-        const expense =
-            state.expenses.find(e=>e.id === id);
-
+        const expense = state.expenses.find(e=>e.id === id);
         if(!expense) return;
 
-        document.getElementById("formTitle").textContent =
-            "Edit Expense";
-
-        document.getElementById("expenseId").value =
-            expense.id;
-
-        document.getElementById("expenseDate").value =
-            expense.date;
-
-        document.getElementById("expenseCategory").value =
-            expense.category;
-
-        document.getElementById("expenseDetails").value =
-            expense.details;
-
-        document.getElementById("expenseTotal").value =
-            expense.total;
-
+        document.getElementById("formTitle").textContent = "Edit Expense";
+        document.getElementById("expenseId").value = expense.id;
+        document.getElementById("expenseDate").value = expense.date;
+        document.getElementById("expenseCategory").value = expense.category;
+        document.getElementById("expenseDetails").value = expense.details;
+        document.getElementById("expenseTotal").value = expense.total;
         buildSplitGrid(expense.splits || {});
-
     }else{
-
-        document.getElementById("formTitle").textContent =
-            "New Expense";
-
+        document.getElementById("formTitle").textContent = "New Expense";
         document.getElementById("expenseId").value = "";
-
-        document.getElementById("expenseDate").value =
-            new Date().toISOString().split("T")[0];
-
-        document.getElementById("expenseCategory").value =
-            "Other";
-
+        document.getElementById("expenseDate").value = new Date().toISOString().split("T")[0];
+        document.getElementById("expenseCategory").value = "Other";
         document.getElementById("expenseDetails").value = "";
-
         document.getElementById("expenseTotal").value = "";
 
         const values = {};
-
         ACTIVE_FRIENDS.forEach(friend=>{
-            values[friend] = {
-                amount:0,
-                to:friend
-            };
+            values[friend] = {amount:0,to:friend};
         });
 
         buildSplitGrid(values);
-
     }
-
 }
 
 
 function closeExpenseForm(){
-
-    document.getElementById("expenseOverlay")
-        .classList.remove("show");
-
+    document.getElementById("expenseOverlay").classList.remove("show");
 }
 
 
-function editExpense(id){
-
-    openExpenseForm(id);
-
-}
+function editExpense(id){ openExpenseForm(id); }
 
 
 function saveExpense(){
+    const id = document.getElementById("expenseId").value;
+    const date = document.getElementById("expenseDate").value;
+    const category = document.getElementById("expenseCategory").value;
+    const details = document.getElementById("expenseDetails").value.trim();
+    const total = Number(document.getElementById("expenseTotal").value || 0);
 
-    const id =
-        document.getElementById("expenseId").value;
-
-    const date =
-        document.getElementById("expenseDate").value;
-
-    const category =
-        document.getElementById("expenseCategory").value;
-
-    const details =
-        document.getElementById("expenseDetails")
-            .value.trim();
-
-    const total =
-        Number(
-            document.getElementById("expenseTotal").value || 0
-        );
-
-    if(!date){
-        showToast("Please select a date");
-        return;
-    }
-
-    if(!details){
-        showToast("Please enter expense details");
-        return;
-    }
-
-    if(total <= 0){
-        showToast("Please enter a valid amount");
-        return;
-    }
+    if(!date){ showToast("Please select a date"); return; }
+    if(!details){ showToast("Please enter expense details"); return; }
+    if(total <= 0){ showToast("Please enter a valid amount"); return; }
 
     const splits = {};
-
     ACTIVE_FRIENDS.forEach(friend=>{
-
-        const amountInput =
-            document.querySelector(
-                `.split-amount[data-person="${CSS.escape(friend)}"]`
-            );
-
-        const toInput =
-            document.querySelector(
-                `.split-to[data-person="${CSS.escape(friend)}"]`
-            );
-
+        const amountInput = document.querySelector(`.split-amount[data-person="${CSS.escape(friend)}"]`);
+        const toInput = document.querySelector(`.split-to[data-person="${CSS.escape(friend)}"]`);
         splits[friend] = {
             amount: Number(amountInput?.value || 0),
             to: toInput?.value || friend
         };
-
     });
 
-    const allocated =
-        ACTIVE_FRIENDS.reduce(
-            (sum,friend)=>
-                sum + Number(splits[friend].amount || 0),
-            0
-        );
+    const allocated = ACTIVE_FRIENDS.reduce((sum,f)=> sum + Number(splits[f].amount || 0),0);
 
     if(Math.abs(allocated - total) > 0.01){
-        showToast(
-            `Allocation must equal ${money(total)}`
-        );
+        showToast(`Allocation must equal ${money(total)}`);
         return;
     }
 
-    const expense = {
-        id: id || ("e" + Date.now()),
-        date,
-        category,
-        details,
-        total,
-        splits
-    };
+    const expense = {id: id || ("e" + Date.now()),date,category,details,total,splits};
 
     if(id){
-
-        const index =
-            state.expenses.findIndex(
-                expense=>expense.id === id
-            );
-
-        if(index !== -1){
-            state.expenses[index] = expense;
-        }
-
+        const index = state.expenses.findIndex(e=>e.id === id);
+        if(index !== -1) state.expenses[index] = expense;
         showToast("Expense updated successfully");
-
     }else{
-
         state.expenses.push(expense);
-
         showToast("Expense added successfully");
-
     }
 
     saveState();
-
     closeExpenseForm();
-
     render();
+}
 
+
+/* ================= COMPANY TRANSACTION FORM ================= */
+
+function populateCompanyProjectDropdown(){
+    const select = document.getElementById("companyTxnProject");
+    if(!select) return;
+
+    const currentVal = select.value;
+
+    select.innerHTML = `<option value="">— None —</option>` +
+        (state.projects || []).map(p=>
+            `<option value="${escapeHtml(p.id)}">${escapeHtml(p.name)} (${escapeHtml(p.client)})</option>`
+        ).join("");
+
+    if(currentVal) select.value = currentVal;
+}
+
+
+function updateCompanyTxnPreview(){
+    const typeEl = document.getElementById("companyTxnType");
+    const amountEl = document.getElementById("companyTxnAmount");
+    const preview = document.getElementById("companyTxnImpactPreview");
+
+    if(!preview) return;
+
+    const type = typeEl ? typeEl.value : "deposit";
+    const amount = amountEl ? Number(amountEl.value || 0) : 0;
+
+    const impact = type === "deposit" ? amount : -amount;
+
+    preview.textContent = (impact >= 0 ? "+ " : "− ") + money(Math.abs(impact));
+    preview.style.color = impact >= 0 ? "var(--success)" : "var(--danger)";
+}
+
+
+function openCompanyTxnForm(id = null){
+    populateCompanyProjectDropdown();
+    document.getElementById("companyTxnOverlay").classList.add("show");
+
+    if(id){
+        const txn = (state.companyTxns || []).find(t=>t.id === id);
+        if(!txn) return;
+
+        document.getElementById("companyTxnFormTitle").textContent = "Edit Company Transaction";
+        document.getElementById("companyTxnId").value = txn.id;
+        document.getElementById("companyTxnDate").value = txn.date;
+        document.getElementById("companyTxnType").value = txn.type;
+        document.getElementById("companyTxnDescription").value = txn.description;
+        document.getElementById("companyTxnAmount").value = txn.amount;
+        document.getElementById("companyTxnProject").value = txn.projectId || "";
+    }else{
+        document.getElementById("companyTxnFormTitle").textContent = "New Company Transaction";
+        document.getElementById("companyTxnId").value = "";
+        document.getElementById("companyTxnDate").value = new Date().toISOString().split("T")[0];
+        document.getElementById("companyTxnType").value = "deposit";
+        document.getElementById("companyTxnDescription").value = "";
+        document.getElementById("companyTxnAmount").value = "";
+        document.getElementById("companyTxnProject").value = "";
+    }
+
+    updateCompanyTxnPreview();
+}
+
+
+function closeCompanyTxnForm(){
+    document.getElementById("companyTxnOverlay").classList.remove("show");
+}
+
+
+function editCompanyTxn(id){ openCompanyTxnForm(id); }
+
+
+function saveCompanyTxn(){
+    const id = document.getElementById("companyTxnId").value;
+    const date = document.getElementById("companyTxnDate").value;
+    const type = document.getElementById("companyTxnType").value;
+    const description = document.getElementById("companyTxnDescription").value.trim();
+    const amount = Number(document.getElementById("companyTxnAmount").value || 0);
+    const projectId = document.getElementById("companyTxnProject").value;
+
+    if(!date){ showToast("Please select a date"); return; }
+    if(!description){ showToast("Please enter a description"); return; }
+    if(amount <= 0){ showToast("Please enter a valid amount"); return; }
+
+    const txn = {
+        id: id || ("ct" + Date.now()),
+        date,
+        type: type === "withdrawal" ? "withdrawal" : "deposit",
+        description,
+        amount,
+        projectId
+    };
+
+    if(!Array.isArray(state.companyTxns)) state.companyTxns = [];
+
+    if(id){
+        const index = state.companyTxns.findIndex(t=>t.id === id);
+        if(index !== -1) state.companyTxns[index] = txn;
+        showToast("Company transaction updated");
+    }else{
+        state.companyTxns.push(txn);
+        showToast("Company transaction added");
+    }
+
+    saveState();
+    closeCompanyTxnForm();
+    render();
 }
 
 
 /* ================= PROJECT FORM ================= */
 
 function updateProjectPendingPreview(){
-
     const totalEl = document.getElementById("projectTotal");
     const advanceEl = document.getElementById("projectAdvance");
 
     const total = totalEl ? Number(totalEl.value || 0) : 0;
     const advance = advanceEl ? Number(advanceEl.value || 0) : 0;
 
-    const preview =
-        document.getElementById("projectPendingPreview");
-
+    const preview = document.getElementById("projectPendingPreview");
     if(!preview) return;
 
     const pending = Math.max(0, total - advance);
-
     preview.textContent = money(pending);
-
-    preview.style.color =
-        pending > 0
-            ? "var(--danger)"
-            : "var(--success)";
-
+    preview.style.color = pending > 0 ? "var(--danger)" : "var(--success)";
 }
 
 
 function openProjectForm(id = null){
-
-    document.getElementById("projectOverlay")
-        .classList.add("show");
+    document.getElementById("projectOverlay").classList.add("show");
 
     if(id){
-
-        const project =
-            (state.projects || []).find(p=>p.id === id);
-
+        const project = (state.projects || []).find(p=>p.id === id);
         if(!project) return;
 
-        document.getElementById("projectFormTitle").textContent =
-            "Edit Project";
-
-        document.getElementById("projectId").value =
-            project.id;
-
-        document.getElementById("projectName").value =
-            project.name || "";
-
-        document.getElementById("projectClient").value =
-            project.client || "";
-
-        document.getElementById("projectStatus").value =
-            project.status || "In Progress";
-
-        document.getElementById("projectDate").value =
-            project.date || "";
-
-        document.getElementById("projectTotal").value =
-            project.total || 0;
-
-        document.getElementById("projectAdvance").value =
-            project.advance || 0;
-
-        document.getElementById("projectNotes").value =
-            project.notes || "";
-
+        document.getElementById("projectFormTitle").textContent = "Edit Project";
+        document.getElementById("projectId").value = project.id;
+        document.getElementById("projectName").value = project.name || "";
+        document.getElementById("projectClient").value = project.client || "";
+        document.getElementById("projectStatus").value = project.status || "In Progress";
+        document.getElementById("projectDate").value = project.date || "";
+        document.getElementById("projectTotal").value = project.total || 0;
+        document.getElementById("projectAdvance").value = project.advance || 0;
+        document.getElementById("projectNotes").value = project.notes || "";
     }else{
-
-        document.getElementById("projectFormTitle").textContent =
-            "New Project";
-
+        document.getElementById("projectFormTitle").textContent = "New Project";
         document.getElementById("projectId").value = "";
-
         document.getElementById("projectName").value = "";
-
         document.getElementById("projectClient").value = "";
-
-        document.getElementById("projectStatus").value =
-            "In Progress";
-
-        document.getElementById("projectDate").value =
-            new Date().toISOString().split("T")[0];
-
+        document.getElementById("projectStatus").value = "In Progress";
+        document.getElementById("projectDate").value = new Date().toISOString().split("T")[0];
         document.getElementById("projectTotal").value = "";
-
         document.getElementById("projectAdvance").value = "";
-
         document.getElementById("projectNotes").value = "";
-
     }
 
     updateProjectPendingPreview();
-
 }
 
 
 function closeProjectForm(){
-
-    document.getElementById("projectOverlay")
-        .classList.remove("show");
-
+    document.getElementById("projectOverlay").classList.remove("show");
 }
 
 
-function editProject(id){
-
-    openProjectForm(id);
-
-}
+function editProject(id){ openProjectForm(id); }
 
 
 function saveProject(){
+    const id = document.getElementById("projectId").value;
+    const name = document.getElementById("projectName").value.trim();
+    const client = document.getElementById("projectClient").value.trim();
+    const status = document.getElementById("projectStatus").value;
+    const date = document.getElementById("projectDate").value;
+    const total = Number(document.getElementById("projectTotal").value || 0);
+    const advance = Number(document.getElementById("projectAdvance").value || 0);
+    const notes = document.getElementById("projectNotes").value.trim();
 
-    const id =
-        document.getElementById("projectId").value;
+    if(!name){ showToast("Please enter project name"); return; }
+    if(!client){ showToast("Please enter client name"); return; }
+    if(advance < 0 || total < 0){ showToast("Amounts cannot be negative"); return; }
 
-    const name =
-        document.getElementById("projectName")
-            .value.trim();
+    const project = {id: id || ("p" + Date.now()),name,client,status,date,total,advance,notes};
 
-    const client =
-        document.getElementById("projectClient")
-            .value.trim();
-
-    const status =
-        document.getElementById("projectStatus").value;
-
-    const date =
-        document.getElementById("projectDate").value;
-
-    const total =
-        Number(
-            document.getElementById("projectTotal").value || 0
-        );
-
-    const advance =
-        Number(
-            document.getElementById("projectAdvance").value || 0
-        );
-
-    const notes =
-        document.getElementById("projectNotes")
-            .value.trim();
-
-    if(!name){
-        showToast("Please enter project name");
-        return;
-    }
-
-    if(!client){
-        showToast("Please enter client name");
-        return;
-    }
-
-    if(advance < 0 || total < 0){
-        showToast("Amounts cannot be negative");
-        return;
-    }
-
-    const project = {
-        id: id || ("p" + Date.now()),
-        name,
-        client,
-        status,
-        date,
-        total,
-        advance,
-        notes
-    };
-
-    if(!Array.isArray(state.projects)){
-        state.projects = [];
-    }
+    if(!Array.isArray(state.projects)) state.projects = [];
 
     if(id){
-
-        const index =
-            state.projects.findIndex(
-                p=>p.id === id
-            );
-
-        if(index !== -1){
-            state.projects[index] = project;
-        }
-
+        const index = state.projects.findIndex(p=>p.id === id);
+        if(index !== -1) state.projects[index] = project;
         showToast("Project updated successfully");
-
     }else{
-
         state.projects.push(project);
-
         showToast("Project added successfully");
-
     }
 
     saveState();
-
     closeProjectForm();
-
     render();
-
 }
 
 
 /* ================= DELETE ================= */
 
 function askDelete(id){
-
     deleteId = id;
     deleteType = "expense";
-
-    document.getElementById("deleteTitle").textContent =
-        "Delete Expense?";
-
-    document.getElementById("deleteText").textContent =
-        "This transaction will be permanently removed from this browser's ledger.";
-
-    document.getElementById("deleteOverlay")
-        .classList.add("show");
-
+    document.getElementById("deleteTitle").textContent = "Delete Expense?";
+    document.getElementById("deleteText").textContent = "This transaction will be permanently removed from this browser's ledger.";
+    document.getElementById("deleteOverlay").classList.add("show");
 }
-
 
 function askDeleteProject(id){
-
     deleteId = id;
     deleteType = "project";
-
-    document.getElementById("deleteTitle").textContent =
-        "Delete Project?";
-
-    document.getElementById("deleteText").textContent =
-        "This project and its advance record will be permanently removed from this browser's ledger.";
-
-    document.getElementById("deleteOverlay")
-        .classList.add("show");
-
+    document.getElementById("deleteTitle").textContent = "Delete Project?";
+    document.getElementById("deleteText").textContent = "This project and its advance record will be permanently removed from this browser's ledger.";
+    document.getElementById("deleteOverlay").classList.add("show");
 }
 
+function askDeleteCompanyTxn(id){
+    deleteId = id;
+    deleteType = "companyTxn";
+    document.getElementById("deleteTitle").textContent = "Delete Company Transaction?";
+    document.getElementById("deleteText").textContent = "This deposit or withdrawal record will be permanently removed from the company ledger.";
+    document.getElementById("deleteOverlay").classList.add("show");
+}
 
 function closeDeleteModal(){
-
     deleteId = null;
     deleteType = null;
-
-    document.getElementById("deleteOverlay")
-        .classList.remove("show");
-
+    document.getElementById("deleteOverlay").classList.remove("show");
 }
 
-
 function confirmDelete(){
-
     if(!deleteId || !deleteType) return;
 
     if(deleteType === "expense"){
-
-        state.expenses =
-            state.expenses.filter(
-                expense=>expense.id !== deleteId
-            );
-
+        state.expenses = state.expenses.filter(e=>e.id !== deleteId);
         showToast("Expense deleted");
-
     }else if(deleteType === "project"){
-
-        state.projects =
-            (state.projects || []).filter(
-                p=>p.id !== deleteId
-            );
-
+        state.projects = (state.projects || []).filter(p=>p.id !== deleteId);
         showToast("Project deleted");
-
+    }else if(deleteType === "companyTxn"){
+        state.companyTxns = (state.companyTxns || []).filter(t=>t.id !== deleteId);
+        showToast("Company transaction deleted");
     }
 
     saveState();
-
     closeDeleteModal();
-
     render();
-
 }
 
 
@@ -5457,206 +3310,130 @@ function confirmDelete(){
 let toastTimer;
 
 function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
+    const toast = document.getElementById("toast");
     if(!toast) return;
-
     toast.textContent = message;
-
     toast.classList.add("show");
-
     clearTimeout(toastTimer);
-
-    toastTimer =
-        setTimeout(()=>{
-            toast.classList.remove("show");
-        },2200);
-
+    toastTimer = setTimeout(()=>{ toast.classList.remove("show"); }, 2200);
 }
 
 
-/* ================= RIPPLE EFFECT ================= */
+/* ================= RIPPLE ================= */
 
 function attachRipple(el){
-
     el.addEventListener("click", function(e){
-
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
-
         const ripple = document.createElement("span");
         ripple.className = "ripple";
         ripple.style.width = ripple.style.height = size + "px";
         ripple.style.left = (e.clientX - rect.left - size/2) + "px";
         ripple.style.top = (e.clientY - rect.top - size/2) + "px";
-
         this.appendChild(ripple);
-
         setTimeout(()=>ripple.remove(), 600);
-
     });
-
 }
 
 
 /* ================= EVENTS ================= */
 
-document
-    .querySelectorAll(".nav-item")
-    .forEach(button=>{
+document.querySelectorAll(".nav-item").forEach(button=>{
+    button.addEventListener("click", ()=>{ switchPage(button.dataset.page); });
+    attachRipple(button);
+});
 
-        button.addEventListener(
-            "click",
-            ()=>{
-                switchPage(button.dataset.page);
-            }
-        );
-
-        attachRipple(button);
-
-    });
-
-
-/* Attach ripple to all main buttons */
-document
-    .querySelectorAll(".primary-btn, .save-btn, .secondary-btn, .danger-btn, .equal-btn, .icon-btn")
-    .forEach(attachRipple);
-
+document.querySelectorAll(".primary-btn, .save-btn, .secondary-btn, .danger-btn, .equal-btn, .icon-btn").forEach(attachRipple);
 
 const expenseSearchEl = document.getElementById("expenseSearch");
-if(expenseSearchEl){
-    expenseSearchEl.addEventListener("input", renderExpenses);
-}
+if(expenseSearchEl) expenseSearchEl.addEventListener("input", renderExpenses);
 
 const expenseCategoryFilterEl = document.getElementById("expenseCategoryFilter");
-if(expenseCategoryFilterEl){
-    expenseCategoryFilterEl.addEventListener("change", renderExpenses);
-}
+if(expenseCategoryFilterEl) expenseCategoryFilterEl.addEventListener("change", renderExpenses);
 
 const projectSearchEl = document.getElementById("projectSearch");
-if(projectSearchEl){
-    projectSearchEl.addEventListener("input", renderProjects);
-}
+if(projectSearchEl) projectSearchEl.addEventListener("input", renderProjects);
+
+const companySearchEl = document.getElementById("companySearch");
+if(companySearchEl) companySearchEl.addEventListener("input", renderCompanyAccount);
+
+const companyTypeFilterEl = document.getElementById("companyTypeFilter");
+if(companyTypeFilterEl) companyTypeFilterEl.addEventListener("change", renderCompanyAccount);
 
 const expenseTotalEl = document.getElementById("expenseTotal");
-if(expenseTotalEl){
-    expenseTotalEl.addEventListener("input", updateSplitTotal);
-}
+if(expenseTotalEl) expenseTotalEl.addEventListener("input", updateSplitTotal);
 
 const projectTotalEl = document.getElementById("projectTotal");
-if(projectTotalEl){
-    projectTotalEl.addEventListener("input", updateProjectPendingPreview);
-}
+if(projectTotalEl) projectTotalEl.addEventListener("input", updateProjectPendingPreview);
 
 const projectAdvanceEl = document.getElementById("projectAdvance");
-if(projectAdvanceEl){
-    projectAdvanceEl.addEventListener("input", updateProjectPendingPreview);
-}
+if(projectAdvanceEl) projectAdvanceEl.addEventListener("input", updateProjectPendingPreview);
+
+const companyTxnAmountEl = document.getElementById("companyTxnAmount");
+if(companyTxnAmountEl) companyTxnAmountEl.addEventListener("input", updateCompanyTxnPreview);
+
+const companyTxnTypeEl = document.getElementById("companyTxnType");
+if(companyTxnTypeEl) companyTxnTypeEl.addEventListener("change", updateCompanyTxnPreview);
 
 const saveBtnEl = document.getElementById("saveBtn");
-if(saveBtnEl){
-    saveBtnEl.addEventListener(
-        "click",
-        ()=>{
-            saveState(true);
-        }
-    );
-}
+if(saveBtnEl) saveBtnEl.addEventListener("click", ()=>{ saveState(true); });
 
 const mobileMenuEl = document.getElementById("mobileMenu");
 if(mobileMenuEl){
-    mobileMenuEl.addEventListener(
-        "click",
-        ()=>{
-            document
-                .getElementById("sidebar")
-                .classList.add("open");
-
-            document
-                .getElementById("mobileOverlay")
-                .classList.add("show");
-        }
-    );
+    mobileMenuEl.addEventListener("click", ()=>{
+        document.getElementById("sidebar").classList.add("open");
+        document.getElementById("mobileOverlay").classList.add("show");
+    });
 }
 
 const mobileOverlayEl = document.getElementById("mobileOverlay");
 if(mobileOverlayEl){
-    mobileOverlayEl.addEventListener(
-        "click",
-        ()=>{
-            document
-                .getElementById("sidebar")
-                .classList.remove("open");
-
-            document
-                .getElementById("mobileOverlay")
-                .classList.remove("show");
-        }
-    );
+    mobileOverlayEl.addEventListener("click", ()=>{
+        document.getElementById("sidebar").classList.remove("open");
+        document.getElementById("mobileOverlay").classList.remove("show");
+    });
 }
 
 const expenseOverlayEl = document.getElementById("expenseOverlay");
 if(expenseOverlayEl){
-    expenseOverlayEl.addEventListener(
-        "click",
-        event=>{
-            if(event.target.id === "expenseOverlay"){
-                closeExpenseForm();
-            }
-        }
-    );
+    expenseOverlayEl.addEventListener("click", event=>{
+        if(event.target.id === "expenseOverlay") closeExpenseForm();
+    });
+}
+
+const companyTxnOverlayEl = document.getElementById("companyTxnOverlay");
+if(companyTxnOverlayEl){
+    companyTxnOverlayEl.addEventListener("click", event=>{
+        if(event.target.id === "companyTxnOverlay") closeCompanyTxnForm();
+    });
 }
 
 const projectOverlayEl = document.getElementById("projectOverlay");
 if(projectOverlayEl){
-    projectOverlayEl.addEventListener(
-        "click",
-        event=>{
-            if(event.target.id === "projectOverlay"){
-                closeProjectForm();
-            }
-        }
-    );
+    projectOverlayEl.addEventListener("click", event=>{
+        if(event.target.id === "projectOverlay") closeProjectForm();
+    });
 }
 
 const deleteOverlayEl = document.getElementById("deleteOverlay");
 if(deleteOverlayEl){
-    deleteOverlayEl.addEventListener(
-        "click",
-        event=>{
-            if(event.target.id === "deleteOverlay"){
-                closeDeleteModal();
-            }
-        }
-    );
+    deleteOverlayEl.addEventListener("click", event=>{
+        if(event.target.id === "deleteOverlay") closeDeleteModal();
+    });
 }
 
-
-document.addEventListener(
-    "keydown",
-    event=>{
-
-        if(event.key === "Escape"){
-
-            closeExpenseForm();
-            closeProjectForm();
-            closeDeleteModal();
-
-        }
-
+document.addEventListener("keydown", event=>{
+    if(event.key === "Escape"){
+        closeExpenseForm();
+        closeCompanyTxnForm();
+        closeProjectForm();
+        closeDeleteModal();
     }
-);
-
-
-/* ================= TOPBAR SCROLL SHADOW ================= */
+});
 
 window.addEventListener("scroll", ()=>{
     const topbar = document.getElementById("topbar");
-    if(topbar){
-        topbar.classList.toggle("scrolled", window.scrollY > 10);
-    }
+    if(topbar) topbar.classList.toggle("scrolled", window.scrollY > 10);
 });
 
 

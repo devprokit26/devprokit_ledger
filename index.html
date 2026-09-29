@@ -695,9 +695,8 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
                         <path d="M3 10h18M8 4v6M16 4v6"/>
                     </svg>
                     <div>
-                        <strong>New project received — Alians Logistics.</strong>
-                        Logistics Portal development started. Advance received:
-                        <strong>PKR 15,000</strong>.
+                        <strong>New project received — TEAMSKy Logistic.</strong>
+                        Advance received: <strong>PKR 5,000</strong>. Added to company account.
                         <span style="display:block;margin-top:3px">
                             Total Projects: <strong id="noticeProjectCount">0</strong> •
                             Total Advances: <strong id="noticeProjectAdvance">PKR 0</strong>
@@ -1784,10 +1783,12 @@ function defaultData(){
             {id:"e4",date:"2026-09-14",category:"Other",details:"Rent",total:12000,splits:{Arslan:{amount:2400,to:"Arslan"},Daniyal:{amount:2400,to:"Daniyal"},Touseef:{amount:2400,to:"Touseef"},Hashim:{amount:2400,to:"Hashim"},Qasim:{amount:2400,to:"Qasim"}}}
         ],
         projects:[
-            {id:"p1",name:"Alians Logistics Portal",client:"Alians Logistics",status:"In Progress",date:"2026-09-20",total:0,advance:15000,notes:"Logistics Portal development. Advance received PKR 15,000."}
+            {id:"p1",name:"Alians Logistics Portal",client:"Alians Logistics",status:"In Progress",date:"2026-09-20",total:0,advance:15000,notes:"Logistics Portal development. Advance received PKR 15,000."},
+            {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",total:0,advance:5000,notes:"TEAMSKy Logistic project. Advance received PKR 5,000."}
         ],
         companyTxns:[
-            {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alians Logistics Portal — Advance received",amount:15000,projectId:"p1"}
+            {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alians Logistics Portal — Advance received",amount:15000,projectId:"p1"},
+            {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic — Advance received",amount:5000,projectId:"p2"}
         ]
     };
 }

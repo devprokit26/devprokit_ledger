@@ -1780,7 +1780,8 @@ function defaultData(){
             {id:"e1",date:"2026-08-01",category:"Other",details:"Instagram Followers + Hosting + Domain + OCI",total:2500,splits:{Arslan:{amount:500,to:"Arslan"},Daniyal:{amount:500,to:"Daniyal"},Touseef:{amount:500,to:"Touseef"},Hashim:{amount:500,to:"Hashim"},Qasim:{amount:500,to:"Qasim"}}},
             {id:"e2",date:"2026-08-25",category:"Printing",details:"Cards Print",total:2100,splits:{Arslan:{amount:420,to:"Arslan"},Daniyal:{amount:420,to:"Daniyal"},Touseef:{amount:420,to:"Touseef"},Hashim:{amount:420,to:"Hashim"},Qasim:{amount:420,to:"Qasim"}}},
             {id:"e3",date:"2026-08-31",category:"Other",details:"Office Rent Security",total:15000,splits:{Arslan:{amount:3000,to:"Arslan"},Daniyal:{amount:3000,to:"Daniyal"},Touseef:{amount:3000,to:"Touseef"},Hashim:{amount:3000,to:"Hashim"},Qasim:{amount:3000,to:"Qasim"}}},
-            {id:"e4",date:"2026-09-14",category:"Other",details:"Rent",total:12000,splits:{Arslan:{amount:2400,to:"Arslan"},Daniyal:{amount:2400,to:"Daniyal"},Touseef:{amount:2400,to:"Touseef"},Hashim:{amount:2400,to:"Hashim"},Qasim:{amount:2400,to:"Qasim"}}}
+            {id:"e4",date:"2026-09-14",category:"Other",details:"Rent",total:12000,splits:{Arslan:{amount:2400,to:"Arslan"},Daniyal:{amount:2400,to:"Daniyal"},Touseef:{amount:2400,to:"Touseef"},Hashim:{amount:2400,to:"Hashim"},Qasim:{amount:2400,to:"Qasim"}}},
+            {id:"e5",date:"2026-10-05",category:"Software/Tools",details:"DigitalOcean",total:8000,splits:{Arslan:{amount:1600,to:"Arslan"},Daniyal:{amount:1600,to:"Daniyal"},Touseef:{amount:1600,to:"Touseef"},Hashim:{amount:1600,to:"Hashim"},Qasim:{amount:1600,to:"Qasim"}}}
         ],
         projects:[
             {id:"p1",name:"Alians Logistics Portal",client:"Alians Logistics",status:"In Progress",date:"2026-09-20",total:0,advance:15000,notes:"Logistics Portal development. Advance received PKR 15,000."},
@@ -1788,7 +1789,10 @@ function defaultData(){
         ],
         companyTxns:[
             {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alians Logistics Portal — Advance received",amount:15000,projectId:"p1"},
-            {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic — Advance received",amount:5000,projectId:"p2"}
+            {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic — Advance received",amount:5000,projectId:"p2"},
+            {id:"ct3",date:"2026-10-01",type:"withdrawal",description:"Tables",amount:7000,projectId:""},
+            {id:"ct4",date:"2026-10-02",type:"withdrawal",description:"Internet Package",amount:2200,projectId:""},
+            {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""}
         ]
     };
 }
@@ -1813,6 +1817,19 @@ function loadState(){
                     projects: Array.isArray(parsed.projects) ? parsed.projects.map(normalizeProject) : defaultData().projects,
                     companyTxns: Array.isArray(parsed.companyTxns) ? parsed.companyTxns.map(normalizeCompanyTxn) : defaultData().companyTxns
                 };
+                // Ensure default withdrawals exist if not already present (by description)
+                const hasTables = state.companyTxns.some(t => t.description === "Tables" && t.amount === 7000);
+                const hasInternet = state.companyTxns.some(t => t.description === "Internet Package" && t.amount === 2200);
+                const hasDigitalOcean = state.companyTxns.some(t => t.description === "DigitalOcean" && t.amount === 8000);
+                if(!hasTables){
+                    state.companyTxns.push({id:"ct"+Date.now()+"t", date:"2026-10-01", type:"withdrawal", description:"Tables", amount:7000, projectId:""});
+                }
+                if(!hasInternet){
+                    state.companyTxns.push({id:"ct"+Date.now()+"i", date:"2026-10-02", type:"withdrawal", description:"Internet Package", amount:2200, projectId:""});
+                }
+                if(!hasDigitalOcean){
+                    state.companyTxns.push({id:"ct"+Date.now()+"d", date:"2026-10-05", type:"withdrawal", description:"DigitalOcean", amount:8000, projectId:""});
+                }
                 saveState();
                 LEGACY_KEYS.forEach(k => localStorage.removeItem(k));
                 return;

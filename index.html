@@ -1792,7 +1792,8 @@ function defaultData(){
             {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic — Advance received",amount:5000,projectId:"p2"},
             {id:"ct3",date:"2026-10-01",type:"withdrawal",description:"Tables",amount:7000,projectId:""},
             {id:"ct4",date:"2026-10-02",type:"withdrawal",description:"Internet Package",amount:2200,projectId:""},
-            {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""}
+            {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""},
+            {id:"ct6",date:"2026-10-07",type:"withdrawal",description:"Snooker",amount:300,projectId:""}
         ]
     };
 }
@@ -1821,6 +1822,7 @@ function loadState(){
                 const hasTables = state.companyTxns.some(t => t.description === "Tables" && t.amount === 7000);
                 const hasInternet = state.companyTxns.some(t => t.description === "Internet Package" && t.amount === 2200);
                 const hasDigitalOcean = state.companyTxns.some(t => t.description === "DigitalOcean" && t.amount === 8000);
+                const hasSnooker = state.companyTxns.some(t => t.description === "Snooker" && t.amount === 300);
                 if(!hasTables){
                     state.companyTxns.push({id:"ct"+Date.now()+"t", date:"2026-10-01", type:"withdrawal", description:"Tables", amount:7000, projectId:""});
                 }
@@ -1829,6 +1831,9 @@ function loadState(){
                 }
                 if(!hasDigitalOcean){
                     state.companyTxns.push({id:"ct"+Date.now()+"d", date:"2026-10-05", type:"withdrawal", description:"DigitalOcean", amount:8000, projectId:""});
+                }
+                if(!hasSnooker){
+                    state.companyTxns.push({id:"ct"+Date.now()+"s", date:"2026-10-07", type:"withdrawal", description:"Snooker", amount:300, projectId:""});
                 }
                 saveState();
                 LEGACY_KEYS.forEach(k => localStorage.removeItem(k));

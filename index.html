@@ -1785,7 +1785,8 @@ function defaultData(){
         ],
         projects:[
             {id:"p1",name:"Alians Logistics Portal",client:"Alians Logistics",status:"In Progress",date:"2026-09-20",total:0,advance:15000,notes:"Logistics Portal development. Advance received PKR 15,000."},
-            {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",total:0,advance:5000,notes:"TEAMSKy Logistic project. Advance received PKR 5,000."}
+            {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",total:0,advance:5000,notes:"TEAMSKy Logistic project. Advance received PKR 5,000."},
+            {id:"p3",name:"RAM Courier Service",client:"RAM Courier",status:"In Progress",date:"2026-10-08",total:0,advance:10000,notes:"RAM Courier Service project. Advance received PKR 10,000."}
         ],
         companyTxns:[
             {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alians Logistics Portal — Advance received",amount:15000,projectId:"p1"},
@@ -1793,7 +1794,8 @@ function defaultData(){
             {id:"ct3",date:"2026-10-01",type:"withdrawal",description:"Tables",amount:7000,projectId:""},
             {id:"ct4",date:"2026-10-02",type:"withdrawal",description:"Internet Package",amount:2200,projectId:""},
             {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""},
-            {id:"ct6",date:"2026-10-07",type:"withdrawal",description:"Snooker",amount:300,projectId:""}
+            {id:"ct6",date:"2026-10-07",type:"withdrawal",description:"Snooker",amount:300,projectId:""},
+            {id:"ct7",date:"2026-10-08",type:"deposit",description:"RAM Courier Service — Advance received",amount:10000,projectId:"p3"}
         ]
     };
 }
@@ -1823,6 +1825,8 @@ function loadState(){
                 const hasInternet = state.companyTxns.some(t => t.description === "Internet Package" && t.amount === 2200);
                 const hasDigitalOcean = state.companyTxns.some(t => t.description === "DigitalOcean" && t.amount === 8000);
                 const hasSnooker = state.companyTxns.some(t => t.description === "Snooker" && t.amount === 300);
+                const hasRamCourier = state.companyTxns.some(t => t.description === "RAM Courier Service — Advance received" && t.amount === 10000);
+                const hasRamProject = state.projects.some(p => p.name === "RAM Courier Service");
                 if(!hasTables){
                     state.companyTxns.push({id:"ct"+Date.now()+"t", date:"2026-10-01", type:"withdrawal", description:"Tables", amount:7000, projectId:""});
                 }
@@ -1834,6 +1838,12 @@ function loadState(){
                 }
                 if(!hasSnooker){
                     state.companyTxns.push({id:"ct"+Date.now()+"s", date:"2026-10-07", type:"withdrawal", description:"Snooker", amount:300, projectId:""});
+                }
+                if(!hasRamProject){
+                    state.projects.push({id:"p"+Date.now()+"r", name:"RAM Courier Service", client:"RAM Courier", status:"In Progress", date:"2026-10-08", total:0, advance:10000, notes:"RAM Courier Service project. Advance received PKR 10,000."});
+                }
+                if(!hasRamCourier){
+                    state.companyTxns.push({id:"ct"+Date.now()+"r", date:"2026-10-08", type:"deposit", description:"RAM Courier Service — Advance received", amount:10000, projectId:"p"+Date.now()+"r"});
                 }
                 saveState();
                 LEGACY_KEYS.forEach(k => localStorage.removeItem(k));

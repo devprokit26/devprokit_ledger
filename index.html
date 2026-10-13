@@ -722,13 +722,14 @@ function defaultData(){
     ],
     projects:[
       {id:"p1",name:"Alliance Logistics Portal",client:"Alliance Logistics",status:"In Progress",date:"2026-09-20",fees:45000,monthlyFee:9000,advance:15000,notes:"Portal dev. Paid 15K: 9K October server fee + 6K project advance."},
-      {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",fees:25000,monthlyFee:0,advance:5000,notes:"TEAMSKy project. Paid 5K: all project advance. No server fees."},
+      {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",fees:23000,monthlyFee:0,advance:23000,notes:"TEAMSKy project. Fully paid 23K. No server fees."},
       {id:"p3",name:"RAM Courier Service",client:"RAM Courier",status:"In Progress",date:"2026-10-08",fees:43000,monthlyFee:8000,advance:10000,notes:"Paid 10K: 8K October server fee + 2K project advance."},
-      {id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:45000,monthlyFee:7000,advance:15000,notes:"Paid 15K: 7K October server fee + 8K project advance."}
+      {id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:40000,monthlyFee:7000,advance:15000,notes:"Paid 15K: 7K October server fee + 8K project advance."}
     ],
     companyTxns:[
       {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alliance Logistics — Advance received",amount:15000,projectId:"p1"},
       {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic — Advance received",amount:5000,projectId:"p2"},
+      {id:"ct11",date:"2026-10-13",type:"deposit",description:"TEAMSKy Logistic — Remaining payment received",amount:18000,projectId:"p2"},
       {id:"ct3",date:"2026-10-01",type:"withdrawal",description:"Tables",amount:7000,projectId:""},
       {id:"ct4",date:"2026-10-02",type:"withdrawal",description:"Internet Package",amount:2200,projectId:""},
       {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""},
@@ -753,7 +754,7 @@ function loadState(){
         };
         // Ensure SKY Logistics (QCS) project exists
         if(!state.projects.find(p=>p.name==="SKY Logistics (QCS)")){
-          state.projects.push({id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:45000,monthlyFee:7000,advance:15000,notes:"Paid 15K: 7K October server fee + 8K project advance."});
+          state.projects.push({id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:40000,monthlyFee:7000,advance:15000,notes:"Paid 15K: 7K October server fee + 8K project advance."});
         }
         if(!state.companyTxns.find(t=>t.description==="SKY Logistics (QCS) — Advance received")){
           state.companyTxns.push({id:"ct10",date:"2026-10-10",type:"deposit",description:"SKY Logistics (QCS) — Advance received",amount:15000,projectId:"p4"});

@@ -852,28 +852,10 @@ function defaultData(){
 }
 
 function loadState(){
-  try{
-    const saved=localStorage.getItem(STORAGE_KEY);
-    if(saved){
-      const p=JSON.parse(saved);
-      if(p&&Array.isArray(p.expenses)){
-        state={
-          expenses:p.expenses.map(normalizeExpense),
-          projects:Array.isArray(p.projects)?p.projects.map(normalizeProject):defaultData().projects,
-          companyTxns:Array.isArray(p.companyTxns)?p.companyTxns.map(normalizeCompanyTxn):defaultData().companyTxns,
-          dividends:Array.isArray(p.dividends)?p.dividends.map(normalizeDividend):defaultData().dividends,
-          monthlyPayments:Array.isArray(p.monthlyPayments)?p.monthlyPayments.map(normalizeMonthlyPayment):defaultData().monthlyPayments,
-          partnerPayments:Array.isArray(p.partnerPayments)?p.partnerPayments.map(normalizePartnerPayment):[]
-        };
-        applyRamMonthlySetup();
-        applyRamDistribution();
-        applyPartnerSettlement();
-        saveState();
-        return;
-      }
-    }
-  }catch(e){console.error(e);}
-  state=defaultData();applyRamMonthlySetup();applyRamDistribution();applyPartnerSettlement();saveState();
+  state = defaultData(); 
+  applyRamMonthlySetup();
+  applyRamDistribution();
+  applyPartnerSettlement();
 }
 
 function normalizeExpense(e){return{id:e.id||("e"+Date.now()+Math.random()),date:e.date||new Date().toISOString().split("T")[0],category:e.category||"Other",details:e.details||"Untitled",total:Number(e.total||0),splits:e.splits&&typeof e.splits==="object"?e.splits:{}};}
@@ -910,8 +892,7 @@ function normalizeCompanyTxn(t){return{id:t.id||("ct"+Date.now()+Math.random()),
 function normalizeDividend(d){return{id:d.id||("d"+Date.now()+Math.random()),date:d.date||new Date().toISOString().split("T")[0],source:d.source||"Unknown",totalAmount:Number(d.totalAmount||0),perPartner:Number(d.perPartner||0),partners:Array.isArray(d.partners)?d.partners:ACTIVE_FRIENDS,description:d.description||""};}
 function normalizeMonthlyPayment(m){return{id:m.id||("m"+Date.now()+Math.random()),projectId:m.projectId||"",client:m.client||"Unknown",amount:Number(m.amount||0),date:m.date||new Date().toISOString().split("T")[0],period:m.period||(m.date||"").slice(0,7),notes:m.notes||""};}
 function normalizePartnerPayment(p){return{id:p.id||("pp"+Date.now()+Math.random()),partner:p.partner||"",amount:Number(p.amount||0),date:p.date||new Date().toISOString().split("T")[0],notes:p.notes||""};}
-function saveState(msg=false){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));if(msg)showToast("Ledger saved successfully");}
-
+function saveState(msg=false){ if(msg) showToast("Live mode active"); }
 function money(v){return "PKR "+Number(v||0).toLocaleString("en-PK",{maximumFractionDigits:2});}
 function dateFormat(d){if(!d)return "â€”";const dt=new Date(d+"T00:00:00");if(isNaN(dt.getTime()))return "â€”";return dt.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});}
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}

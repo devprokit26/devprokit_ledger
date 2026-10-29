@@ -822,6 +822,7 @@ function loadState(){
   applyRamMonthlySetup();
   applyRamDistribution();
   applyPartnerSettlement();
+  render(); // <--- Ye line add karein
 }
 
 function normalizeExpense(e){return{id:e.id||("e"+Date.now()+Math.random()),date:e.date||new Date().toISOString().split("T")[0],category:e.category||"Other",details:e.details||"Untitled",total:Number(e.total||0),splits:e.splits&&typeof e.splits==="object"?e.splits:{}};}

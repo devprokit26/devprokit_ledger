@@ -862,7 +862,14 @@ function saveState(msg=false){ if(msg) showToast("Live mode active"); }
 function money(v){return "PKR "+Number(v||0).toLocaleString("en-PK",{maximumFractionDigits:2});}
 function dateFormat(d){if(!d)return "â€”";const dt=new Date(d+"T00:00:00");if(isNaN(dt.getTime()))return "â€”";return dt.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});}
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
-function projectTotal(p){return Number(p.fees||0);}
+function projectTotal(p){
+  // RAM Courier ne abhi server fee advance nahi di, isliye uska total sirf project fees hoga
+  if(p.client && p.client.toLowerCase() === "ram courier"){
+    return Number(p.fees||0); 
+  }
+  // Baaki sab ke liye Total Deal = Project Fees + First Month Server Fee
+  return Number(p.fees||0) + Number(p.monthlyFee||0);
+}
 function projectRemaining(p){return Math.max(0,projectTotal(p)-Number(p.advance||0));}
 
 function computeCompanyBalance(){
@@ -1291,7 +1298,93 @@ function renderRecentTransactions(){const tbody=document.getElementById("recentT
 
 function renderProjects(){const data=compute();const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("projectCount",data.projects.length);s("projectAdvanceTotal",money(data.projectAdvance));s("projectPendingTotal",money(data.totalRemaining));const search=(document.getElementById("projectSearch")||{}).value?.trim().toLowerCase()||"";let projects=[...(state.projects||[])].sort((a,b)=>(b.date||"").localeCompare(a.date||""));if(search)projects=projects.filter(p=>(p.name||"").toLowerCase().includes(search)||(p.client||"").toLowerCase().includes(search));const cards=document.getElementById("projectCards"),tbody=document.getElementById("projectTable"),cnt=document.getElementById("projectTableCount");if(cnt)cnt.textContent=`${projects.length} project${projects.length===1?"":"s"}`;if(!projects.length){if(cards)cards.innerHTML=`<div class="panel" style="grid-column:1/-1"><div class="empty"><h3>No projects found</h3></div></div>`;if(tbody)tbody.innerHTML=`<tr><td colspan="9"><div class="empty"><h3>No projects yet</h3></div></td></tr>`;return;}if(cards){cards.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<div class="project-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="project-head"><div class="avatar project">${escapeHtml((p.client||p.name||"PR").substring(0,2).toUpperCase())}</div><div><div class="project-title">${escapeHtml(p.name)}</div><div class="project-client">${escapeHtml(p.client)}</div></div></div><span class="badge advance">${escapeHtml(p.status)}</span>${p.monthlyFee>0?`<div class="server-pill"><svg width="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="11" width="20" height="5" rx="1"/><path d="M6 6h.01M6 14h.01"/></svg> ${money(p.monthlyFee)}/mo server</div>`:""}<div class="project-amount">${money(p.advance)}</div><div class="project-meta"><span>Paid so far</span><strong>${dateFormat(p.date)}</strong></div><div class="project-meta"><span>Project fees</span><strong>${money(p.fees)}</strong></div><div class="project-meta"><span>Total deal</span><strong>${money(total)}</strong></div><div class="project-meta"><span>Remaining</span><strong class="${rem>0?"negative":"positive"}">${money(rem)}</strong></div></div>`;}).join("");}if(tbody){tbody.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(p.name)}</strong></td><td class="muted">${escapeHtml(p.client)}</td><td><span class="badge advance">${escapeHtml(p.status)}</span></td><td class="amount">${money(p.fees)}</td><td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"â€”"}</td><td class="amount">${money(total)}</td><td class="amount positive">${money(p.advance)}</td><td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td><td><div class="action-group"><button class="icon-btn" onclick="editProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");}}
 
-function renderProjectFinancials(){const projects=state.projects||[];const totalDeal=projects.reduce((s,p)=>s+projectTotal(p),0);const totalPaid=projects.reduce((s,p)=>s+Number(p.advance||0),0);const totalRem=projects.reduce((s,p)=>s+projectRemaining(p),0);const totalFees=projects.reduce((s,p)=>s+Number(p.fees||0),0);const totalMonthly=projects.reduce((s,p)=>s+Number(p.monthlyFee||0),0);const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("pfTotalDeal",money(totalDeal));s("pfTotalCollected",money(totalPaid));s("pfTotalRemaining",money(totalRem));const pc=document.getElementById("pfProjectCount");if(pc)pc.textContent=`All ${projects.length} projects with fee structure and payment status`;const sc=document.getElementById("pfSummaryCards");if(sc){sc.innerHTML=`<div class="report-card"><h3>Total Project Fees</h3><strong>${money(totalFees)}</strong></div><div class="report-card"><h3>Total Monthly Server Fees</h3><strong style="color:var(--info)">${money(totalMonthly)}<span style="font-size:12px;font-weight:400;color:var(--muted)">/mo</span></strong></div><div class="report-card"><h3>Total Collected</h3><strong class="positive">${money(totalPaid)}</strong></div><div class="report-card"><h3>Total Remaining</h3><strong class="negative">${money(totalRem)}</strong></div>`;}const pf=document.getElementById("pfProjectCards");if(pf){pf.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;const serverShare=0;const projAdvShare=Number(p.advance||0);return `<div class="proj-fin-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="pfin-head"><div><div class="pfin-title">${escapeHtml(p.name)}</div><div class="pfin-client">${escapeHtml(p.client)}</div></div><div class="pfin-avatar">${escapeHtml((p.client||"PR").substring(0,2).toUpperCase())}</div></div><div class="pfin-row"><span class="pfin-label">Project Fees</span><span class="pfin-val">${money(p.fees)}</span></div><div class="pfin-row"><span class="pfin-label">Monthly Server Fee</span><span class="pfin-val blue">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"â€”"}</span></div><div class="pfin-row"><span class="pfin-label">Total Deal</span><span class="pfin-val">${money(total)}</span></div><div class="pfin-divider"></div><div class="pfin-row"><span class="pfin-label">Total Paid</span><span class="pfin-val green">${money(p.advance)}</span></div>${serverShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">â†³ Monthly Server Fee</span><span class="pfin-val blue" style="font-size:11px">${money(serverShare)}</span></div>`:``}${projAdvShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">â†³ Project Advance</span><span class="pfin-val green" style="font-size:11px">${money(projAdvShare)}</span></div>`:``}<div class="pfin-row"><span class="pfin-label">Remaining</span><span class="pfin-val ${rem>0?"red":"green"}">${money(rem)}</span></div><div class="pfin-row"><span class="pfin-label">Payment Progress</span><span class="pfin-val">${pct}%</span></div><div class="bar" style="margin-top:4px"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div></div>`;}).join("");setTimeout(()=>pf.querySelectorAll(".bar-fill").forEach(b=>b.style.width=b.dataset.width+"%"),100);}const tbody=document.getElementById("pfTable");if(tbody){tbody.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg></div><div><div class="expense-name">${escapeHtml(p.name)}</div><div class="expense-category">${escapeHtml(p.client)}</div></div></div></td><td class="amount">${money(p.fees)}</td><td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"â€”"}</td><td class="amount">${money(total)}</td><td class="amount positive">${money(p.advance)}</td><td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td><td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="max-width:80px"><div class="progress-fill" data-width="${pct}" style="width:0"></div></div><span style="font-size:11px;color:var(--muted)">${pct}%</span></div></td></tr>`;}).join("");setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);}}
+function renderProjectFinancials(){
+  const projects=state.projects||[];
+  const totalDeal=projects.reduce((s,p)=>s+projectTotal(p),0);
+  const totalPaid=projects.reduce((s,p)=>s+Number(p.advance||0),0);
+  const totalRem=projects.reduce((s,p)=>s+projectRemaining(p),0);
+  const totalFees=projects.reduce((s,p)=>s+Number(p.fees||0),0);
+  const totalMonthly=projects.reduce((s,p)=>s+Number(p.monthlyFee||0),0);
+  const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  
+  s("pfTotalDeal",money(totalDeal));
+  s("pfTotalCollected",money(totalPaid));
+  s("pfTotalRemaining",money(totalRem));
+  
+  const pc=document.getElementById("pfProjectCount");
+  if(pc)pc.textContent=`All ${projects.length} projects with fee structure and payment status`;
+  
+  const sc=document.getElementById("pfSummaryCards");
+  if(sc){
+    sc.innerHTML=`
+      <div class="report-card"><h3>Total Project Fees</h3><strong>${money(totalFees)}</strong></div>
+      <div class="report-card"><h3>Total Monthly Server Fees</h3><strong style="color:var(--info)">${money(totalMonthly)}<span style="font-size:12px;font-weight:400;color:var(--muted)">/mo</span></strong></div>
+      <div class="report-card"><h3>Total Collected</h3><strong class="positive">${money(totalPaid)}</strong></div>
+      <div class="report-card"><h3>Total Remaining</h3><strong class="negative">${money(totalRem)}</strong></div>
+    `;
+  }
+  
+  const pf=document.getElementById("pfProjectCards");
+  if(pf){
+    pf.innerHTML=projects.map((p,i)=>{
+      const total=projectTotal(p);
+      const rem=projectRemaining(p);
+      const pct=total?Math.round(Number(p.advance||0)/total*100):0;
+      
+      // Advance Breakdown Logic
+      let firstMonthServer = Math.min(Number(p.advance||0), Number(p.monthlyFee||0));
+      
+      // RAM Courier ka server fee advance nahi mila
+      if(p.client && p.client.toLowerCase() === "ram courier"){
+        firstMonthServer = 0;
+      }
+      
+      const fromProjectFees = Math.max(0, Number(p.advance||0) - firstMonthServer);
+      const serverShare = firstMonthServer;
+      const projAdvShare = fromProjectFees;
+
+      return `
+      <div class="proj-fin-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both">
+        <div class="pfin-head">
+          <div>
+            <div class="pfin-title">${escapeHtml(p.name)}</div>
+            <div class="pfin-client">${escapeHtml(p.client)}</div>
+          </div>
+          <div class="pfin-avatar">${escapeHtml((p.client||"PR").substring(0,2).toUpperCase())}</div>
+        </div>
+        <div class="pfin-row"><span class="pfin-label">Project Fees</span><span class="pfin-val">${money(p.fees)}</span></div>
+        <div class="pfin-row"><span class="pfin-label">Monthly Server Fee</span><span class="pfin-val blue">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</span></div>
+        <div class="pfin-row" style="font-weight:700"><span class="pfin-label">Total Deal (Fees + Server)</span><span class="pfin-val">${money(total)}</span></div>
+        <div class="pfin-divider"></div>
+        <div class="pfin-row"><span class="pfin-label">Total Paid</span><span class="pfin-val green">${money(p.advance)}</span></div>
+        ${serverShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">↳ Monthly Server Fee</span><span class="pfin-val blue" style="font-size:11px">${money(serverShare)}</span></div>`:``}
+        ${projAdvShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">↳ Project Advance</span><span class="pfin-val green" style="font-size:11px">${money(projAdvShare)}</span></div>`:``}
+        <div class="pfin-row"><span class="pfin-label">Remaining</span><span class="pfin-val ${rem>0?"red":"green"}">${money(rem)}</span></div>
+        <div class="pfin-row"><span class="pfin-label">Payment Progress</span><span class="pfin-val">${pct}%</span></div>
+        <div class="bar" style="margin-top:4px"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div>
+      </div>`;
+    }).join("");
+    setTimeout(()=>pf.querySelectorAll(".bar-fill").forEach(b=>b.style.width=b.dataset.width+"%"),100);
+  }
+  
+  const tbody=document.getElementById("pfTable");
+  if(tbody){
+    tbody.innerHTML=projects.map((p,i)=>{
+      const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;
+      return `
+      <tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both">
+        <td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg></div><div><div class="expense-name">${escapeHtml(p.name)}</div><div class="expense-category">${escapeHtml(p.client)}</div></div></div></td>
+        <td class="amount">${money(p.fees)}</td>
+        <td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</td>
+        <td class="amount">${money(total)}</td>
+        <td class="amount positive">${money(p.advance)}</td>
+        <td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td>
+        <td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="max-width:80px"><div class="progress-fill" data-width="${pct}" style="width:0"></div></div><span style="font-size:11px;color:var(--muted)">${pct}%</span></div></td>
+      </tr>`;
+    }).join("");
+    setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);
+  }
+}
 
 function renderExpenses(){const search=(document.getElementById("expenseSearch")||{}).value?.trim().toLowerCase()||"";const cat=(document.getElementById("expenseCategoryFilter")||{}).value||"";let expenses=[...state.expenses].sort((a,b)=>(b.date||"").localeCompare(a.date||""));expenses=expenses.filter(e=>(!search||(e.details||"").toLowerCase().includes(search)||(e.category||"").toLowerCase().includes(search))&&(!cat||e.category===cat));const cnt=document.getElementById("expenseCount");if(cnt)cnt.textContent=`${expenses.length} transaction${expenses.length===1?"":"s"}`;const tbody=document.getElementById("expenseTable");if(!tbody)return;if(!expenses.length){tbody.innerHTML=`<tr><td colspan="7"><div class="empty"><h3>No expenses found</h3><p>Try changing your search or add a new expense.</p></div></td></tr>`;return;}tbody.innerHTML=expenses.map((e,i)=>{const partnerPaid=expensePartnerPaid(e),companyPaid=expenseCompanyPaid(e),paid=partnerPaid+companyPaid>=Number(e.total||0)-0.01;return `<tr style="animation:fadeUp .4s var(--ease) ${i*.04}s both"><td class="muted">${dateFormat(e.date)}</td><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><div><div class="expense-name">${escapeHtml(e.details)}</div><div class="expense-category">${escapeHtml(e.category)}</div></div></div></td><td><span class="badge expense">${escapeHtml(e.category)}</span></td><td class="amount">${money(e.total)}</td><td><div class="partner-chips">${ACTIVE_FRIENDS.map(f=>`<span class="chip">${escapeHtml(f)}: ${money(e.splits?.[f]?.amount||0).replace("PKR ","")}</span>`).join("")}${RESIGNED.map(f=>{const a=Number(e.splits?.[f]?.amount||0);return a>0?`<span class="chip resigned-chip">${escapeHtml(f)}: ${money(a).replace("PKR ","")}</span>`:"";}).join("")}</div><div style="font-size:9px;color:var(--muted);margin-top:5px">Paid: ${money(partnerPaid+companyPaid)} (Partners ${money(partnerPaid)} + Company ${money(companyPaid)})</div></td><td><span class="badge ${paid?"paid":"pending"}">${paid?"Paid":"Pending"}</span></td><td><div class="action-group"><button class="icon-btn" onclick="editExpense('${e.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDelete('${e.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");}
 

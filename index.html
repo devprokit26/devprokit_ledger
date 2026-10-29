@@ -766,7 +766,7 @@ let deleteId=null,deleteType=null;
 
 function defaultData(){
   return {
-        expenses:[
+    expenses:[
       {id:"e1",date:"2026-08-01",category:"Other",details:"Instagram Followers + Hosting + Domain + OCI",total:2500,splits:{Arslan:{amount:500,to:"Arslan"},Daniyal:{amount:500,to:"Daniyal"},Touseef:{amount:500,to:"Touseef"},Hashim:{amount:500,to:"Hashim"},Qasim:{amount:500,to:"Qasim"}}},
       {id:"e2",date:"2026-08-25",category:"Printing",details:"Cards Print",total:2100,splits:{Arslan:{amount:420,to:"Arslan"},Daniyal:{amount:420,to:"Daniyal"},Touseef:{amount:420,to:"Touseef"},Hashim:{amount:420,to:"Hashim"},Qasim:{amount:420,to:"Qasim"}}},
       {id:"e3",date:"2026-08-31",category:"Other",details:"Office Rent Security",total:15000,splits:{Arslan:{amount:3000,to:"Arslan"},Daniyal:{amount:3000,to:"Daniyal"},Touseef:{amount:3000,to:"Touseef"},Hashim:{amount:3000,to:"Hashim"},Qasim:{amount:3000,to:"Qasim"}}},
@@ -814,40 +814,6 @@ function defaultData(){
       {id:"settlement-20261024-Daniyal",partner:"Daniyal",amount:4166.66,date:"2026-10-24",notes:"Existing expense balance paid in full"},
       {id:"settlement-20261024-Hashim",partner:"Hashim",amount:4166.68,date:"2026-10-24",notes:"Existing expense balance paid in full"}
     ]
-    projects:[
-      {id:"p1",name:"Alliance Logistics Portal",client:"Alliance Logistics",status:"In Progress",date:"2026-09-20",fees:45000,monthlyFee:9000,advance:30000,notes:""},
-      {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",fees:23000,monthlyFee:0,advance:23000,notes:""},
-      {id:"p3",name:"RAM Courier Service",client:"RAM Courier",status:"In Progress",date:"2026-10-08",fees:43000,monthlyFee:8000,monthlyDueDate:"2026-11-08",advance:43000,notes:""},
-      {id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:40000,monthlyFee:7000,advance:15000,notes:""},
-      {id:"p5",name:"ASR Logistics",client:"ASR Logistics",status:"In Progress",date:"2026-10-15",fees:50000,monthlyFee:9000,advance:20000,notes:""}
-    ],
-    companyTxns:[
-      {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alliance Logistics â€” Advance received",amount:15000,projectId:"p1"},
-      {id:"ct2",date:"2026-09-29",type:"deposit",description:"TEAMSKy Logistic â€” Advance received",amount:5000,projectId:"p2"},
-      {id:"ct11",date:"2026-10-13",type:"deposit",description:"TEAMSKy Logistic â€” Remaining payment (18K)",amount:18000,projectId:"p2"},
-      {id:"ct3",date:"2026-10-01",type:"withdrawal",description:"Tables",amount:7000,projectId:""},
-      {id:"ct4",date:"2026-10-02",type:"withdrawal",description:"Internet Package",amount:2200,projectId:""},
-      {id:"ct5",date:"2026-10-05",type:"withdrawal",description:"DigitalOcean",amount:8000,projectId:""},
-      {id:"ct6",date:"2026-10-07",type:"withdrawal",description:"Snooker",amount:300,projectId:""},
-      {id:"ct7",date:"2026-10-08",type:"deposit",description:"RAM Courier Service â€” Advance received",amount:10000,projectId:"p3"},
-      {id:"ct8",date:"2026-10-10",type:"deposit",description:"SKY Logistics (QCS) â€” Advance received",amount:15000,projectId:"p4"},
-      {id:"ct9",date:"2026-10-12",type:"withdrawal",description:"October Rent + Bill + Cleanliness",amount:12500,projectId:""},
-      {id:"ct13",date:"2026-10-14",type:"deposit",description:"Alliance Logistics â€” Additional payment (15K)",amount:15000,projectId:"p1"},
-      {id:"ct12",date:"2026-10-15",type:"deposit",description:"ASR Logistics â€” Advance received",amount:20000,projectId:"p5"},
-      {id:"ct14",date:"2026-11-08",type:"deposit",description:"RAM Courier Service â€” Remaining payment (33K)",amount:33000,projectId:"p3"}
-    ],
-    dividends:[
-      {id:"d1",date:"2026-10-13",source:"TEAMSKy Logistic",totalAmount:18000,perPartner:6000,partners:["Arslan","Daniyal","Hashim"],description:"TEAMSKy 18K payment divided equally among 3 active partners"},
-      {id:"d2",date:"2026-10-15",source:"Company Account",totalAmount:30000,perPartner:10000,partners:["Arslan","Daniyal","Hashim"],description:"Company account se 30,000 distributed - 10,000 each to Arslan, Daniyal, Hashim"},
-      {id:"d3",date:"2026-10-15",source:"ASR Logistics",totalAmount:20000,perPartner:6666.67,partners:["Arslan","Daniyal","Hashim"],description:"ASR Logistics 20,000 advance divided equally - 6,667 each to Arslan, Daniyal, Hashim"},
-      {id:"d4",date:"2026-11-08",source:"RAM Courier Service â€” Company Account",totalAmount:33000,perPartner:11000,partners:["Arslan","Daniyal","Hashim"],description:"RAM Courier 33,000 divided equally among the 3 active partners"}
-    ],
-    monthlyPayments:[
-      {id:"m1",projectId:"p1",client:"Alliance Logistics",amount:9000,date:"2026-09-27",period:"2026-09",notes:"September monthly server fee"},
-      {id:"m3",projectId:"p4",client:"SKY Logistics (QCS)",amount:7000,date:"2026-10-12",period:"2026-10",notes:"October monthly server fee"},
-      {id:"m4",projectId:"p5",client:"ASR Logistics",amount:9000,date:"2026-10-13",period:"2026-10",notes:"October monthly server fee"}
-    ],
-    partnerPayments:[]
   };
 }
 

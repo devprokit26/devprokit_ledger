@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevProKit â€” Business ERP</title>
+<title>DevProKit – Business ERP</title>
 <style>
 :root{
     --primary:#1f8f68;--primary-dark:#146448;--primary-light:#e9f7f1;
@@ -416,7 +416,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
       <div><h1 id="pageTitle">Dashboard</h1><p id="pageSubtitle">Business financial overview</p></div>
     </div>
     <div class="top-actions">
-      <div class="company-badge">DevProKit â€¢ PKR</div>
+      <div class="company-badge">DevProKit &bull; PKR</div>
       <button class="save-btn" id="saveBtn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><span>Save</span></button>
     </div>
   </header>
@@ -431,7 +431,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
             <div>
               <div class="company-balance-label">Company Account Balance</div>
               <div class="company-balance-value" id="companyBalanceValue">PKR 0</div>
-              <div class="company-balance-sub">Actual balance = In âˆ’ Withdrawals âˆ’ Dividends</div>
+              <div class="company-balance-sub">Actual balance = In &minus; Withdrawals &minus; Dividends</div>
             </div>
           </div>
           <div class="company-balance-stats">
@@ -445,16 +445,16 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
       <div id="dashboardMonthlyAlert"></div>
       <div class="notice info">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg>
-        <div><strong id="activeProjectCount">5 Active Projects.</strong> Total Project Value: <strong id="noticeTotalDeal">PKR 0</strong> â€¢ Monthly Server Fees: <strong id="noticeMonthlyFees">PKR 0</strong><span style="display:block;margin-top:3px">Total Collected: <strong id="noticeTotalPaid">PKR 0</strong> â€¢ Total Remaining: <strong id="noticeTotalRemaining">PKR 0</strong></span></div>
+        <div><strong id="activeProjectCount">5 Active Projects.</strong> Total Project Value: <strong id="noticeTotalDeal">PKR 0</strong> &bull; Monthly Server Fees: <strong id="noticeMonthlyFees">PKR 0</strong><span style="display:block;margin-top:3px">Total Collected: <strong id="noticeTotalPaid">PKR 0</strong> &bull; Total Remaining: <strong id="noticeTotalRemaining">PKR 0</strong></span></div>
       </div>
       <div class="notice">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
-        <div><strong>Former partners' payments are retained â€” no refund is due.</strong> Their paid amounts count toward expenses; the remaining cost is shared by the <strong>3 active partners</strong>.<span style="display:block;margin-top:3px">Retained former contributions: <strong id="noticeRefund">PKR 0</strong> â€¢ Remaining amount for 3 partners: <strong id="noticeDue">PKR 0</strong></span></div>
+        <div><strong>Former partners' payments are retained &mdash; no refund is due.</strong> Their paid amounts count toward expenses; the remaining cost is shared by the <strong>3 active partners</strong>.<span style="display:block;margin-top:3px">Retained former contributions: <strong id="noticeRefund">PKR 0</strong> &bull; Remaining amount for 3 partners: <strong id="noticeDue">PKR 0</strong></span></div>
       </div>
       <div class="kpi-grid">
         <div class="kpi"><div class="kpi-top"><div class="kpi-label">Total Expenses</div><div class="kpi-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div></div><div class="kpi-value" id="kpiExpenses">PKR 0</div><div class="kpi-note">Total recorded business expenses</div></div>
         <div class="kpi"><div class="kpi-top"><div class="kpi-label">Project Advances</div><div class="kpi-icon" style="background:var(--info-bg);color:var(--info)"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg></div></div><div class="kpi-value positive" id="kpiProjectAdvance">PKR 0</div><div class="kpi-note">Advance received from clients</div></div>
-        <div class="kpi"><div class="kpi-top"><div class="kpi-label">Company Balance</div><div class="kpi-icon" style="background:var(--warning-bg);color:var(--warning)"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/></svg></div></div><div class="kpi-value" id="kpiCompanyBalance">PKR 0</div><div class="kpi-note">In âˆ’ Withdrawals âˆ’ Dividends</div></div>
+        <div class="kpi"><div class="kpi-top"><div class="kpi-label">Company Balance</div><div class="kpi-icon" style="background:var(--warning-bg);color:var(--warning)"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/></svg></div></div><div class="kpi-value" id="kpiCompanyBalance">PKR 0</div><div class="kpi-note">In &minus; Withdrawals &minus; Dividends</div></div>
         <div class="kpi"><div class="kpi-top"><div class="kpi-label">Net Balance</div><div class="kpi-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 17 10 11l4 4 6-8"/><path d="M20 7v5h-5"/></svg></div></div><div class="kpi-value" id="kpiBalance">PKR 0</div><div class="kpi-note">Still payable by the 3 active partners</div></div>
         <div class="kpi"><div class="kpi-top"><div class="kpi-label">Transactions</div><div class="kpi-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h4"/></svg></div></div><div class="kpi-value" id="kpiTransactions">0</div><div class="kpi-note">Recorded expense transactions</div></div>
       </div>
@@ -467,7 +467,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
               <div><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="muted" style="font-size:11px">Project Advances</span><strong class="positive" id="summaryProjectAdvance">PKR 0</strong></div></div>
               <div><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="muted" style="font-size:11px">Paid by Active Partners</span><strong id="summaryContributions">PKR 0</strong></div></div>
               <div style="height:1px;background:var(--border)"></div>
-              <div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Equal Share / Partner (Ã·3)</span><strong id="summaryShare">PKR 0</strong></div></div>
+              <div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Equal Share / Partner (&divide;3)</span><strong id="summaryShare">PKR 0</strong></div></div>
               <div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Active Partners</span><strong id="summaryPartners">3</strong></div></div>
               <div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Former contributions retained</span><strong class="positive" id="summaryRetained">PKR 0</strong></div></div>
             </div>
@@ -488,10 +488,10 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-company">
       <div class="notice success">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-        <div><strong>Company Account Ledger.</strong> Track all advance money received from clients and expenses paid from the company account.<span style="display:block;margin-top:3px">Current Balance: <strong id="companyPageBalance">PKR 0</strong> â€¢ Total In: <strong id="companyPageIn">PKR 0</strong> â€¢ Total Out: <strong id="companyPageOut">PKR 0</strong> â€¢ Dividends: <strong id="companyPageDiv">PKR 0</strong></span></div>
+        <div><strong>Company Account Ledger.</strong> Track all advance money received from clients and expenses paid from the company account.<span style="display:block;margin-top:3px">Current Balance: <strong id="companyPageBalance">PKR 0</strong> &bull; Total In: <strong id="companyPageIn">PKR 0</strong> &bull; Total Out: <strong id="companyPageOut">PKR 0</strong> &bull; Dividends: <strong id="companyPageDiv">PKR 0</strong></span></div>
       </div>
       <div class="company-summary-card">
-        <div class="company-summary-title"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>Account Summary â€” Total In, Total Out, Dividends, Balance</div>
+        <div class="company-summary-title"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>Account Summary &mdash; Total In, Total Out, Dividends, Balance</div>
         <div class="company-summary-grid">
           <div class="company-summary-item in"><div class="company-summary-label">Total Aaya (In)</div><div class="company-summary-value in" id="sumCompanyIn">PKR 0</div><div class="company-summary-note">Sab client deposits mila ke</div></div>
           <div class="company-summary-item out"><div class="company-summary-label">Total Use Howa (Out)</div><div class="company-summary-value out" id="sumCompanyOut">PKR 0</div><div class="company-summary-note">Withdrawals + Dividends dono</div></div>
@@ -499,9 +499,9 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
         </div>
         <div class="company-summary-formula">
           <div class="formula-part"><span class="muted" style="font-size:11px">Total In</span><span class="formula-val in" id="sumFormulaIn">PKR 0</span></div>
-          <span class="formula-op">âˆ’</span>
+          <span class="formula-op">&minus;</span>
           <div class="formula-part"><span class="muted" style="font-size:11px">Withdrawals</span><span class="formula-val out" id="sumFormulaOut">PKR 0</span></div>
-          <span class="formula-op">âˆ’</span>
+          <span class="formula-op">&minus;</span>
           <div class="formula-part"><span class="muted" style="font-size:11px">Dividends</span><span class="formula-val out" id="sumFormulaDiv">PKR 0</span></div>
           <span class="formula-op">=</span>
           <div class="formula-part"><span class="muted" style="font-size:11px">Balance</span><span class="formula-val result" id="sumFormulaBalance">PKR 0</span></div>
@@ -523,7 +523,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-projects">
       <div class="notice info">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg>
-        <div><strong>Projects workspace.</strong> Track client projects, advance payments and pending balances.<span style="display:block;margin-top:3px">Active Projects: <strong id="projectCount">0</strong> â€¢ Total Advances: <strong id="projectAdvanceTotal">PKR 0</strong> â€¢ Pending Balance: <strong id="projectPendingTotal">PKR 0</strong></span></div>
+        <div><strong>Projects workspace.</strong> Track client projects, advance payments and pending balances.<span style="display:block;margin-top:3px">Active Projects: <strong id="projectCount">0</strong> &bull; Total Advances: <strong id="projectAdvanceTotal">PKR 0</strong> &bull; Pending Balance: <strong id="projectPendingTotal">PKR 0</strong></span></div>
       </div>
       <div class="toolbar">
         <div class="search-box"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input class="input" id="projectSearch" placeholder="Search projects..."></div>
@@ -541,24 +541,24 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
       </div>
       <div class="notice info">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg>
-        <div><strong>Monthly Server Payments.</strong> Track when each client pays their monthly server fee and get alerts before the next renewal is due.<span style="display:block;margin-top:3px">Monthly Recurring: <strong id="monthlyTotal">PKR 0</strong> â€¢ Collected This Month: <strong id="monthlyPaid">PKR 0</strong> â€¢ Pending: <strong id="monthlyPending">PKR 0</strong></span></div>
+        <div><strong>Monthly Server Payments.</strong> Track when each client pays their monthly server fee and get alerts before the next renewal is due.<span style="display:block;margin-top:3px">Monthly Recurring: <strong id="monthlyTotal">PKR 0</strong> &bull; Collected This Month: <strong id="monthlyPaid">PKR 0</strong> &bull; Pending: <strong id="monthlyPending">PKR 0</strong></span></div>
       </div>
       <div class="report-grid">
         <div class="report-card"><h3>Monthly Recurring</h3><strong id="mTotalRecurring">PKR 0</strong></div>
         <div class="report-card"><h3>Collected This Month</h3><strong class="positive" id="mCollected">PKR 0</strong></div>
         <div class="report-card"><h3>Pending This Month</h3><strong class="negative" id="mPending">PKR 0</strong></div>
-        <div class="report-card"><h3>Next Renewal</h3><strong id="mNextDue">â€”</strong></div>
+        <div class="report-card"><h3>Next Renewal</h3><strong id="mNextDue">&mdash;</strong></div>
       </div>
       <div class="panel" style="margin-bottom:18px">
-        <div class="panel-header"><div><div class="panel-title">Payments Received â€” Recent</div><div class="panel-subtitle" id="mPaidSubtitle">All received monthly payments â€” newest first</div></div></div>
+        <div class="panel-header"><div><div class="panel-title">Payments Received &mdash; Recent</div><div class="panel-subtitle" id="mPaidSubtitle">All received monthly payments &mdash; newest first</div></div></div>
         <div class="table-wrap"><table><thead><tr><th>Client / Project</th><th>Payment Date</th><th>Period</th><th>Amount</th><th>Next Due</th><th>Status</th></tr></thead><tbody id="monthlyPaidTable"></tbody></table></div>
       </div>
       <div class="panel">
-        <div class="panel-header"><div><div class="panel-title">All Monthly Renewals â€” Schedule</div><div class="panel-subtitle">Sorted by nearest due date first</div></div><button class="primary-btn" style="margin-left:0;height:32px;padding:0 12px;font-size:11px" onclick="openMonthlyPaymentForm(null)"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Record Payment</button></div>
+        <div class="panel-header"><div><div class="panel-title">All Monthly Renewals &mdash; Schedule</div><div class="panel-subtitle">Sorted by nearest due date first</div></div><button class="primary-btn" style="margin-left:0;height:32px;padding:0 12px;font-size:11px" onclick="openMonthlyPaymentForm(null)"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Record Payment</button></div>
         <div class="table-wrap"><table class="desktop-table"><thead><tr><th>Client / Project</th><th>Monthly Fee</th><th>Last Paid</th><th>Next Due</th><th>Days Left</th><th>Status</th><th>Actions</th></tr></thead><tbody id="monthlyScheduleTable"></tbody></table></div>
       </div>
       <div class="panel" style="margin-top:18px">
-        <div class="panel-header"><div><div class="panel-title">Payment History â€” All Records</div><div class="panel-subtitle" id="monthlyHistoryCount">0 records</div></div></div>
+        <div class="panel-header"><div><div class="panel-title">Payment History &mdash; All Records</div><div class="panel-subtitle" id="monthlyHistoryCount">0 records</div></div></div>
         <div class="table-wrap"><table class="desktop-table"><thead><tr><th>Date</th><th>Client</th><th>Period</th><th>Amount</th><th>Notes</th><th>Actions</th></tr></thead><tbody id="monthlyHistoryTable"></tbody></table></div>
       </div>
     </section>
@@ -567,11 +567,11 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-projfin">
       <div class="notice info">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <div><strong>Project Financials.</strong> Detailed breakdown of project fees, server fees, payments received and outstanding balances.<span style="display:block;margin-top:3px">Total Deal Value: <strong id="pfTotalDeal">PKR 0</strong> â€¢ Total Collected: <strong id="pfTotalCollected">PKR 0</strong> â€¢ Total Remaining: <strong id="pfTotalRemaining">PKR 0</strong></span></div>
+        <div><strong>Project Financials.</strong> Detailed breakdown of project fees, server fees, payments received and outstanding balances.<span style="display:block;margin-top:3px">Total Deal Value: <strong id="pfTotalDeal">PKR 0</strong> &bull; Total Collected: <strong id="pfTotalCollected">PKR 0</strong> &bull; Total Remaining: <strong id="pfTotalRemaining">PKR 0</strong></span></div>
       </div>
       <div class="report-grid" id="pfSummaryCards"></div>
       <div class="proj-fin-grid" id="pfProjectCards"></div>
-      <div class="panel"><div class="panel-header"><div><div class="panel-title">Project Financials â€” Complete Breakdown</div><div class="panel-subtitle" id="pfProjectCount">All projects with fee structure and payment status</div></div></div><div class="table-wrap"><table class="desktop-table"><thead><tr><th>Project / Client</th><th>Project Fees</th><th>Server Fee/Month</th><th>Total Deal</th><th>Paid</th><th>Remaining</th><th>Payment %</th></tr></thead><tbody id="pfTable"></tbody></table></div></div>
+      <div class="panel"><div class="panel-header"><div><div class="panel-title">Project Financials &mdash; Complete Breakdown</div><div class="panel-subtitle" id="pfProjectCount">All projects with fee structure and payment status</div></div></div><div class="table-wrap"><table class="desktop-table"><thead><tr><th>Project / Client</th><th>Project Fees</th><th>Server Fee/Month</th><th>Total Deal</th><th>Paid</th><th>Remaining</th><th>Payment %</th></tr></thead><tbody id="pfTable"></tbody></table></div></div>
     </section>
 
     <!-- EXPENSES -->
@@ -588,7 +588,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-partners">
       <div class="notice"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg><div>Touseef and Qasim have resigned and are no longer part of this split. All expenses are now shared between the remaining <strong>3 partners</strong>.</div></div>
       <div class="partner-grid cols-4" id="partnerCards"></div>
-      <div class="panel"><div class="panel-header"><div><div class="panel-title">Partner Account Register</div><div class="panel-subtitle">Detailed contribution ledger â€” 3 active partners</div></div></div><div class="table-wrap"><table><thead><tr><th>Partner</th><th>Transactions</th><th>Contributed</th><th>Equal Share (Ã·3)</th><th>Balance</th><th>Progress</th><th>Status</th></tr></thead><tbody id="partnerTable"></tbody></table></div></div>
+      <div class="panel"><div class="panel-header"><div><div class="panel-title">Partner Account Register</div><div class="panel-subtitle">Detailed contribution ledger &mdash; 3 active partners</div></div></div><div class="table-wrap"><table><thead><tr><th>Partner</th><th>Transactions</th><th>Contributed</th><th>Equal Share (&divide;3)</th><th>Balance</th><th>Progress</th><th>Status</th></tr></thead><tbody id="partnerTable"></tbody></table></div></div>
     </section>
 
     <!-- REPORTS -->
@@ -609,7 +609,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-dividend">
       <div class="notice success">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>
-        <div><strong>Dividend Splits.</strong> Recorded distributions include the RAM Courier 33,000 PKR company-account balance, divided equally among the 3 active partners: <strong>11,000 PKR each</strong>. The company-account balance is now zero.</div>
+        <div><strong>Dividend Splits.</strong> Recorded distributions: TEAMSKy 18K, Company 30K, ASR 20K, RAM 33K, Company 25K. Latest split: <strong>8,333 PKR each (25,000 &divide; 3 partners)</strong>. Company balance is now <strong>zero</strong>.</div>
       </div>
       <div class="report-grid">
         <div class="report-card"><h3>Total Received</h3><strong id="divTotal">PKR 0</strong></div>
@@ -626,9 +626,9 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
           <div class="div-company-left">
             <div class="div-company-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg></div>
             <div>
-              <div class="div-company-label">Company Account â€” Current Balance</div>
+              <div class="div-company-label">Company Account &mdash; Current Balance</div>
               <div class="div-company-value" id="divCompanyBalance">PKR 0</div>
-              <div class="div-company-sub">In âˆ’ Withdrawals âˆ’ Dividends = Actual balance</div>
+              <div class="div-company-sub">In &minus; Withdrawals &minus; Dividends = Actual balance</div>
             </div>
           </div>
           <div class="div-company-stats">
@@ -639,10 +639,10 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
         </div>
       </div>
       <div class="grid-2">
-        <div class="panel"><div class="panel-header"><div><div class="panel-title">Company Account Breakdown</div><div class="panel-subtitle">In âˆ’ Out âˆ’ Dividends = Balance</div></div></div><div class="panel-body" id="divCompanyBreakdown"></div></div>
+        <div class="panel"><div class="panel-header"><div><div class="panel-title">Company Account Breakdown</div><div class="panel-subtitle">In &minus; Out &minus; Dividends = Balance</div></div></div><div class="panel-body" id="divCompanyBreakdown"></div></div>
         <div class="panel"><div class="panel-header"><div><div class="panel-title">Remaining In Company Account</div><div class="panel-subtitle">Actual company balance</div></div></div><div class="panel-body" id="divCompanyRemaining"></div></div>
       </div>
-      <div class="panel"><div class="panel-header"><div><div class="panel-title">Dividend Register</div><div class="panel-subtitle">TEAMSKy 18K payment distribution</div></div></div><div class="table-wrap"><table><thead><tr><th>Partner</th><th>Date</th><th>Source</th><th>Amount Received</th><th>Status</th></tr></thead><tbody id="dividendTable"></tbody></table></div></div>
+      <div class="panel"><div class="panel-header"><div><div class="panel-title">Dividend Register</div><div class="panel-subtitle">All distributions to active partners</div></div></div><div class="table-wrap"><table><thead><tr><th>Partner</th><th>Date</th><th>Source</th><th>Amount Received</th><th>Status</th></tr></thead><tbody id="dividendTable"></tbody></table></div></div>
     </section>
 
     <!-- SETTINGS -->
@@ -650,10 +650,10 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
       <div class="panel"><div class="panel-header"><div><div class="panel-title">System Settings</div><div class="panel-subtitle">Current ledger configuration</div></div></div>
         <div class="panel-body"><div style="max-width:650px;display:grid;gap:15px">
           <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px"><div style="font-size:11px;color:var(--muted)">Company</div><strong style="display:block;margin-top:5px">DevProKit</strong></div>
-          <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px"><div style="font-size:11px;color:var(--muted)">Currency</div><strong style="display:block;margin-top:5px">PKR â€” Pakistani Rupee</strong></div>
+          <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px"><div style="font-size:11px;color:var(--muted)">Currency</div><strong style="display:block;margin-top:5px">PKR &mdash; Pakistani Rupee</strong></div>
           <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px"><div style="font-size:11px;color:var(--muted)">Active Partners</div><strong style="display:block;margin-top:5px">Arslan, Daniyal, Hashim</strong></div>
-          <div style="padding:14px;background:var(--danger-bg);border:1px solid #f5d5d5;border-radius:9px"><div style="font-size:11px;color:#a33b3b">Resigned Partners</div><strong style="display:block;margin-top:5px;color:#a33b3b">Touseef, Qasim â€” refunds pending</strong></div>
-          <div style="padding:14px;background:var(--info-bg);border:1px solid #c7dbfe;border-radius:9px"><div style="font-size:11px;color:#1d4ed8">Active Projects</div><strong style="display:block;margin-top:5px;color:#1d4ed8" id="settingsProjectList">â€”</strong></div>
+          <div style="padding:14px;background:var(--danger-bg);border:1px solid #f5d5d5;border-radius:9px"><div style="font-size:11px;color:#a33b3b">Resigned Partners</div><strong style="display:block;margin-top:5px;color:#a33b3b">Touseef, Qasim &mdash; refunds pending</strong></div>
+          <div style="padding:14px;background:var(--info-bg);border:1px solid #c7dbfe;border-radius:9px"><div style="font-size:11px;color:#1d4ed8">Active Projects</div><strong style="display:block;margin-top:5px;color:#1d4ed8" id="settingsProjectList">&mdash;</strong></div>
           <div style="padding:14px;background:var(--warning-bg);border:1px solid #f0dcb4;border-radius:9px"><div style="font-size:11px;color:#8a5c0a">Company Account Balance</div><strong style="display:block;margin-top:5px;color:#8a5c0a" id="settingsCompanyBalance">PKR 0</strong></div>
           <div style="padding:14px;background:#f7f9f8;border:1px solid var(--border);border-radius:9px"><div style="font-size:11px;color:var(--muted)">Data Storage</div><strong style="display:block;margin-top:5px">Browser Local Storage</strong></div>
         </div></div>
@@ -675,7 +675,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
         <div class="field full"><label>Expense Details</label><input class="input" id="expenseDetails" placeholder="e.g. Office rent, domain renewal, printing..."></div>
         <div class="field"><label>Total Amount (PKR)</label><input class="input" type="number" min="0" step="0.01" id="expenseTotal" placeholder="0"></div>
       </div>
-      <div class="split-header"><div><div class="split-title">Partner Allocation (3 Active Partners)</div><div style="font-size:10px;color:var(--muted);margin-top:3px">Touseef and Qasim have resigned â€” only the remaining 3 partners share this expense.</div></div><button class="equal-btn" onclick="splitEqually()">Split Equally</button></div>
+      <div class="split-header"><div><div class="split-title">Partner Allocation (3 Active Partners)</div><div style="font-size:10px;color:var(--muted);margin-top:3px">Touseef and Qasim have resigned &mdash; only the remaining 3 partners share this expense.</div></div><button class="equal-btn" onclick="splitEqually()">Split Equally</button></div>
       <div class="split-grid" id="splitGrid"></div>
       <div class="split-summary"><span>Total allocated</span><strong id="splitTotal">PKR 0</strong></div>
     </div>
@@ -691,10 +691,10 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
       <input type="hidden" id="companyTxnId">
       <div class="form-grid">
         <div class="field"><label>Date</label><input class="input" type="date" id="companyTxnDate"></div>
-        <div class="field"><label>Type</label><select class="select" id="companyTxnType"><option value="deposit">Deposit â€” Advance received from client</option><option value="withdrawal">Withdrawal â€” Expense paid from company account</option></select></div>
+        <div class="field"><label>Type</label><select class="select" id="companyTxnType"><option value="deposit">Deposit &mdash; Advance received from client</option><option value="withdrawal">Withdrawal &mdash; Expense paid from company account</option></select></div>
         <div class="field full"><label>Description</label><input class="input" id="companyTxnDescription" placeholder="e.g. Alliance Logistics advance, hosting payment..."></div>
         <div class="field"><label>Amount (PKR)</label><input class="input" type="number" min="0" step="0.01" id="companyTxnAmount" placeholder="0"></div>
-        <div class="field"><label>Related Project (optional)</label><select class="select" id="companyTxnProject"><option value="">â€” None â€”</option></select></div>
+        <div class="field"><label>Related Project (optional)</label><select class="select" id="companyTxnProject"><option value="">&mdash; None &mdash;</option></select></div>
       </div>
       <div class="split-summary" style="margin-top:16px"><span>Balance impact</span><strong id="companyTxnImpactPreview">PKR 0</strong></div>
     </div>
@@ -720,7 +720,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
         <div class="field"><label>Project Deal Value (auto)</label><input class="input" type="text" id="projectTotalDisplay" placeholder="Auto-calculated" readonly style="background:#f7f9f8;color:var(--muted)"></div>
         <div class="field full"><label>Notes</label><textarea id="projectNotes" placeholder="Any project notes, scope, deadlines..."></textarea></div>
       </div>
-      <div class="split-summary" style="margin-top:16px"><span>Remaining balance (total âˆ’ paid)</span><strong id="projectPendingPreview">PKR 0</strong></div>
+      <div class="split-summary" style="margin-top:16px"><span>Remaining balance (total &minus; paid)</span><strong id="projectPendingPreview">PKR 0</strong></div>
     </div>
     <div class="modal-footer"><button class="secondary-btn" onclick="closeProjectForm()">Cancel</button><button class="primary-btn" style="margin-left:0" onclick="saveProject()">Save Project</button></div>
   </div>
@@ -803,7 +803,8 @@ function defaultData(){
       {id:"d1",date:"2026-10-13",source:"TEAMSKy Logistic",totalAmount:18000,perPartner:6000,partners:["Arslan","Daniyal","Hashim"],description:"TEAMSKy 18K payment divided equally among 3 active partners"},
       {id:"d2",date:"2026-10-15",source:"Company Account",totalAmount:30000,perPartner:10000,partners:["Arslan","Daniyal","Hashim"],description:"Company account se 30,000 distributed - 10,000 each to Arslan, Daniyal, Hashim"},
       {id:"d3",date:"2026-10-15",source:"ASR Logistics",totalAmount:20000,perPartner:6666.67,partners:["Arslan","Daniyal","Hashim"],description:"ASR Logistics 20,000 advance divided equally - 6,667 each to Arslan, Daniyal, Hashim"},
-      {id:"d4",date:"2026-11-08",source:"RAM Courier Service — Company Account",totalAmount:33000,perPartner:11000,partners:["Arslan","Daniyal","Hashim"],description:"RAM Courier 33,000 divided equally among the 3 active partners"}
+      {id:"d4",date:"2026-11-08",source:"RAM Courier Service — Company Account",totalAmount:33000,perPartner:11000,partners:["Arslan","Daniyal","Hashim"],description:"RAM Courier 33,000 divided equally among the 3 active partners"},
+      {id:"d5",date:"2026-11-03",source:"Company Account",totalAmount:25000,perPartner:8333.33,partners:["Arslan","Daniyal","Hashim"],description:"Company account 25,000 divided equally among 3 active partners — 8,333 each, balance now 0"}
     ],
     monthlyPayments:[
       {id:"m3",projectId:"p4",client:"SKY Logistics (QCS)",amount:7000,date:"2026-10-12",period:"2026-10",notes:"October monthly server fee"},
@@ -817,15 +818,15 @@ function defaultData(){
   };
 }
 function loadState(){
-  state = defaultData(); 
+  state = defaultData();
   applyRamMonthlySetup();
   applyRamDistribution();
   applyPartnerSettlement();
-  render(); // <--- Ye line add karein
+  render();
 }
 
 function normalizeExpense(e){return{id:e.id||("e"+Date.now()+Math.random()),date:e.date||new Date().toISOString().split("T")[0],category:e.category||"Other",details:e.details||"Untitled",total:Number(e.total||0),splits:e.splits&&typeof e.splits==="object"?e.splits:{}};}
-function normalizeProject(p){return{id:p.id||("p"+Date.now()+Math.random()),name:p.name||"Untitled",client:p.client||"â€”",status:p.status||"In Progress",date:p.date||new Date().toISOString().split("T")[0],fees:Number(p.fees||p.total||0),monthlyFee:Number(p.monthlyFee||0),monthlyDueDate:p.monthlyDueDate||"",advance:Number(p.advance||0),notes:p.notes||""};}
+function normalizeProject(p){return{id:p.id||("p"+Date.now()+Math.random()),name:p.name||"Untitled",client:p.client||"—",status:p.status||"In Progress",date:p.date||new Date().toISOString().split("T")[0],fees:Number(p.fees||p.total||0),monthlyFee:Number(p.monthlyFee||0),monthlyDueDate:p.monthlyDueDate||"",advance:Number(p.advance||0),notes:p.notes||""};}
 function applyRamMonthlySetup(){
   const ramProject=(state.projects||[]).find(p=>p.id==="p3"||String(p.client||"").toLowerCase()==="ram courier");
   if(ramProject&&Number(ramProject.monthlyFee||0)===0&&!ramProject.monthlyDueDate){
@@ -835,8 +836,10 @@ function applyRamMonthlySetup(){
 }
 function applyRamDistribution(){
   if(!Array.isArray(state.dividends))state.dividends=[];
-  const exists=state.dividends.some(d=>d.id==="d4"||(d.date==="2026-11-08"&&d.source==="RAM Courier Service â€” Company Account"&&Number(d.totalAmount)===33000));
-  if(!exists)state.dividends.push({id:"d4",date:"2026-11-08",source:"RAM Courier Service â€” Company Account",totalAmount:33000,perPartner:11000,partners:[...ACTIVE_FRIENDS],description:"RAM Courier 33,000 divided equally among the 3 active partners"});
+  const exists=state.dividends.some(d=>d.id==="d4"||(d.date==="2026-11-08"&&d.source==="RAM Courier Service — Company Account"&&Number(d.totalAmount)===33000));
+  if(!exists)state.dividends.push({id:"d4",date:"2026-11-08",source:"RAM Courier Service — Company Account",totalAmount:33000,perPartner:11000,partners:[...ACTIVE_FRIENDS],description:"RAM Courier 33,000 divided equally among the 3 active partners"});
+  const exists5=state.dividends.some(d=>d.id==="d5");
+  if(!exists5)state.dividends.push({id:"d5",date:"2026-11-03",source:"Company Account",totalAmount:25000,perPartner:8333.33,partners:[...ACTIVE_FRIENDS],description:"Company account 25,000 divided equally among 3 active partners — 8,333 each, balance now 0"});
 }
 function applyPartnerSettlement(){
   if(!Array.isArray(state.partnerPayments))state.partnerPayments=[];
@@ -860,14 +863,12 @@ function normalizeMonthlyPayment(m){return{id:m.id||("m"+Date.now()+Math.random(
 function normalizePartnerPayment(p){return{id:p.id||("pp"+Date.now()+Math.random()),partner:p.partner||"",amount:Number(p.amount||0),date:p.date||new Date().toISOString().split("T")[0],notes:p.notes||""};}
 function saveState(msg=false){ if(msg) showToast("Live mode active"); }
 function money(v){return "PKR "+Number(v||0).toLocaleString("en-PK",{maximumFractionDigits:2});}
-function dateFormat(d){if(!d)return "â€”";const dt=new Date(d+"T00:00:00");if(isNaN(dt.getTime()))return "â€”";return dt.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});}
+function dateFormat(d){if(!d)return "—";const dt=new Date(d+"T00:00:00");if(isNaN(dt.getTime()))return "—";return dt.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});}
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
 function projectTotal(p){
-  // RAM Courier ne abhi server fee advance nahi di, isliye uska total sirf project fees hoga
   if(p.client && p.client.toLowerCase() === "ram courier"){
-    return Number(p.fees||0); 
+    return Number(p.fees||0);
   }
-  // Baaki sab ke liye Total Deal = Project Fees + First Month Server Fee
   return Number(p.fees||0) + Number(p.monthlyFee||0);
 }
 function projectRemaining(p){return Math.max(0,projectTotal(p)-Number(p.advance||0));}
@@ -915,7 +916,7 @@ const pageInfo={
   company:{title:"Company Account",subtitle:"Advance money held and spent from company account"},
   projects:{title:"Projects",subtitle:"Client projects, fee structure and payment status"},
   monthly:{title:"Monthly Payments",subtitle:"Track monthly server fees, exact payment dates and renewal alerts"},
-  projfin:{title:"Project Financials",subtitle:"Detailed breakdown â€” fees, server costs, payments and outstanding balances"},
+  projfin:{title:"Project Financials",subtitle:"Detailed breakdown — fees, server costs, payments and outstanding balances"},
   expenses:{title:"Expenses",subtitle:"Manage and review business transactions"},
   partners:{title:"Partner Accounts",subtitle:"Contribution and settlement overview"},
   reports:{title:"Reports",subtitle:"Financial reporting and analysis"},
@@ -935,7 +936,6 @@ function switchPage(page){
   render();
 }
 
-/* ============ MONTHLY PAYMENT LOGIC ============ */
 function getNextDueDate(lastPaidDate){
   if(!lastPaidDate) return null;
   const d = new Date(lastPaidDate+"T00:00:00");
@@ -971,8 +971,6 @@ function computeMonthlySchedule(){
 function renderMonthly(){
   const {schedule,monthlyProjects,payments,today}=computeMonthlySchedule();
   const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-
-  // Totals
   const totalRecurring=monthlyProjects.reduce((sum,p)=>sum+Number(p.monthlyFee||0),0);
   const currentMonth=today.toISOString().slice(0,7);
   let expected=0,received=0;
@@ -982,19 +980,10 @@ function renderMonthly(){
     if(paidThis) received+=Number(paidThis.amount||0);
   });
   const pending=Math.max(0,expected-received);
-
-  s("monthlyTotal",money(totalRecurring));
-  s("monthlyPaid",money(received));
-  s("monthlyPending",money(pending));
-  s("mTotalRecurring",money(totalRecurring));
-  s("mCollected",money(received));
-  s("mPending",money(pending));
-
-  // Next due
+  s("monthlyTotal",money(totalRecurring));s("monthlyPaid",money(received));s("monthlyPending",money(pending));
+  s("mTotalRecurring",money(totalRecurring));s("mCollected",money(received));s("mPending",money(pending));
   const upcoming=schedule.find(x=>x.nextDue && x.daysLeft>=0);
-  s("mNextDue",upcoming?dateFormat(toISODate(upcoming.nextDue)):"â€”");
-
-  // Alert banner
+  s("mNextDue",upcoming?dateFormat(toISODate(upcoming.nextDue)):"—");
   const alertBanner=document.getElementById("monthlyAlertBanner");
   const alertText=document.getElementById("monthlyAlertText");
   const alertDot=document.getElementById("monthlyAlertDot");
@@ -1010,9 +999,9 @@ function renderMonthly(){
         if(x.daysLeft<0) status=`OVERDUE by ${Math.abs(x.daysLeft)} day${Math.abs(x.daysLeft)===1?"":"s"}`;
         else if(x.daysLeft===0) status="DUE TODAY";
         else status=`${x.daysLeft} day${x.daysLeft===1?"":"s"} left`;
-        return `<div style="margin-top:4px"><strong>${escapeHtml(x.project.client)}</strong> â€” ${status} (${dateFormat(toISODate(x.nextDue))}) â€¢ ${money(x.project.monthlyFee)}/mo</div>`;
+        return `<div style="margin-top:4px"><strong>${escapeHtml(x.project.client)}</strong> — ${status} (${dateFormat(toISODate(x.nextDue))}) &bull; ${money(x.project.monthlyFee)}/mo</div>`;
       }).join("");
-      alertText.innerHTML=`<strong>âš  Monthly renewal${dueSoon.length===1?"":"s"} need attention!</strong>${lines}`;
+      alertText.innerHTML=`<strong>&#9888; Monthly renewal${dueSoon.length===1?"":"s"} need attention!</strong>${lines}`;
       if(alertDot)alertDot.style.display="inline-block";
     } else {
       alertBanner.style.display="none";
@@ -1023,32 +1012,30 @@ function renderMonthly(){
         const cls=overdue.length?"danger":"warn";
         dashboardAlertBox.innerHTML=`<div class="alert-banner show ${cls}">
           <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
-          <div><strong>âš  Monthly renewal${dueSoon.length===1?"":"s"} approaching!</strong>
+          <div><strong>&#9888; Monthly renewal${dueSoon.length===1?"":"s"} approaching!</strong>
           ${dueSoon.map(x=>{
             let status=x.daysLeft<0?`OVERDUE ${Math.abs(x.daysLeft)}d`:x.daysLeft===0?"DUE TODAY":`${x.daysLeft}d left`;
-            return `<div style="margin-top:4px"><strong>${escapeHtml(x.project.client)}</strong> â€” ${status} (${dateFormat(toISODate(x.nextDue))})</div>`;
+            return `<div style="margin-top:4px"><strong>${escapeHtml(x.project.client)}</strong> — ${status} (${dateFormat(toISODate(x.nextDue))})</div>`;
           }).join("")}
-          <div style="margin-top:8px"><button class="secondary-btn" style="height:30px;padding:0 10px;font-size:10px" onclick="switchPage('monthly')">View Monthly Payments â†’</button></div>
+          <div style="margin-top:8px"><button class="secondary-btn" style="height:30px;padding:0 10px;font-size:10px" onclick="switchPage('monthly')">View Monthly Payments &rarr;</button></div>
           </div></div>`;
       } else {
         dashboardAlertBox.innerHTML="";
       }
     }
   }
-
-  // *** PAID TABLE â€” show ALL received payments, newest first ***
   const paidTable=document.getElementById("monthlyPaidTable");
   if(paidTable){
     const recentPayments=[...payments].sort((a,b)=>b.date.localeCompare(a.date));
     const sub=document.getElementById("mPaidSubtitle");
-    if(sub)sub.textContent=`All received monthly payments â€” newest first (${recentPayments.length} total)`;
+    if(sub)sub.textContent=`All received monthly payments — newest first (${recentPayments.length} total)`;
     if(!recentPayments.length){
       paidTable.innerHTML=`<tr><td colspan="6"><div class="empty"><h3>No monthly payments received yet</h3><p>Recorded payments will appear here.</p></div></td></tr>`;
     } else {
       paidTable.innerHTML=recentPayments.map((p,i)=>{
         const nextDue=getNextDueDate(p.date);
         const proj=(state.projects||[]).find(x=>x.id===p.projectId);
-        const periodLabel=p.period?new Date(p.period+"-01T00:00:00").toLocaleDateString("en-PK",{month:"long",year:"numeric"}):"â€”";
+        const periodLabel=p.period?new Date(p.period+"-01T00:00:00").toLocaleDateString("en-PK",{month:"long",year:"numeric"}):"—";
         const isCurrent=p.period===currentMonth;
         const isCurrentDate=p.date.slice(0,7)===currentMonth;
         return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both">
@@ -1057,13 +1044,11 @@ function renderMonthly(){
           <td><span class="month-tag ${isCurrent?"current":""}">${escapeHtml(periodLabel)}</span></td>
           <td class="amount positive">${money(p.amount)}</td>
           <td class="muted">${dateFormat(toISODate(nextDue))}</td>
-          <td><span class="badge paid">âœ“ Received</span></td>
+          <td><span class="badge paid">&#10003; Received</span></td>
         </tr>`;
       }).join("");
     }
   }
-
-  // Schedule table
   const schedTable=document.getElementById("monthlyScheduleTable");
   if(schedTable){
     if(!schedule.length){
@@ -1072,27 +1057,18 @@ function renderMonthly(){
       schedTable.innerHTML=schedule.map((x,i)=>{
         const p=x.project;
         let statusBadge=`<span class="badge settled">No payment yet</span>`;
-        let daysChip=`<span class="muted">â€”</span>`;
+        let daysChip=`<span class="muted">—</span>`;
         if(x.nextDue){
-          if(x.daysLeft<0){
-            statusBadge=`<span class="badge overdue">âš  Overdue</span>`;
-            daysChip=`<span class="days-chip danger">${Math.abs(x.daysLeft)}d late</span>`;
-          } else if(x.daysLeft===0){
-            statusBadge=`<span class="badge due">Due Today</span>`;
-            daysChip=`<span class="days-chip today">TODAY</span>`;
-          } else if(x.daysLeft<=7){
-            statusBadge=`<span class="badge due">Due Soon</span>`;
-            daysChip=`<span class="days-chip warn">${x.daysLeft}d</span>`;
-          } else {
-            statusBadge=`<span class="badge paid">Upcoming</span>`;
-            daysChip=`<span class="days-chip safe">${x.daysLeft}d</span>`;
-          }
+          if(x.daysLeft<0){statusBadge=`<span class="badge overdue">&#9888; Overdue</span>`;daysChip=`<span class="days-chip danger">${Math.abs(x.daysLeft)}d late</span>`;}
+          else if(x.daysLeft===0){statusBadge=`<span class="badge due">Due Today</span>`;daysChip=`<span class="days-chip today">TODAY</span>`;}
+          else if(x.daysLeft<=7){statusBadge=`<span class="badge due">Due Soon</span>`;daysChip=`<span class="days-chip warn">${x.daysLeft}d</span>`;}
+          else{statusBadge=`<span class="badge paid">Upcoming</span>`;daysChip=`<span class="days-chip safe">${x.daysLeft}d</span>`;}
         }
         return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both">
           <td><div class="expense-description"><div class="expense-icon" style="background:var(--info-bg);color:var(--info)"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="11" width="20" height="5" rx="1"/><path d="M6 6h.01M6 14h.01"/></svg></div><div><div class="expense-name">${escapeHtml(p.client)}</div><div class="expense-category">${escapeHtml(p.name)}</div></div></div></td>
           <td class="amount" style="color:var(--info)">${money(p.monthlyFee)}<span style="font-size:10px;color:var(--muted)">/mo</span></td>
-          <td class="muted">${x.lastPay?dateFormat(x.lastPay.date):"â€”"}</td>
-          <td class="amount">${x.nextDue?dateFormat(toISODate(x.nextDue)):"â€”"}</td>
+          <td class="muted">${x.lastPay?dateFormat(x.lastPay.date):"—"}</td>
+          <td class="amount">${x.nextDue?dateFormat(toISODate(x.nextDue)):"—"}</td>
           <td>${daysChip}</td>
           <td>${statusBadge}</td>
           <td><div class="action-group"><button class="icon-btn" onclick="openMonthlyPaymentForm('${p.id}')" title="Record payment"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></td>
@@ -1100,8 +1076,6 @@ function renderMonthly(){
       }).join("");
     }
   }
-
-  // History table
   const histTable=document.getElementById("monthlyHistoryTable");
   const histCount=document.getElementById("monthlyHistoryCount");
   if(histTable){
@@ -1113,9 +1087,9 @@ function renderMonthly(){
       histTable.innerHTML=sorted.map((p,i)=>`<tr style="animation:fadeUp .4s var(--ease) ${i*.04}s both">
         <td class="muted">${dateFormat(p.date)}</td>
         <td><strong>${escapeHtml(p.client)}</strong></td>
-        <td><span class="month-tag ${p.period===currentMonth?"current":""}">${escapeHtml(p.period||"â€”")}</span></td>
+        <td><span class="month-tag ${p.period===currentMonth?"current":""}">${escapeHtml(p.period||"—")}</span></td>
         <td class="amount positive">${money(p.amount)}</td>
-        <td class="muted">${escapeHtml(p.notes||"â€”")}</td>
+        <td class="muted">${escapeHtml(p.notes||"—")}</td>
         <td><div class="action-group"><button class="icon-btn" onclick="editMonthlyPayment('${p.id}')" title="Edit"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteMonthlyPayment('${p.id}')" title="Delete"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td>
       </tr>`).join("");
     }
@@ -1126,13 +1100,8 @@ function openMonthlyPaymentForm(projectId){
   const sel=document.getElementById("monthlyPaymentProject");
   if(!sel)return;
   const monthlyProjects=(state.projects||[]).filter(p=>Number(p.monthlyFee||0)>0);
-  if(!monthlyProjects.length){
-    showToast("Add a project with monthly fee first");
-    return;
-  }
-  sel.innerHTML=monthlyProjects.map(p=>
-    `<option value="${escapeHtml(p.id)}" ${p.id===projectId?"selected":""}>${escapeHtml(p.client)} â€” ${money(p.monthlyFee)}/mo</option>`
-  ).join("");
+  if(!monthlyProjects.length){showToast("Add a project with monthly fee first");return;}
+  sel.innerHTML=monthlyProjects.map(p=>`<option value="${escapeHtml(p.id)}" ${p.id===projectId?"selected":""}>${escapeHtml(p.client)} — ${money(p.monthlyFee)}/mo</option>`).join("");
   document.getElementById("monthlyPaymentId").value="";
   const today=new Date();
   document.getElementById("monthlyPaymentDate").value=today.toISOString().split("T")[0];
@@ -1158,14 +1127,8 @@ function editMonthlyPayment(id){
   document.getElementById("monthlyPaymentFormTitle").textContent="Edit Monthly Payment";
   updateMonthlyImpact();
 }
-function updateMonthlyImpact(){
-  const a=Number((document.getElementById("monthlyPaymentAmount")||{}).value||0);
-  const el=document.getElementById("monthlyPaymentImpact");
-  if(el)el.textContent="+ "+money(a);
-}
-function closeMonthlyPaymentForm(){
-  document.getElementById("monthlyPaymentOverlay").classList.remove("show");
-}
+function updateMonthlyImpact(){const a=Number((document.getElementById("monthlyPaymentAmount")||{}).value||0);const el=document.getElementById("monthlyPaymentImpact");if(el)el.textContent="+ "+money(a);}
+function closeMonthlyPaymentForm(){document.getElementById("monthlyPaymentOverlay").classList.remove("show");}
 function saveMonthlyPayment(){
   const id=document.getElementById("monthlyPaymentId").value;
   const projectId=document.getElementById("monthlyPaymentProject").value;
@@ -1177,46 +1140,13 @@ function saveMonthlyPayment(){
   if(!date){showToast("Select a date");return;}
   if(amount<=0){showToast("Enter a valid amount");return;}
   const proj=(state.projects||[]).find(p=>p.id===projectId);
-  const payment={
-    id: id||("m"+Date.now()),
-    projectId,
-    client: proj?proj.client:"Unknown",
-    amount,
-    date,
-    period,
-    notes
-  };
+  const payment={id:id||("m"+Date.now()),projectId,client:proj?proj.client:"Unknown",amount,date,period,notes};
   if(!Array.isArray(state.monthlyPayments))state.monthlyPayments=[];
-  if(id){
-    const idx=state.monthlyPayments.findIndex(x=>x.id===id);
-    if(idx!==-1)state.monthlyPayments[idx]=payment;
-    showToast("Monthly payment updated");
-  } else {
-    state.monthlyPayments.push(payment);
-    if(!Array.isArray(state.companyTxns))state.companyTxns=[];
-    state.companyTxns.push({
-      id:"ct"+Date.now()+Math.random().toString(36).slice(2,6),
-      date,
-      type:"deposit",
-      description:`${payment.client} â€” Monthly server fee (${period})`,
-      amount,
-      projectId
-    });
-    showToast("Monthly payment recorded & added to company account");
-  }
-  saveState();
-  closeMonthlyPaymentForm();
-  render();
+  if(id){const idx=state.monthlyPayments.findIndex(x=>x.id===id);if(idx!==-1)state.monthlyPayments[idx]=payment;showToast("Monthly payment updated");}
+  else{state.monthlyPayments.push(payment);if(!Array.isArray(state.companyTxns))state.companyTxns=[];state.companyTxns.push({id:"ct"+Date.now()+Math.random().toString(36).slice(2,6),date,type:"deposit",description:`${payment.client} — Monthly server fee (${period})`,amount,projectId});showToast("Monthly payment recorded & added to company account");}
+  saveState();closeMonthlyPaymentForm();render();
 }
-function askDeleteMonthlyPayment(id){
-  deleteId=id;
-  deleteType="monthlyPayment";
-  document.getElementById("deleteTitle").textContent="Delete Monthly Payment?";
-  document.getElementById("deleteText").textContent="This payment record will be removed. Note: the linked company deposit will remain.";
-  document.getElementById("deleteOverlay").classList.add("show");
-}
-
-/* ============ OTHER RENDERERS ============ */
+function askDeleteMonthlyPayment(id){deleteId=id;deleteType="monthlyPayment";document.getElementById("deleteTitle").textContent="Delete Monthly Payment?";document.getElementById("deleteText").textContent="This payment record will be removed. Note: the linked company deposit will remain.";document.getElementById("deleteOverlay").classList.add("show");}
 
 function renderDividends(){
   const dividends=state.dividends||[];
@@ -1227,18 +1157,15 @@ function renderDividends(){
   s("divPerPartner",money(dividends.length?totalReceived/ACTIVE_FRIENDS.length:0));
   s("divPartnerCount",ACTIVE_FRIENDS.length);
   const cards=document.getElementById("dividendCards");
-  if(cards){cards.innerHTML=totalPerPartner.map((item,i)=>`<div class="partner-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both;margin-bottom:14px"><div class="avatar">${escapeHtml(item.partner.substring(0,2).toUpperCase())}</div><div class="partner-name">${escapeHtml(item.partner)}</div><div class="partner-label">Active Partner</div><div class="partner-value positive">${money(item.amount)}</div><div class="partner-stat"><span>From Dividends</span><strong>${dividends.filter(d=>d.partners.includes(item.partner)).length} payment</strong></div></div>`).join("");}
+  if(cards){cards.innerHTML=totalPerPartner.map((item,i)=>`<div class="partner-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both;margin-bottom:14px"><div class="avatar">${escapeHtml(item.partner.substring(0,2).toUpperCase())}</div><div class="partner-name">${escapeHtml(item.partner)}</div><div class="partner-label">Active Partner</div><div class="partner-value positive">${money(item.amount)}</div><div class="partner-stat"><span>From Dividends</span><strong>${dividends.filter(d=>d.partners.includes(item.partner)).length} payments</strong></div></div>`).join("");}
   const math=document.getElementById("dividendMath");
-  if(math){math.innerHTML=`<div style="display:grid;gap:15px">${dividends.map(d=>`<div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">${escapeHtml(d.source)} (${dateFormat(d.date)})</span><strong>${money(d.totalAmount)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">â†³ Per Partner</span><strong class="positive">${money(d.perPartner)}</strong></div><div style="height:1px;background:var(--border);margin:8px 0"></div>`).join("")}<div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Total Received</span><strong>${money(totalReceived)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Active Partners</span><strong>${ACTIVE_FRIENDS.length}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Per Partner Total</span><strong class="positive">${money(totalReceived/ACTIVE_FRIENDS.length)}</strong></div></div>`;}
+  if(math){math.innerHTML=`<div style="display:grid;gap:15px">${dividends.map(d=>`<div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">${escapeHtml(d.source)} (${dateFormat(d.date)})</span><strong>${money(d.totalAmount)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">&rarr; Per Partner</span><strong class="positive">${money(d.perPartner)}</strong></div><div style="height:1px;background:var(--border);margin:8px 0"></div>`).join("")}<div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Total Received</span><strong>${money(totalReceived)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Active Partners</span><strong>${ACTIVE_FRIENDS.length}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Per Partner Total</span><strong class="positive">${money(totalReceived/ACTIVE_FRIENDS.length)}</strong></div></div>`;}
   const company=computeCompanyBalance();
-  s("divCompanyBalance",money(company.balance));
-  s("divCompanyTotalIn",money(company.totalIn));
-  s("divCompanyTotalOut",money(company.totalOut));
-  s("divCompanyDividendOut",money(company.dividendOut));
+  s("divCompanyBalance",money(company.balance));s("divCompanyTotalIn",money(company.totalIn));s("divCompanyTotalOut",money(company.totalOut));s("divCompanyDividendOut",money(company.dividendOut));
   const breakdown=document.getElementById("divCompanyBreakdown");
   if(breakdown){breakdown.innerHTML=`<div style="display:grid;gap:15px"><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Total Deposits (In)</span><strong class="positive">${money(company.totalIn)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Total Withdrawals (Out)</span><strong class="negative">${money(company.totalOut)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Dividends Distributed</span><strong class="negative">${money(company.dividendOut)}</strong></div><div style="height:1px;background:var(--border)"></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Current Company Balance</span><strong class="positive">${money(company.balance)}</strong></div></div>`;}
   const remaining=document.getElementById("divCompanyRemaining");
-  if(remaining){remaining.innerHTML=`<div style="text-align:center;padding:10px 0"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Company Account Mein Bacha</div><div style="font-size:32px;font-weight:800;margin-top:10px;color:var(--primary-dark)">${money(company.balance)}</div><div style="font-size:11px;color:var(--muted);margin-top:8px">In âˆ’ Withdrawals âˆ’ Dividends</div><div style="height:1px;background:var(--border);margin:16px 0"></div><div style="display:flex;justify-content:space-between;font-size:12px"><span class="muted">${money(company.totalIn)} âˆ’ ${money(company.totalOut)} âˆ’ ${money(company.dividendOut)}</span><strong class="positive">${money(company.balance)}</strong></div></div>`;}
+  if(remaining){remaining.innerHTML=`<div style="text-align:center;padding:10px 0"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Company Account Mein Bacha</div><div style="font-size:32px;font-weight:800;margin-top:10px;color:var(--primary-dark)">${money(company.balance)}</div><div style="font-size:11px;color:var(--muted);margin-top:8px">In &minus; Withdrawals &minus; Dividends</div><div style="height:1px;background:var(--border);margin:16px 0"></div><div style="display:flex;justify-content:space-between;font-size:12px"><span class="muted">${money(company.totalIn)} &minus; ${money(company.totalOut)} &minus; ${money(company.dividendOut)}</span><strong class="positive">${money(company.balance)}</strong></div></div>`;}
   const tbody=document.getElementById("dividendTable");
   if(tbody){const rows=[];dividends.forEach(d=>{d.partners.forEach(p=>{rows.push(`<tr><td><strong>${escapeHtml(p)}</strong></td><td class="muted">${dateFormat(d.date)}</td><td>${escapeHtml(d.source)}</td><td class="amount positive">${money(d.perPartner)}</td><td><span class="badge paid">Received</span></td></tr>`);});});tbody.innerHTML=rows.join("")||`<tr><td colspan="5"><div class="empty"><h3>No dividend records</h3></div></td></tr>`;}
 }
@@ -1247,20 +1174,14 @@ function renderCompanyAccount(){
   const c=computeCompanyBalance();
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
   animateValue(document.getElementById("companyBalanceValue"),c.balance);
-  set("companyTotalIn",money(c.totalIn));set("companyTotalOut",money(c.totalOut));
-  set("companyDividendOut",money(c.dividendOut));
+  set("companyTotalIn",money(c.totalIn));set("companyTotalOut",money(c.totalOut));set("companyDividendOut",money(c.dividendOut));
   const txCountEl=document.getElementById("companyTxCount");if(txCountEl)txCountEl.textContent=c.txnCount;
   animateValue(document.getElementById("kpiCompanyBalance"),c.balance);
   set("companyPageBalance",money(c.balance));set("companyPageIn",money(c.totalIn));set("companyPageOut",money(c.totalOut));set("companyPageDiv",money(c.dividendOut));
-  set("sumCompanyIn",money(c.totalIn));
-  set("sumCompanyOut",money(c.totalOut+c.dividendOut));
-  set("sumCompanyBalance",money(c.balance));
-  set("sumFormulaIn",money(c.totalIn));
-  set("sumFormulaOut",money(c.totalOut));
-  set("sumFormulaDiv",money(c.dividendOut));
-  set("sumFormulaBalance",money(c.balance));
+  set("sumCompanyIn",money(c.totalIn));set("sumCompanyOut",money(c.totalOut+c.dividendOut));set("sumCompanyBalance",money(c.balance));
+  set("sumFormulaIn",money(c.totalIn));set("sumFormulaOut",money(c.totalOut));set("sumFormulaDiv",money(c.dividendOut));set("sumFormulaBalance",money(c.balance));
   const sc=document.getElementById("companyStatsCards");
-  if(sc){sc.innerHTML=`<div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.02s both"><div class="avatar company">BAL</div><div class="partner-name">Current Balance</div><div class="partner-label">In âˆ’ Out âˆ’ Dividends</div><div class="partner-value">${money(c.balance)}</div><div class="partner-stat"><span>Status</span><strong class="${c.balance>=0?"positive":"negative"}">${c.balance>=0?"Available":"Overdrawn"}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.08s both"><div class="avatar">IN</div><div class="partner-name">Total Deposits</div><div class="partner-label">Advances from clients</div><div class="partner-value positive">${money(c.totalIn)}</div><div class="partner-stat"><span>Count</span><strong>${(state.companyTxns||[]).filter(t=>t.type==="deposit").length}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.14s both"><div class="avatar" style="background:var(--danger-bg);color:var(--danger)">OUT</div><div class="partner-name">Total Withdrawals</div><div class="partner-label">Paid from company account</div><div class="partner-value negative">${money(c.totalOut)}</div><div class="partner-stat"><span>Count</span><strong>${(state.companyTxns||[]).filter(t=>t.type==="withdrawal").length}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.20s both"><div class="avatar" style="background:var(--info-bg);color:var(--info)">DIV</div><div class="partner-name">Dividends Distributed</div><div class="partner-label">Given to partners</div><div class="partner-value negative">${money(c.dividendOut)}</div><div class="partner-stat"><span>Net balance</span><strong class="${c.balance>=0?"positive":"negative"}">${money(c.balance)}</strong></div></div>`;}
+  if(sc){sc.innerHTML=`<div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.02s both"><div class="avatar company">BAL</div><div class="partner-name">Current Balance</div><div class="partner-label">In &minus; Out &minus; Dividends</div><div class="partner-value">${money(c.balance)}</div><div class="partner-stat"><span>Status</span><strong class="${c.balance>=0?"positive":"negative"}">${c.balance>=0?"Available":"Overdrawn"}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.08s both"><div class="avatar">IN</div><div class="partner-name">Total Deposits</div><div class="partner-label">Advances from clients</div><div class="partner-value positive">${money(c.totalIn)}</div><div class="partner-stat"><span>Count</span><strong>${(state.companyTxns||[]).filter(t=>t.type==="deposit").length}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.14s both"><div class="avatar" style="background:var(--danger-bg);color:var(--danger)">OUT</div><div class="partner-name">Total Withdrawals</div><div class="partner-label">Paid from company account</div><div class="partner-value negative">${money(c.totalOut)}</div><div class="partner-stat"><span>Count</span><strong>${(state.companyTxns||[]).filter(t=>t.type==="withdrawal").length}</strong></div></div><div class="partner-card" style="animation:fadeUp .4s var(--ease) 0.20s both"><div class="avatar" style="background:var(--info-bg);color:var(--info)">DIV</div><div class="partner-name">Dividends Distributed</div><div class="partner-label">Given to partners</div><div class="partner-value negative">${money(c.dividendOut)}</div><div class="partner-stat"><span>Net balance</span><strong class="${c.balance>=0?"positive":"negative"}">${money(c.balance)}</strong></div></div>`;}
   const tbody=document.getElementById("companyTxnTable"),cntEl=document.getElementById("companyTxnCount");
   if(!tbody)return;
   const s=(document.getElementById("companySearch")||{}).value?.trim().toLowerCase()||"";
@@ -1273,7 +1194,7 @@ function renderCompanyAccount(){
   const allSorted=[...(state.companyTxns||[])].sort((a,b)=>(a.date||"").localeCompare(b.date||""));
   const runMap={};let run=0;
   allSorted.forEach(t=>{if(t.type==="deposit")run+=Number(t.amount||0);else run-=Number(t.amount||0);runMap[t.id]=run;});
-  tbody.innerHTML=txns.map((t,i)=>{const dep=t.type==="deposit",rb=runMap[t.id]??0;const lp=(state.projects||[]).find(p=>p.id===t.projectId);return `<tr style="animation:fadeUp .4s var(--ease) ${i*.04}s both"><td class="muted">${dateFormat(t.date)}</td><td><div class="expense-description"><div class="expense-icon" style="${dep?"":"background:var(--danger-bg);color:var(--danger)"}"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">${dep?'<path d="M12 19V5M5 12l7-7 7 7"/>':'<path d="M12 5v14M19 12l-7 7-7-7"/>'}</svg></div><div><div class="expense-name">${escapeHtml(t.description)}</div>${lp?`<div class="expense-category">${escapeHtml(lp.name)}</div>`:""}</div></div></td><td><span class="badge ${dep?"deposit":"withdrawal"}">${dep?"Deposit":"Withdrawal"}</span></td><td class="amount ${dep?"positive":"negative"}">${dep?"+":"âˆ’"} ${money(t.amount)}</td><td class="amount">${money(rb)}</td><td><div class="action-group"><button class="icon-btn" onclick="editCompanyTxn('${t.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteCompanyTxn('${t.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");
+  tbody.innerHTML=txns.map((t,i)=>{const dep=t.type==="deposit",rb=runMap[t.id]??0;const lp=(state.projects||[]).find(p=>p.id===t.projectId);return `<tr style="animation:fadeUp .4s var(--ease) ${i*.04}s both"><td class="muted">${dateFormat(t.date)}</td><td><div class="expense-description"><div class="expense-icon" style="${dep?"":"background:var(--danger-bg);color:var(--danger)"}"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">${dep?'<path d="M12 19V5M5 12l7-7 7 7"/>':'<path d="M12 5v14M19 12l-7 7-7-7"/>'}</svg></div><div><div class="expense-name">${escapeHtml(t.description)}</div>${lp?`<div class="expense-category">${escapeHtml(lp.name)}</div>`:""}</div></div></td><td><span class="badge ${dep?"deposit":"withdrawal"}">${dep?"Deposit":"Withdrawal"}</span></td><td class="amount ${dep?"positive":"negative"}">${dep?"+":"&minus;"} ${money(t.amount)}</td><td class="amount">${money(rb)}</td><td><div class="action-group"><button class="icon-btn" onclick="editCompanyTxn('${t.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteCompanyTxn('${t.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");
 }
 
 function renderDashboard(){
@@ -1296,7 +1217,7 @@ function renderCategoryOverview(){const box=document.getElementById("categoryOve
 function renderDashboardPartners(){const tbody=document.getElementById("dashboardPartners");if(!tbody)return;const data=compute();tbody.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const c=data.contributions[f],share=data.partnerShares[f],bal=c-share,prog=share?Math.min(100,Math.max(0,c/share*100)):0;let st="Settled",cls="settled";if(bal>0.01){st="Credit";cls="credit";}else if(bal<-0.01){st="Due";cls="due";}return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(f)}</strong></td><td class="amount">${money(c)}</td><td class="muted">${money(share)}</td><td class="amount ${bal>0?"positive":bal<0?"negative":""}">${money(bal)}</td><td><div class="progress"><div class="progress-fill" data-width="${prog}" style="width:0"></div></div></td><td><span class="badge ${cls}">${st}</span></td></tr>`;}).join("");setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);}
 function renderRecentTransactions(){const tbody=document.getElementById("recentTransactions");if(!tbody)return;const expenses=[...state.expenses].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,5);if(!expenses.length){tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No transactions found.</div></td></tr>`;return;}tbody.innerHTML=expenses.map((e,i)=>`<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td class="muted">${dateFormat(e.date)}</td><td><strong>${escapeHtml(e.details)}</strong></td><td><span class="badge expense">${escapeHtml(e.category)}</span></td><td class="amount">${money(e.total)}</td><td><span class="badge ${expensePaid(e)?"paid":"pending"}">${expensePaid(e)?"Paid":"Pending"}</span></td></tr>`).join("");}
 
-function renderProjects(){const data=compute();const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("projectCount",data.projects.length);s("projectAdvanceTotal",money(data.projectAdvance));s("projectPendingTotal",money(data.totalRemaining));const search=(document.getElementById("projectSearch")||{}).value?.trim().toLowerCase()||"";let projects=[...(state.projects||[])].sort((a,b)=>(b.date||"").localeCompare(a.date||""));if(search)projects=projects.filter(p=>(p.name||"").toLowerCase().includes(search)||(p.client||"").toLowerCase().includes(search));const cards=document.getElementById("projectCards"),tbody=document.getElementById("projectTable"),cnt=document.getElementById("projectTableCount");if(cnt)cnt.textContent=`${projects.length} project${projects.length===1?"":"s"}`;if(!projects.length){if(cards)cards.innerHTML=`<div class="panel" style="grid-column:1/-1"><div class="empty"><h3>No projects found</h3></div></div>`;if(tbody)tbody.innerHTML=`<tr><td colspan="9"><div class="empty"><h3>No projects yet</h3></div></td></tr>`;return;}if(cards){cards.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<div class="project-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="project-head"><div class="avatar project">${escapeHtml((p.client||p.name||"PR").substring(0,2).toUpperCase())}</div><div><div class="project-title">${escapeHtml(p.name)}</div><div class="project-client">${escapeHtml(p.client)}</div></div></div><span class="badge advance">${escapeHtml(p.status)}</span>${p.monthlyFee>0?`<div class="server-pill"><svg width="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="11" width="20" height="5" rx="1"/><path d="M6 6h.01M6 14h.01"/></svg> ${money(p.monthlyFee)}/mo server</div>`:""}<div class="project-amount">${money(p.advance)}</div><div class="project-meta"><span>Paid so far</span><strong>${dateFormat(p.date)}</strong></div><div class="project-meta"><span>Project fees</span><strong>${money(p.fees)}</strong></div><div class="project-meta"><span>Total deal</span><strong>${money(total)}</strong></div><div class="project-meta"><span>Remaining</span><strong class="${rem>0?"negative":"positive"}">${money(rem)}</strong></div></div>`;}).join("");}if(tbody){tbody.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(p.name)}</strong></td><td class="muted">${escapeHtml(p.client)}</td><td><span class="badge advance">${escapeHtml(p.status)}</span></td><td class="amount">${money(p.fees)}</td><td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"â€”"}</td><td class="amount">${money(total)}</td><td class="amount positive">${money(p.advance)}</td><td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td><td><div class="action-group"><button class="icon-btn" onclick="editProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");}}
+function renderProjects(){const data=compute();const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("projectCount",data.projects.length);s("projectAdvanceTotal",money(data.projectAdvance));s("projectPendingTotal",money(data.totalRemaining));const search=(document.getElementById("projectSearch")||{}).value?.trim().toLowerCase()||"";let projects=[...(state.projects||[])].sort((a,b)=>(b.date||"").localeCompare(a.date||""));if(search)projects=projects.filter(p=>(p.name||"").toLowerCase().includes(search)||(p.client||"").toLowerCase().includes(search));const cards=document.getElementById("projectCards"),tbody=document.getElementById("projectTable"),cnt=document.getElementById("projectTableCount");if(cnt)cnt.textContent=`${projects.length} project${projects.length===1?"":"s"}`;if(!projects.length){if(cards)cards.innerHTML=`<div class="panel" style="grid-column:1/-1"><div class="empty"><h3>No projects found</h3></div></div>`;if(tbody)tbody.innerHTML=`<tr><td colspan="9"><div class="empty"><h3>No projects yet</h3></div></td></tr>`;return;}if(cards){cards.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<div class="project-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="project-head"><div class="avatar project">${escapeHtml((p.client||p.name||"PR").substring(0,2).toUpperCase())}</div><div><div class="project-title">${escapeHtml(p.name)}</div><div class="project-client">${escapeHtml(p.client)}</div></div></div><span class="badge advance">${escapeHtml(p.status)}</span>${p.monthlyFee>0?`<div class="server-pill"><svg width="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="11" width="20" height="5" rx="1"/><path d="M6 6h.01M6 14h.01"/></svg> ${money(p.monthlyFee)}/mo server</div>`:""}<div class="project-amount">${money(p.advance)}</div><div class="project-meta"><span>Paid so far</span><strong>${dateFormat(p.date)}</strong></div><div class="project-meta"><span>Project fees</span><strong>${money(p.fees)}</strong></div><div class="project-meta"><span>Total deal</span><strong>${money(total)}</strong></div><div class="project-meta"><span>Remaining</span><strong class="${rem>0?"negative":"positive"}">${money(rem)}</strong></div></div>`;}).join("");}if(tbody){tbody.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p);return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(p.name)}</strong></td><td class="muted">${escapeHtml(p.client)}</td><td><span class="badge advance">${escapeHtml(p.status)}</span></td><td class="amount">${money(p.fees)}</td><td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</td><td class="amount">${money(total)}</td><td class="amount positive">${money(p.advance)}</td><td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td><td><div class="action-group"><button class="icon-btn" onclick="editProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDeleteProject('${p.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");}}
 
 function renderProjectFinancials(){
   const projects=state.projects||[];
@@ -1306,95 +1227,33 @@ function renderProjectFinancials(){
   const totalFees=projects.reduce((s,p)=>s+Number(p.fees||0),0);
   const totalMonthly=projects.reduce((s,p)=>s+Number(p.monthlyFee||0),0);
   const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  
-  s("pfTotalDeal",money(totalDeal));
-  s("pfTotalCollected",money(totalPaid));
-  s("pfTotalRemaining",money(totalRem));
-  
-  const pc=document.getElementById("pfProjectCount");
-  if(pc)pc.textContent=`All ${projects.length} projects with fee structure and payment status`;
-  
+  s("pfTotalDeal",money(totalDeal));s("pfTotalCollected",money(totalPaid));s("pfTotalRemaining",money(totalRem));
+  const pc=document.getElementById("pfProjectCount");if(pc)pc.textContent=`All ${projects.length} projects with fee structure and payment status`;
   const sc=document.getElementById("pfSummaryCards");
-  if(sc){
-    sc.innerHTML=`
-      <div class="report-card"><h3>Total Project Fees</h3><strong>${money(totalFees)}</strong></div>
-      <div class="report-card"><h3>Total Monthly Server Fees</h3><strong style="color:var(--info)">${money(totalMonthly)}<span style="font-size:12px;font-weight:400;color:var(--muted)">/mo</span></strong></div>
-      <div class="report-card"><h3>Total Collected</h3><strong class="positive">${money(totalPaid)}</strong></div>
-      <div class="report-card"><h3>Total Remaining</h3><strong class="negative">${money(totalRem)}</strong></div>
-    `;
-  }
-  
+  if(sc){sc.innerHTML=`<div class="report-card"><h3>Total Project Fees</h3><strong>${money(totalFees)}</strong></div><div class="report-card"><h3>Total Monthly Server Fees</h3><strong style="color:var(--info)">${money(totalMonthly)}<span style="font-size:12px;font-weight:400;color:var(--muted)">/mo</span></strong></div><div class="report-card"><h3>Total Collected</h3><strong class="positive">${money(totalPaid)}</strong></div><div class="report-card"><h3>Total Remaining</h3><strong class="negative">${money(totalRem)}</strong></div>`;}
   const pf=document.getElementById("pfProjectCards");
   if(pf){
     pf.innerHTML=projects.map((p,i)=>{
-      const total=projectTotal(p);
-      const rem=projectRemaining(p);
-      const pct=total?Math.round(Number(p.advance||0)/total*100):0;
-      
-      // Advance Breakdown Logic
-      let firstMonthServer = Math.min(Number(p.advance||0), Number(p.monthlyFee||0));
-      
-      // RAM Courier ka server fee advance nahi mila
-      if(p.client && p.client.toLowerCase() === "ram courier"){
-        firstMonthServer = 0;
-      }
-      
-      const fromProjectFees = Math.max(0, Number(p.advance||0) - firstMonthServer);
-      const serverShare = firstMonthServer;
-      const projAdvShare = fromProjectFees;
-
-      return `
-      <div class="proj-fin-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both">
-        <div class="pfin-head">
-          <div>
-            <div class="pfin-title">${escapeHtml(p.name)}</div>
-            <div class="pfin-client">${escapeHtml(p.client)}</div>
-          </div>
-          <div class="pfin-avatar">${escapeHtml((p.client||"PR").substring(0,2).toUpperCase())}</div>
-        </div>
-        <div class="pfin-row"><span class="pfin-label">Project Fees</span><span class="pfin-val">${money(p.fees)}</span></div>
-        <div class="pfin-row"><span class="pfin-label">Monthly Server Fee</span><span class="pfin-val blue">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</span></div>
-        <div class="pfin-row" style="font-weight:700"><span class="pfin-label">Total Deal (Fees + Server)</span><span class="pfin-val">${money(total)}</span></div>
-        <div class="pfin-divider"></div>
-        <div class="pfin-row"><span class="pfin-label">Total Paid</span><span class="pfin-val green">${money(p.advance)}</span></div>
-        ${serverShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">↳ Monthly Server Fee</span><span class="pfin-val blue" style="font-size:11px">${money(serverShare)}</span></div>`:``}
-        ${projAdvShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">↳ Project Advance</span><span class="pfin-val green" style="font-size:11px">${money(projAdvShare)}</span></div>`:``}
-        <div class="pfin-row"><span class="pfin-label">Remaining</span><span class="pfin-val ${rem>0?"red":"green"}">${money(rem)}</span></div>
-        <div class="pfin-row"><span class="pfin-label">Payment Progress</span><span class="pfin-val">${pct}%</span></div>
-        <div class="bar" style="margin-top:4px"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div>
-      </div>`;
+      const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;
+      let firstMonthServer=Math.min(Number(p.advance||0),Number(p.monthlyFee||0));
+      if(p.client&&p.client.toLowerCase()==="ram courier")firstMonthServer=0;
+      const fromProjectFees=Math.max(0,Number(p.advance||0)-firstMonthServer);
+      const serverShare=firstMonthServer,projAdvShare=fromProjectFees;
+      return `<div class="proj-fin-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="pfin-head"><div><div class="pfin-title">${escapeHtml(p.name)}</div><div class="pfin-client">${escapeHtml(p.client)}</div></div><div class="pfin-avatar">${escapeHtml((p.client||"PR").substring(0,2).toUpperCase())}</div></div><div class="pfin-row"><span class="pfin-label">Project Fees</span><span class="pfin-val">${money(p.fees)}</span></div><div class="pfin-row"><span class="pfin-label">Monthly Server Fee</span><span class="pfin-val blue">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</span></div><div class="pfin-row" style="font-weight:700"><span class="pfin-label">Total Deal</span><span class="pfin-val">${money(total)}</span></div><div class="pfin-divider"></div><div class="pfin-row"><span class="pfin-label">Total Paid</span><span class="pfin-val green">${money(p.advance)}</span></div>${serverShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">&rarr; Monthly Server Fee</span><span class="pfin-val blue" style="font-size:11px">${money(serverShare)}</span></div>`:``}${projAdvShare>0?`<div class="pfin-row" style="padding-left:12px"><span class="pfin-label" style="font-size:10px">&rarr; Project Advance</span><span class="pfin-val green" style="font-size:11px">${money(projAdvShare)}</span></div>`:``}<div class="pfin-row"><span class="pfin-label">Remaining</span><span class="pfin-val ${rem>0?"red":"green"}">${money(rem)}</span></div><div class="pfin-row"><span class="pfin-label">Payment Progress</span><span class="pfin-val">${pct}%</span></div><div class="bar" style="margin-top:4px"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div></div>`;
     }).join("");
     setTimeout(()=>pf.querySelectorAll(".bar-fill").forEach(b=>b.style.width=b.dataset.width+"%"),100);
   }
-  
   const tbody=document.getElementById("pfTable");
-  if(tbody){
-    tbody.innerHTML=projects.map((p,i)=>{
-      const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;
-      return `
-      <tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both">
-        <td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg></div><div><div class="expense-name">${escapeHtml(p.name)}</div><div class="expense-category">${escapeHtml(p.client)}</div></div></div></td>
-        <td class="amount">${money(p.fees)}</td>
-        <td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</td>
-        <td class="amount">${money(total)}</td>
-        <td class="amount positive">${money(p.advance)}</td>
-        <td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td>
-        <td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="max-width:80px"><div class="progress-fill" data-width="${pct}" style="width:0"></div></div><span style="font-size:11px;color:var(--muted)">${pct}%</span></div></td>
-      </tr>`;
-    }).join("");
-    setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);
-  }
+  if(tbody){tbody.innerHTML=projects.map((p,i)=>{const total=projectTotal(p),rem=projectRemaining(p),pct=total?Math.round(Number(p.advance||0)/total*100):0;return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6"/></svg></div><div><div class="expense-name">${escapeHtml(p.name)}</div><div class="expense-category">${escapeHtml(p.client)}</div></div></div></td><td class="amount">${money(p.fees)}</td><td class="amount" style="color:var(--info)">${p.monthlyFee>0?money(p.monthlyFee)+"/mo":"—"}</td><td class="amount">${money(total)}</td><td class="amount positive">${money(p.advance)}</td><td class="amount ${rem>0?"negative":"positive"}">${money(rem)}</td><td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="max-width:80px"><div class="progress-fill" data-width="${pct}" style="width:0"></div></div><span style="font-size:11px;color:var(--muted)">${pct}%</span></div></td></tr>`;}).join("");setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);}
 }
 
 function renderExpenses(){const search=(document.getElementById("expenseSearch")||{}).value?.trim().toLowerCase()||"";const cat=(document.getElementById("expenseCategoryFilter")||{}).value||"";let expenses=[...state.expenses].sort((a,b)=>(b.date||"").localeCompare(a.date||""));expenses=expenses.filter(e=>(!search||(e.details||"").toLowerCase().includes(search)||(e.category||"").toLowerCase().includes(search))&&(!cat||e.category===cat));const cnt=document.getElementById("expenseCount");if(cnt)cnt.textContent=`${expenses.length} transaction${expenses.length===1?"":"s"}`;const tbody=document.getElementById("expenseTable");if(!tbody)return;if(!expenses.length){tbody.innerHTML=`<tr><td colspan="7"><div class="empty"><h3>No expenses found</h3><p>Try changing your search or add a new expense.</p></div></td></tr>`;return;}tbody.innerHTML=expenses.map((e,i)=>{const partnerPaid=expensePartnerPaid(e),companyPaid=expenseCompanyPaid(e),paid=partnerPaid+companyPaid>=Number(e.total||0)-0.01;return `<tr style="animation:fadeUp .4s var(--ease) ${i*.04}s both"><td class="muted">${dateFormat(e.date)}</td><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><div><div class="expense-name">${escapeHtml(e.details)}</div><div class="expense-category">${escapeHtml(e.category)}</div></div></div></td><td><span class="badge expense">${escapeHtml(e.category)}</span></td><td class="amount">${money(e.total)}</td><td><div class="partner-chips">${ACTIVE_FRIENDS.map(f=>`<span class="chip">${escapeHtml(f)}: ${money(e.splits?.[f]?.amount||0).replace("PKR ","")}</span>`).join("")}${RESIGNED.map(f=>{const a=Number(e.splits?.[f]?.amount||0);return a>0?`<span class="chip resigned-chip">${escapeHtml(f)}: ${money(a).replace("PKR ","")}</span>`:"";}).join("")}</div><div style="font-size:9px;color:var(--muted);margin-top:5px">Paid: ${money(partnerPaid+companyPaid)} (Partners ${money(partnerPaid)} + Company ${money(companyPaid)})</div></td><td><span class="badge ${paid?"paid":"pending"}">${paid?"Paid":"Pending"}</span></td><td><div class="action-group"><button class="icon-btn" onclick="editExpense('${e.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDelete('${e.id}')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;}).join("");}
 
-function renderPartners(){const data=compute();const cards=document.getElementById("partnerCards"),tbody=document.getElementById("partnerTable");if(cards){cards.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const c=data.contributions[f],share=data.partnerShares[f],bal=c-share;return `<div class="partner-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="avatar">${escapeHtml(f.substring(0,2).toUpperCase())}</div><div class="partner-name">${escapeHtml(f)}</div><div class="partner-label">Active Partner</div><div class="partner-value">${money(c)}</div><div class="partner-stat"><span>Equal share (Ã·3)</span><strong>${money(share)}</strong></div><div class="partner-stat"><span>Balance</span><strong class="${bal>0?"positive":bal<0?"negative":""}">${money(bal)}</strong></div><div class="partner-stat"><span>Extra to pay</span><strong class="${data.dues[f]>0?"negative":"positive"}">${money(data.dues[f])}</strong></div></div>`;}).join("");}if(tbody){tbody.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const c=data.contributions[f],share=data.partnerShares[f],bal=c-share,prog=share?Math.min(100,Math.max(0,c/share*100)):0,cnt=state.expenses.filter(e=>Number(e.splits?.[f]?.amount||0)>0).length+(state.partnerPayments||[]).filter(p=>p.partner===f&&p.amount>0).length;let st="Settled",cls="settled";if(bal>0.01){st="Credit";cls="credit";}else if(bal<-0.01){st="Due";cls="due";}return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(f)}</strong></td><td>${cnt}</td><td class="amount">${money(c)}</td><td class="muted">${money(share)}</td><td class="amount ${bal>0?"positive":bal<0?"negative":""}">${money(bal)}</td><td><div class="progress"><div class="progress-fill" data-width="${prog}" style="width:0"></div></div></td><td><span class="badge ${cls}">${st}</span></td></tr>`;}).join("");setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);}}
-
-function renderResigned(){const data=compute();const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("resTotalExpenses",money(data.totalExpenses));s("resRefund",money(data.resignedPaid));s("resToCollect",money(data.totalDue));const pEl=document.getElementById("resignedProfile");if(pEl){pEl.innerHTML=RESIGNED.map(f=>{const paid=data.contributions[f];const os=FRIENDS.length?data.totalExpenses/FRIENDS.length:0;return `<div class="expense-description" style="margin-bottom:16px"><div class="avatar resigned" style="margin-bottom:0">${escapeHtml(f.substring(0,2).toUpperCase())}</div><div><div class="partner-name">${escapeHtml(f)}</div><div class="partner-label">Resigned Partner</div></div></div><div class="partner-stat"><span>Amount Paid</span><strong>${money(paid)}</strong></div><div class="partner-stat"><span>Old Share (Ã·5)</span><strong>${money(os)}</strong></div><div class="partner-stat"><span>Refund</span><strong class="negative">${money(paid)}</strong></div><div class="partner-stat"><span>Status</span><strong><span class="badge resigned">Resigned</span></strong></div>`;}).join("");}const mEl=document.getElementById("resignedMath");if(mEl){mEl.innerHTML=`<div style="display:grid;gap:15px"><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Total Expenses</span><strong>${money(data.totalExpenses)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Old Division</span><strong>${FRIENDS.length} Partners</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">New Division</span><strong>${ACTIVE_FRIENDS.length} Partners</strong></div><div style="height:1px;background:var(--border)"></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">New Equal Share / Partner</span><strong>${money(share)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">Refund To Resigned</span><strong class="negative">${money(data.resignedPaid)}</strong></div><div style="display:flex;justify-content:space-between"><span class="muted" style="font-size:11px">To Collect From 3 Partners</span><strong class="positive">${money(data.totalDue)}</strong></div></div>`;}const tbody=document.getElementById("resignedTable");if(tbody){tbody.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const paid=data.contributions[f],share=data.equalShare,extra=data.dues[f];let st="Settled",cls="settled";if(extra>0.01){st="Due";cls="due";}else if(extra<-0.01){st="Credit";cls="credit";}return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(f)}</strong></td><td class="amount">${money(paid)}</td><td class="muted">${money(share)}</td><td class="amount ${extra>0?"negative":extra<0?"positive":""}">${money(extra)}</td><td class="amount">${money(paid+extra)}</td><td><span class="badge ${cls}">${st}</span></td></tr>`;}).join("");}}
+function renderPartners(){const data=compute();const cards=document.getElementById("partnerCards"),tbody=document.getElementById("partnerTable");if(cards){cards.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const c=data.contributions[f],share=data.partnerShares[f],bal=c-share;return `<div class="partner-card" style="animation:fadeUp .4s var(--ease) ${i*.08}s both"><div class="avatar">${escapeHtml(f.substring(0,2).toUpperCase())}</div><div class="partner-name">${escapeHtml(f)}</div><div class="partner-label">Active Partner</div><div class="partner-value">${money(c)}</div><div class="partner-stat"><span>Equal share (&divide;3)</span><strong>${money(share)}</strong></div><div class="partner-stat"><span>Balance</span><strong class="${bal>0?"positive":bal<0?"negative":""}">${money(bal)}</strong></div><div class="partner-stat"><span>Extra to pay</span><strong class="${data.dues[f]>0?"negative":"positive"}">${money(data.dues[f])}</strong></div></div>`;}).join("");}if(tbody){tbody.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const c=data.contributions[f],share=data.partnerShares[f],bal=c-share,prog=share?Math.min(100,Math.max(0,c/share*100)):0,cnt=state.expenses.filter(e=>Number(e.splits?.[f]?.amount||0)>0).length+(state.partnerPayments||[]).filter(p=>p.partner===f&&p.amount>0).length;let st="Settled",cls="settled";if(bal>0.01){st="Credit";cls="credit";}else if(bal<-0.01){st="Due";cls="due";}return `<tr style="animation:fadeUp .4s var(--ease) ${i*.05}s both"><td><strong>${escapeHtml(f)}</strong></td><td>${cnt}</td><td class="amount">${money(c)}</td><td class="muted">${money(share)}</td><td class="amount ${bal>0?"positive":bal<0?"negative":""}">${money(bal)}</td><td><div class="progress"><div class="progress-fill" data-width="${prog}" style="width:0"></div></div></td><td><span class="badge ${cls}">${st}</span></td></tr>`;}).join("");setTimeout(()=>tbody.querySelectorAll(".progress-fill").forEach(b=>b.style.width=b.dataset.width+"%"),150);}}
 
 function renderReports(){const data=compute();const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};s("reportTotal",money(data.totalExpenses));s("reportAverage",money(state.expenses.length?data.totalExpenses/state.expenses.length:0));s("reportLargest",money(state.expenses.length?Math.max(...state.expenses.map(e=>Number(e.total||0))):0));s("reportCompanyBalance",money(data.company.balance));const cats=getCategories(),total=data.totalExpenses;const rc=document.getElementById("reportCategories");if(rc){rc.innerHTML=cats.map(([n,a],i)=>{const pct=total?a/total*100:0;return `<div class="category-row" style="animation:fadeUp .4s var(--ease) ${i*.06}s both"><div class="category-head"><span class="category-name">${escapeHtml(n)}</span><span class="category-amount">${money(a)} (${pct.toFixed(1)}%)</span></div><div class="bar"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div></div>`;}).join("");setTimeout(()=>rc.querySelectorAll(".bar-fill").forEach(b=>b.style.width=b.dataset.width+"%"),100);}const rp=document.getElementById("reportPartners");if(rp){rp.innerHTML=ACTIVE_FRIENDS.map((f,i)=>{const a=data.contributions[f],pct=data.activeContributed?a/data.activeContributed*100:0;return `<div class="category-row" style="animation:fadeUp .4s var(--ease) ${i*.06}s both"><div class="category-head"><span class="category-name">${escapeHtml(f)}</span><span class="category-amount">${money(a)}</span></div><div class="bar"><div class="bar-fill" data-width="${pct}" style="width:0"></div></div></div>`;}).join("");setTimeout(()=>rp.querySelectorAll(".bar-fill").forEach(b=>b.style.width=b.dataset.width+"%"),100);}}
 
-function renderSettings(){const projects=state.projects||[];const el=document.getElementById("settingsProjectList");if(el)el.textContent=projects.length?projects.map(p=>`${p.name} â€” ${money(p.advance)} paid`).join(" | "):"No projects";const cb=document.getElementById("settingsCompanyBalance");if(cb)cb.textContent=money(computeCompanyBalance().balance);}
+function renderSettings(){const projects=state.projects||[];const el=document.getElementById("settingsProjectList");if(el)el.textContent=projects.length?projects.map(p=>`${p.name} — ${money(p.advance)} paid`).join(" | "):"No projects";const cb=document.getElementById("settingsCompanyBalance");if(cb)cb.textContent=money(computeCompanyBalance().balance);}
 
 function render(){
   try{renderDashboard();}catch(e){console.error(e);}
@@ -1417,8 +1276,8 @@ function closeExpenseForm(){document.getElementById("expenseOverlay").classList.
 function editExpense(id){openExpenseForm(id);}
 function saveExpense(){const id=document.getElementById("expenseId").value,date=document.getElementById("expenseDate").value,category=document.getElementById("expenseCategory").value,details=document.getElementById("expenseDetails").value.trim(),total=Number(document.getElementById("expenseTotal").value||0);if(!date){showToast("Please select a date");return;}if(!details){showToast("Please enter details");return;}if(total<=0){showToast("Please enter a valid amount");return;}const existing=id?state.expenses.find(e=>e.id===id):null,splits={};ACTIVE_FRIENDS.forEach(f=>{const ai=document.querySelector(`.split-amount[data-person="${CSS.escape(f)}"]`),ti=document.querySelector(`.split-to[data-person="${CSS.escape(f)}"]`);splits[f]={amount:Number(ai?.value||0),to:ti?.value||f};});RESIGNED.forEach(f=>{const amount=Number(document.querySelector(`.split-amount[data-person="${CSS.escape(f)}"]`)?.value||0);if(amount>0)splits[f]=existing?.splits?.[f]||{amount,to:""};});const alloc=FRIENDS.reduce((s,f)=>s+Number(splits[f]?.amount||0),0);if(Math.abs(alloc-total)>0.01){showToast(`Allocation must equal ${money(total)}`);return;}const exp={id:id||("e"+Date.now()),date,category,details,total,splits};if(id){const idx=state.expenses.findIndex(e=>e.id===id);if(idx!==-1)state.expenses[idx]=exp;showToast("Expense updated");}else{state.expenses.push(exp);showToast("Expense added");}saveState();closeExpenseForm();render();}
 
-function populateCompanyProjectDropdown(){const sel=document.getElementById("companyTxnProject");if(!sel)return;const cv=sel.value;sel.innerHTML=`<option value="">â€” None â€”</option>`+(state.projects||[]).map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.name)}</option>`).join("");if(cv)sel.value=cv;}
-function updateCompanyTxnPreview(){const t=(document.getElementById("companyTxnType")||{}).value,a=Number((document.getElementById("companyTxnAmount")||{}).value||0),el=document.getElementById("companyTxnImpactPreview");if(!el)return;const imp=t==="deposit"?a:-a;el.textContent=(imp>=0?"+ ":"âˆ’ ")+money(Math.abs(imp));el.style.color=imp>=0?"var(--success)":"var(--danger)";}
+function populateCompanyProjectDropdown(){const sel=document.getElementById("companyTxnProject");if(!sel)return;const cv=sel.value;sel.innerHTML=`<option value="">— None —</option>`+(state.projects||[]).map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.name)}</option>`).join("");if(cv)sel.value=cv;}
+function updateCompanyTxnPreview(){const t=(document.getElementById("companyTxnType")||{}).value,a=Number((document.getElementById("companyTxnAmount")||{}).value||0),el=document.getElementById("companyTxnImpactPreview");if(!el)return;const imp=t==="deposit"?a:-a;el.textContent=(imp>=0?"+ ":"&minus; ")+money(Math.abs(imp));el.style.color=imp>=0?"var(--success)":"var(--danger)";}
 function openCompanyTxnForm(id=null){populateCompanyProjectDropdown();document.getElementById("companyTxnOverlay").classList.add("show");if(id){const t=(state.companyTxns||[]).find(x=>x.id===id);if(!t)return;document.getElementById("companyTxnFormTitle").textContent="Edit Transaction";document.getElementById("companyTxnId").value=t.id;document.getElementById("companyTxnDate").value=t.date;document.getElementById("companyTxnType").value=t.type;document.getElementById("companyTxnDescription").value=t.description;document.getElementById("companyTxnAmount").value=t.amount;document.getElementById("companyTxnProject").value=t.projectId||"";}else{document.getElementById("companyTxnFormTitle").textContent="New Company Transaction";document.getElementById("companyTxnId").value="";document.getElementById("companyTxnDate").value=new Date().toISOString().split("T")[0];document.getElementById("companyTxnType").value="deposit";document.getElementById("companyTxnDescription").value="";document.getElementById("companyTxnAmount").value="";document.getElementById("companyTxnProject").value="";}updateCompanyTxnPreview();}
 function closeCompanyTxnForm(){document.getElementById("companyTxnOverlay").classList.remove("show");}
 function editCompanyTxn(id){openCompanyTxnForm(id);}

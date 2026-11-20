@@ -776,12 +776,13 @@ function defaultData(){
       {id:"e7",date:"2026-11-09",category:"Other",details:"November Rent Room + Bill",total:15570,splits:{Arslan:{amount:5190,to:"Arslan"},Daniyal:{amount:5190,to:"Daniyal"},Hashim:{amount:5190,to:"Hashim"}}}
     ],
     projects:[
-      {id:"p1",name:"Alliance Logistics Portal",client:"Alliance Logistics",status:"On Hold",date:"2026-09-20",fees:45000,monthlyFee:0,monthlyDueDate:"",advance:45000,notes:""},
+      {id:"p1",name:"Alliance Logistics Portal",client:"Alliance Logistics",status:"In Progress",date:"2026-09-20",fees:45000,monthlyFee:0,monthlyDueDate:"",advance:45000,notes:"Restarted. 90K monthly received 20 Nov 2026 — runs 20th to 20th."},
       {id:"p2",name:"TEAMSKy Logistic",client:"TEAMSKy",status:"In Progress",date:"2026-09-29",fees:23000,monthlyFee:0,monthlyDueDate:"",advance:23000,notes:""},
       {id:"p3",name:"RAM Courier Service",client:"RAM Courier",status:"In Progress",date:"2026-10-08",fees:43000,monthlyFee:8000,monthlyDueDate:"2026-11-08",advance:43000,notes:""},
       {id:"p4",name:"SKY Logistics (QCS)",client:"SKY Logistics",status:"In Progress",date:"2026-10-10",fees:40000,monthlyFee:7000,monthlyDueDate:"",advance:15000,notes:""},
       {id:"p5",name:"ASR Logistics",client:"ASR Logistics",status:"In Progress",date:"2026-10-15",fees:50000,monthlyFee:9000,monthlyDueDate:"",advance:20000,notes:""},
-      {id:"p6",name:"Makkah Courier Service",client:"Makkah Courier",status:"In Progress",date:"2026-10-26",fees:42000,monthlyFee:0,monthlyDueDate:"",advance:10000,notes:"One-time payment. 42K total, 10K advance received 26 Oct 2026."}
+      {id:"p6",name:"Makkah Courier Service",client:"Makkah Courier",status:"In Progress",date:"2026-10-26",fees:42000,monthlyFee:0,monthlyDueDate:"",advance:10000,notes:"One-time payment. 42K total, 10K advance received 26 Oct 2026."},
+      {id:"p7",name:"Elite Logistics",client:"Elite Logistics",status:"In Progress",date:"2026-11-20",fees:42000,monthlyFee:8000,monthlyDueDate:"2026-12-20",advance:15000,notes:"New project received. 42K fees + 8K monthly. 15K advance received 20 Nov 2026."}
     ],
     companyTxns:[
       {id:"ct1",date:"2026-09-20",type:"deposit",description:"Alliance Logistics — Advance received",amount:15000,projectId:"p1"},
@@ -799,7 +800,9 @@ function defaultData(){
       {id:"ct14",date:"2026-11-08",type:"deposit",description:"RAM Courier Service — Remaining payment (33K)",amount:33000,projectId:"p3"},
       {id:"ct15",date:"2026-10-26",type:"deposit",description:"Makkah Courier Service — Advance received",amount:10000,projectId:"p6"},
       {id:"ct1793266012737",date:"2026-10-28",type:"deposit",description:"Alliance Logistics — Additional payment (15K)",amount:15000,projectId:"p1"},
-      {id:"ct16",date:"2026-11-09",type:"deposit",description:"RAM Courier Service — Monthly server fee (November)",amount:8000,projectId:"p3"}
+      {id:"ct16",date:"2026-11-09",type:"deposit",description:"RAM Courier Service — Monthly server fee (November)",amount:8000,projectId:"p3"},
+      {id:"ct17",date:"2026-11-20",type:"deposit",description:"Elite Logistics — Advance received",amount:15000,projectId:"p7"},
+      {id:"ct18",date:"2026-11-20",type:"deposit",description:"Alliance Logistics — Restart monthly payment (90K)",amount:90000,projectId:"p1"}
     ],
     dividends:[
       {id:"d1",date:"2026-10-13",source:"TEAMSKy Logistic",totalAmount:18000,perPartner:6000,partners:["Arslan","Daniyal","Hashim"],description:"TEAMSKy 18K payment divided equally among 3 active partners"},
@@ -811,7 +814,8 @@ function defaultData(){
     monthlyPayments:[
       {id:"m3",projectId:"p4",client:"SKY Logistics (QCS)",amount:7000,date:"2026-10-12",period:"2026-10",notes:"October monthly server fee"},
       {id:"m4",projectId:"p5",client:"ASR Logistics",amount:9000,date:"2026-10-13",period:"2026-10",notes:"October monthly server fee"},
-      {id:"m5",projectId:"p3",client:"RAM Courier Service",amount:8000,date:"2026-11-09",period:"2026-11",notes:"November monthly server fee"}
+      {id:"m5",projectId:"p3",client:"RAM Courier Service",amount:8000,date:"2026-11-09",period:"2026-11",notes:"November monthly server fee"},
+      {id:"m6",projectId:"p1",client:"Alliance Logistics",amount:90000,date:"2026-11-20",period:"2026-11",notes:"Restart monthly payment — 20 Nov to 20 Dec cycle"}
     ],
     partnerPayments:[
       {id:"settlement-20261024-Arslan",partner:"Arslan",amount:4166.66,date:"2026-10-24",notes:"Existing expense balance paid in full"},

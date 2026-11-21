@@ -609,7 +609,7 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
     <section class="page" id="page-dividend">
       <div class="notice success">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>
-        <div><strong>Dividend Splits.</strong> Recorded distributions: TEAMSKy 18K, Company 30K, ASR 20K, RAM 33K, Company 25K. Latest split: <strong>8,333 PKR each (25,000 &divide; 3 partners)</strong>. Company balance is now <strong>zero</strong>.</div>
+        <div><strong>Dividend Splits.</strong> Recorded distributions: TEAMSKy 18K, Company 30K, ASR 20K, RAM 33K, Company 25K, DigitalOcean 24K. Latest split: <strong>8,000 PKR each (24,000 &divide; 3 partners)</strong> after DigitalOcean 8,000 withdrawal.</div>
       </div>
       <div class="report-grid">
         <div class="report-card"><h3>Total Received</h3><strong id="divTotal">PKR 0</strong></div>
@@ -757,12 +757,12 @@ tbody tr:hover .expense-name{color:var(--primary-dark);}
 
 <script>
 /* ======================================================================
-   DEVPROKIT BUSINESS ERP — FULL WORKING JAVASCRIPT
+   DEVPROKIT BUSINESS ERP — FULL WORKING JAVASCRIPT (CORRECTED)
    ====================================================================== */
 const FRIENDS=["Arslan","Daniyal","Touseef","Hashim","Qasim"];
 const RESIGNED=["Touseef","Qasim"];
 const ACTIVE_FRIENDS=FRIENDS.filter(f=>!RESIGNED.includes(f));
-const STORAGE_KEY="devprokit-ledger-v15";
+const STORAGE_KEY="devprokit-ledger-v17";
 
 let state={expenses:[],projects:[],companyTxns:[],dividends:[],monthlyPayments:[],partnerPayments:[]};
 let deleteId=null,deleteType=null;
@@ -805,14 +805,16 @@ function defaultData(){
       {id:"ct1793266012737",date:"2026-10-28",type:"deposit",description:"Alliance Logistics — Additional payment (15K)",amount:15000,projectId:"p1"},
       {id:"ct16",date:"2026-11-09",type:"deposit",description:"RAM Courier Service — Monthly server fee (November)",amount:8000,projectId:"p3"},
       {id:"ct17",date:"2026-11-19",type:"deposit",description:"Elite Logistics — Advance received (15K)",amount:15000,projectId:"p7"},
-      {id:"ct18",date:"2026-11-20",type:"deposit",description:"Alliance Logistics — Monthly server fee (November)",amount:9000,projectId:"p1"}
+      {id:"ct18",date:"2026-11-20",type:"deposit",description:"Alliance Logistics — Monthly server fee (November)",amount:9000,projectId:"p1"},
+      {id:"ct19",date:"2026-11-21",type:"withdrawal",description:"DigitalOcean — Paid from company account",amount:8000,projectId:""}
     ],
     dividends:[
       {id:"d1",date:"2026-10-13",source:"TEAMSKy Logistic",totalAmount:18000,perPartner:6000,partners:["Arslan","Daniyal","Hashim"],description:"TEAMSKy 18K payment divided equally among 3 active partners"},
       {id:"d2",date:"2026-10-15",source:"Company Account",totalAmount:30000,perPartner:10000,partners:["Arslan","Daniyal","Hashim"],description:"Company account se 30,000 distributed - 10,000 each to Arslan, Daniyal, Hashim"},
       {id:"d3",date:"2026-10-15",source:"ASR Logistics",totalAmount:20000,perPartner:6666.67,partners:["Arslan","Daniyal","Hashim"],description:"ASR Logistics 20,000 advance divided equally - 6,667 each to Arslan, Daniyal, Hashim"},
       {id:"d4",date:"2026-11-08",source:"RAM Courier Service — Company Account",totalAmount:33000,perPartner:11000,partners:["Arslan","Daniyal","Hashim"],description:"RAM Courier 33,000 divided equally among the 3 active partners"},
-      {id:"d5",date:"2026-11-03",source:"Company Account",totalAmount:25000,perPartner:8333.33,partners:["Arslan","Daniyal","Hashim"],description:"Company account 25,000 divided equally among 3 active partners — 8,333 each, balance now 0"}
+      {id:"d5",date:"2026-11-03",source:"Company Account",totalAmount:25000,perPartner:8333.33,partners:["Arslan","Daniyal","Hashim"],description:"Company account 25,000 divided equally among 3 active partners — 8,333 each, balance now 0"},
+      {id:"d6",date:"2026-11-21",source:"Company Account — DigitalOcean remainder",totalAmount:24000,perPartner:8000,partners:["Arslan","Daniyal","Hashim"],description:"After 8,000 DigitalOcean withdrawal, remaining 24,000 divided equally — 8,000 each to Arslan, Daniyal, Hashim"}
     ],
     monthlyPayments:[
       {id:"m3",projectId:"p4",client:"SKY Logistics (QCS)",amount:7000,date:"2026-10-12",period:"2026-10",notes:"October monthly server fee"},
@@ -828,27 +830,12 @@ function defaultData(){
   };
 }
 
-function loadState(){
-  state = defaultData();
-  render();
-}
-
-function normalizeExpense(e){return{id:e.id||("e"+Date.now()+Math.random()),date:e.date||new Date().toISOString().split("T")[0],category:e.category||"Other",details:e.details||"Untitled",total:Number(e.total||0),splits:e.splits&&typeof e.splits==="object"?e.splits:{}};}
-function normalizeProject(p){return{id:p.id||("p"+Date.now()+Math.random()),name:p.name||"Untitled",client:p.client||"—",status:p.status||"In Progress",date:p.date||new Date().toISOString().split("T")[0],fees:Number(p.fees||p.total||0),monthlyFee:Number(p.monthlyFee||0),monthlyDueDate:p.monthlyDueDate||"",advance:Number(p.advance||0),notes:p.notes||""};}
-function normalizeCompanyTxn(t){return{id:t.id||("ct"+Date.now()+Math.random()),date:t.date||new Date().toISOString().split("T")[0],type:t.type==="withdrawal"?"withdrawal":"deposit",description:t.description||"Untitled",amount:Number(t.amount||0),projectId:t.projectId||""};}
-function normalizeDividend(d){return{id:d.id||("d"+Date.now()+Math.random()),date:d.date||new Date().toISOString().split("T")[0],source:d.source||"Unknown",totalAmount:Number(d.totalAmount||0),perPartner:Number(d.perPartner||0),partners:Array.isArray(d.partners)?d.partners:ACTIVE_FRIENDS,description:d.description||""};}
-function normalizeMonthlyPayment(m){return{id:m.id||("m"+Date.now()+Math.random()),projectId:m.projectId||"",client:m.client||"Unknown",amount:Number(m.amount||0),date:m.date||new Date().toISOString().split("T")[0],period:m.period||(m.date||"").slice(0,7),notes:m.notes||""};}
-function normalizePartnerPayment(p){return{id:p.id||("pp"+Date.now()+Math.random()),partner:p.partner||"",amount:Number(p.amount||0),date:p.date||new Date().toISOString().split("T")[0],notes:p.notes||""};}
+function loadState(){ state = defaultData(); render(); }
 function saveState(msg=false){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){} if(msg) showToast("Saved successfully"); }
 function money(v){return "PKR "+Number(v||0).toLocaleString("en-PK",{maximumFractionDigits:2});}
 function dateFormat(d){if(!d)return "—";const dt=new Date(d+"T00:00:00");if(isNaN(dt.getTime()))return "—";return dt.toLocaleDateString("en-PK",{day:"2-digit",month:"short",year:"numeric"});}
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
-function projectTotal(p){
-  if(p.client && p.client.toLowerCase() === "ram courier"){
-    return Number(p.fees||0);
-  }
-  return Number(p.fees||0) + Number(p.monthlyFee||0);
-}
+function projectTotal(p){ if(p.client && p.client.toLowerCase() === "ram courier"){ return Number(p.fees||0); } return Number(p.fees||0) + Number(p.monthlyFee||0); }
 function projectRemaining(p){return Math.max(0,projectTotal(p)-Number(p.advance||0));}
 
 function computeCompanyBalance(){
@@ -1027,13 +1014,11 @@ function renderProjectTable(){
 }
 
 function renderMonthly(){
-  // Schedule table
   const scheduleEl=document.getElementById("monthlyScheduleTable");
   const paidEl=document.getElementById("monthlyPaidTable");
   const historyEl=document.getElementById("monthlyHistoryTable");
   const projectsWithMonthly=state.projects.filter(p=>Number(p.monthlyFee||0)>0);
   const today=new Date(); today.setHours(0,0,0,0);
-  // schedule
   if(scheduleEl){
     if(!projectsWithMonthly.length){scheduleEl.innerHTML='<tr><td colspan="7"><div class="empty"><h3>No monthly projects</h3><p>Add a project with a monthly server fee.</p></div></td></tr>';}
     else{
@@ -1054,7 +1039,6 @@ function renderMonthly(){
       scheduleEl.innerHTML=rows;
     }
   }
-  // paid recent
   if(paidEl){
     const list=[...state.monthlyPayments].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,6);
     if(!list.length){paidEl.innerHTML='<tr><td colspan="6"><div class="empty"><h3>No payments yet</h3><p>Record a monthly payment.</p></div></td></tr>';}
@@ -1065,7 +1049,6 @@ function renderMonthly(){
       }).join("");
     }
   }
-  // history
   if(historyEl){
     const list=[...state.monthlyPayments].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
     document.getElementById("monthlyHistoryCount").textContent=list.length+" records";
@@ -1074,7 +1057,6 @@ function renderMonthly(){
       historyEl.innerHTML=list.map(m=>`<tr><td>${dateFormat(m.date)}</td><td>${escapeHtml(m.client)}</td><td><span class="month-tag">${escapeHtml(m.period||'')}</span></td><td class="amount">${money(m.amount)}</td><td>${escapeHtml(m.notes||'—')}</td><td><div class="action-group"><button class="icon-btn delete" onclick="askDelete('${m.id}','monthlyPayment')" title="Delete"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`).join("");
     }
   }
-  // totals
   const monthlyTotal=state.projects.reduce((s,p)=>s+Number(p.monthlyFee||0),0);
   const thisMonth=today.toISOString().slice(0,7);
   const collected=state.monthlyPayments.filter(m=>(m.period||"").slice(0,7)===thisMonth).reduce((s,m)=>s+Number(m.amount||0),0);
@@ -1085,7 +1067,6 @@ function renderMonthly(){
   document.getElementById("mTotalRecurring").textContent=money(monthlyTotal);
   document.getElementById("mCollected").textContent=money(collected);
   document.getElementById("mPending").textContent=money(pending);
-  // next due
   let nextDate=null;
   projectsWithMonthly.forEach(p=>{if(p.monthlyDueDate){const d=new Date(p.monthlyDueDate+"T00:00:00");if(d>=today&&(!nextDate||d<nextDate))nextDate=d;}});
   document.getElementById("mNextDue").textContent=nextDate?dateFormat(nextDate.toISOString().slice(0,10)):'—';
@@ -1129,10 +1110,7 @@ function renderExpenses(){
   if(cat)list=list.filter(e=>e.category===cat);
   document.getElementById("expenseCount").textContent=list.length+" transactions";
   if(!list.length){el.innerHTML='<tr><td colspan="7"><div class="empty"><h3>No expenses</h3><p>Add your first expense.</p></div></td></tr>';return;}
-  el.innerHTML=list.map(e=>{
-    const splits=Object.entries(e.splits||{}).map(([k,v])=>`${k}: ${money(v.amount)}`).join(", ");
-    return `<tr><td>${dateFormat(e.date)}</td><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><div><div class="expense-name">${escapeHtml(e.details)}</div><div class="expense-category">${escapeHtml(e.category)}</div></div></div></td><td>${escapeHtml(e.category)}</td><td class="amount">${money(e.total)}</td><td><div class="partner-chips">${Object.keys(e.splits||{}).map(f=>`<span class="chip">${escapeHtml(f)}</span>`).join("")}</div></td><td><span class="badge paid">Recorded</span></td><td><div class="action-group"><button class="icon-btn" onclick="editExpense('${e.id}')" title="Edit"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDelete('${e.id}','expense')" title="Delete"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`;
-  }).join("");
+  el.innerHTML=list.map(e=>`<tr><td>${dateFormat(e.date)}</td><td><div class="expense-description"><div class="expense-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><div><div class="expense-name">${escapeHtml(e.details)}</div><div class="expense-category">${escapeHtml(e.category)}</div></div></div></td><td>${escapeHtml(e.category)}</td><td class="amount">${money(e.total)}</td><td><div class="partner-chips">${Object.keys(e.splits||{}).map(f=>`<span class="chip">${escapeHtml(f)}</span>`).join("")}</div></td><td><span class="badge paid">Recorded</span></td><td><div class="action-group"><button class="icon-btn" onclick="editExpense('${e.id}')" title="Edit"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><button class="icon-btn delete" onclick="askDelete('${e.id}','expense')" title="Delete"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></td></tr>`).join("");
 }
 
 function renderPartners(c){
@@ -1233,7 +1211,7 @@ function renderCompanyTxnProjectDropdown(){
   }
 }
 
-/* ======================= NAV / PAGE ======================= */
+/* ======================= NAV ======================= */
 const PAGE_TITLES={
   dashboard:["Dashboard","Business financial overview"],
   company:["Company Account","Track deposits, withdrawals and balance"],
@@ -1256,9 +1234,7 @@ function switchPage(name){
   document.getElementById("mobileOverlay").classList.remove("show");
   window.scrollTo({top:0,behavior:"smooth"});
 }
-document.querySelectorAll(".nav-item").forEach(btn=>{
-  btn.addEventListener("click",()=>switchPage(btn.dataset.page));
-});
+document.querySelectorAll(".nav-item").forEach(btn=>{ btn.addEventListener("click",()=>switchPage(btn.dataset.page)); });
 document.getElementById("mobileMenu")?.addEventListener("click",()=>{
   document.getElementById("sidebar").classList.toggle("open");
   document.getElementById("mobileOverlay").classList.toggle("show");
@@ -1267,17 +1243,10 @@ document.getElementById("mobileOverlay")?.addEventListener("click",()=>{
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("mobileOverlay").classList.remove("show");
 });
-document.getElementById("topbar")?.addEventListener("scroll",()=>{});
 
 /* ======================= TOAST ======================= */
 let toastTimer=null;
-function showToast(msg){
-  const t=document.getElementById("toast");
-  t.textContent=msg;
-  t.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove("show"),2500);
-}
+function showToast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2500); }
 
 /* ======================= EXPENSE FORM ======================= */
 function openExpenseForm(){
@@ -1301,17 +1270,12 @@ function buildSplitGrid(splits){
   grid.querySelectorAll(".split-amount").forEach(inp=>inp.addEventListener("input",updateSplitTotal));
   updateSplitTotal();
 }
-function updateSplitTotal(){
-  const total=[...document.querySelectorAll(".split-amount")].reduce((s,i)=>s+Number(i.value||0),0);
-  document.getElementById("splitTotal").textContent=money(total);
-}
+function updateSplitTotal(){ const total=[...document.querySelectorAll(".split-amount")].reduce((s,i)=>s+Number(i.value||0),0); document.getElementById("splitTotal").textContent=money(total); }
 function splitEqually(){
   const total=Number(document.getElementById("expenseTotal").value||0);
   if(!total)return showToast("Enter total amount first");
   const per=Math.round(total/ACTIVE_FRIENDS.length*100)/100;
-  document.querySelectorAll(".split-amount").forEach((inp,i)=>{
-    inp.value=(i===ACTIVE_FRIENDS.length-1?Math.round((total-per*(ACTIVE_FRIENDS.length-1))*100)/100:per);
-  });
+  document.querySelectorAll(".split-amount").forEach((inp,i)=>{ inp.value=(i===ACTIVE_FRIENDS.length-1?Math.round((total-per*(ACTIVE_FRIENDS.length-1))*100)/100:per); });
   updateSplitTotal();
 }
 function saveExpense(){
@@ -1329,20 +1293,12 @@ function saveExpense(){
     const to=item.querySelector(".split-to").value;
     if(amt>0)splits[person]={amount:amt,to};
   });
-  if(id){
-    const idx=state.expenses.findIndex(e=>e.id===id);
-    if(idx>=0)state.expenses[idx]={id,date,category,details,total,splits};
-  }else{
-    state.expenses.push({id:"e"+Date.now(),date,category,details,total,splits});
-  }
-  saveState();
-  closeExpenseForm();
-  render();
-  showToast(id?"Expense updated":"Expense saved");
+  if(id){ const idx=state.expenses.findIndex(e=>e.id===id); if(idx>=0)state.expenses[idx]={id,date,category,details,total,splits}; }
+  else{ state.expenses.push({id:"e"+Date.now(),date,category,details,total,splits}); }
+  saveState(); closeExpenseForm(); render(); showToast(id?"Expense updated":"Expense saved");
 }
 function editExpense(id){
-  const e=state.expenses.find(x=>x.id===id);
-  if(!e)return;
+  const e=state.expenses.find(x=>x.id===id); if(!e)return;
   document.getElementById("expenseId").value=e.id;
   document.getElementById("expenseDate").value=e.date||"";
   document.getElementById("expenseCategory").value=e.category||"Other";
@@ -1374,20 +1330,12 @@ function saveCompanyTxn(){
   const projectId=document.getElementById("companyTxnProject").value;
   if(!description)return showToast("Enter description");
   if(amount<=0)return showToast("Enter a valid amount");
-  if(id){
-    const idx=state.companyTxns.findIndex(t=>t.id===id);
-    if(idx>=0)state.companyTxns[idx]={id,date,type,description,amount,projectId};
-  }else{
-    state.companyTxns.push({id:"ct"+Date.now(),date,type,description,amount,projectId});
-  }
-  saveState();
-  closeCompanyTxnForm();
-  render();
-  showToast(id?"Transaction updated":"Transaction saved");
+  if(id){ const idx=state.companyTxns.findIndex(t=>t.id===id); if(idx>=0)state.companyTxns[idx]={id,date,type,description,amount,projectId}; }
+  else{ state.companyTxns.push({id:"ct"+Date.now(),date,type,description,amount,projectId}); }
+  saveState(); closeCompanyTxnForm(); render(); showToast(id?"Transaction updated":"Transaction saved");
 }
 function editCompanyTxn(id){
-  const t=state.companyTxns.find(x=>x.id===id);
-  if(!t)return;
+  const t=state.companyTxns.find(x=>x.id===id); if(!t)return;
   document.getElementById("companyTxnId").value=t.id;
   document.getElementById("companyTxnDate").value=t.date||"";
   document.getElementById("companyTxnType").value=t.type||"deposit";
@@ -1423,9 +1371,7 @@ function updateProjectPreview(){
   document.getElementById("projectTotalDisplay").value=money(total);
   document.getElementById("projectPendingPreview").textContent=money(Math.max(0,total-advance));
 }
-["projectFees","projectMonthlyFee","projectAdvance"].forEach(id=>{
-  document.getElementById(id)?.addEventListener("input",updateProjectPreview);
-});
+["projectFees","projectMonthlyFee","projectAdvance"].forEach(id=>{ document.getElementById(id)?.addEventListener("input",updateProjectPreview); });
 function saveProject(){
   const id=document.getElementById("projectId").value;
   const name=document.getElementById("projectName").value.trim();
@@ -1439,20 +1385,12 @@ function saveProject(){
   const notes=document.getElementById("projectNotes").value.trim();
   if(!name)return showToast("Enter project name");
   if(!client)return showToast("Enter client name");
-  if(id){
-    const idx=state.projects.findIndex(p=>p.id===id);
-    if(idx>=0)state.projects[idx]={id,name,client,status,date,fees,monthlyFee,monthlyDueDate,advance,notes};
-  }else{
-    state.projects.push({id:"p"+Date.now(),name,client,status,date,fees,monthlyFee,monthlyDueDate,advance,notes});
-  }
-  saveState();
-  closeProjectForm();
-  render();
-  showToast(id?"Project updated":"Project saved");
+  if(id){ const idx=state.projects.findIndex(p=>p.id===id); if(idx>=0)state.projects[idx]={id,name,client,status,date,fees,monthlyFee,monthlyDueDate,advance,notes}; }
+  else{ state.projects.push({id:"p"+Date.now(),name,client,status,date,fees,monthlyFee,monthlyDueDate,advance,notes}); }
+  saveState(); closeProjectForm(); render(); showToast(id?"Project updated":"Project saved");
 }
 function editProject(id){
-  const p=state.projects.find(x=>x.id===id);
-  if(!p)return;
+  const p=state.projects.find(x=>x.id===id); if(!p)return;
   document.getElementById("projectId").value=p.id;
   document.getElementById("projectName").value=p.name||"";
   document.getElementById("projectClient").value=p.client||"";
@@ -1481,17 +1419,12 @@ function openMonthlyPaymentForm(projectId){
     const sel=document.getElementById("monthlyPaymentProject");
     if(sel)sel.value=projectId;
     const p=state.projects.find(x=>x.id===projectId);
-    if(p){
-      document.getElementById("monthlyPaymentAmount").value=p.monthlyFee||"";
-      document.getElementById("monthlyPaymentImpact").textContent="+ "+money(p.monthlyFee||0);
-    }
+    if(p){ document.getElementById("monthlyPaymentAmount").value=p.monthlyFee||""; document.getElementById("monthlyPaymentImpact").textContent="+ "+money(p.monthlyFee||0); }
   }
   document.getElementById("monthlyPaymentOverlay").classList.add("show");
 }
 function closeMonthlyPaymentForm(){document.getElementById("monthlyPaymentOverlay").classList.remove("show");}
-document.getElementById("monthlyPaymentAmount")?.addEventListener("input",e=>{
-  document.getElementById("monthlyPaymentImpact").textContent="+ "+money(Number(e.target.value||0));
-});
+document.getElementById("monthlyPaymentAmount")?.addEventListener("input",e=>{ document.getElementById("monthlyPaymentImpact").textContent="+ "+money(Number(e.target.value||0)); });
 function saveMonthlyPayment(){
   const projectId=document.getElementById("monthlyPaymentProject").value;
   const date=document.getElementById("monthlyPaymentDate").value;
@@ -1504,13 +1437,8 @@ function saveMonthlyPayment(){
   state.monthlyPayments.push({id:"m"+Date.now(),projectId,client:p.client,amount,date,period,notes});
   state.companyTxns.push({id:"ct"+Date.now(),date,type:"deposit",description:`${p.client} — Monthly server fee (${period})`,amount,projectId});
   p.advance=Number(p.advance||0)+amount;
-  const next=new Date(date+"T00:00:00");
-  next.setMonth(next.getMonth()+1);
-  p.monthlyDueDate=next.toISOString().slice(0,10);
-  saveState();
-  closeMonthlyPaymentForm();
-  render();
-  showToast("Monthly payment recorded");
+  const next=new Date(date+"T00:00:00"); next.setMonth(next.getMonth()+1); p.monthlyDueDate=next.toISOString().slice(0,10);
+  saveState(); closeMonthlyPaymentForm(); render(); showToast("Monthly payment recorded");
 }
 
 /* ======================= DELETE ======================= */
@@ -1528,10 +1456,7 @@ function confirmDelete(){
   else if(deleteType==="project")state.projects=state.projects.filter(p=>p.id!==deleteId);
   else if(deleteType==="companyTxn")state.companyTxns=state.companyTxns.filter(t=>t.id!==deleteId);
   else if(deleteType==="monthlyPayment")state.monthlyPayments=state.monthlyPayments.filter(m=>m.id!==deleteId);
-  saveState();
-  closeDeleteModal();
-  render();
-  showToast("Deleted successfully");
+  saveState(); closeDeleteModal(); render(); showToast("Deleted successfully");
 }
 
 /* ======================= INIT ======================= */
